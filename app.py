@@ -34,6 +34,7 @@ def profesor(id):
 		alumnoid = session['id']
 		citas = Cita.query.filter_by(idAlumno=alumnoid)
 		return render_template('detalleProfesor.html', profesor=profesor, citas=citas)
+		print("debug")
 	else:
 		redirect(url_for('inicio'))
 
