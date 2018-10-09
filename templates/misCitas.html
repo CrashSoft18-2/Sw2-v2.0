@@ -6,15 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/0/0e/ULIMA_logo.png">
   <script src="{{ url_for('static', filename='js/index.js') }}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui.css') }}" type="text/css" media="screen" />
-	<link type="text/css" href="{{ url_for('static', filename='css/jquery.ui.chatbox.css') }}" rel="stylesheet" />
-
-	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-1.4.2.min.js') }}"></script>
-	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-ui.min.js') }}"></script>
-	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.ui.chatbox.js') }}"></script>
+  <link type="text/css" href="{{ url_for('static', filename='css/jquery.ui.chatbox.css') }}" rel="stylesheet" />
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-1.4.2.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-ui.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.ui.chatbox.js') }}"></script>
 </head>
 <body>
 
@@ -73,7 +73,7 @@
             <td>{{cita.asesoria.hora}}</td>
             <td>{{cita.asesoria.lugar}}</td>
             <td>{{cita.pregunta}}</td>
-	    <td><a onclick="cancelarReserva({{cita.idCita}})">x</a></td>
+	    <td><a onclick="cancelarCita({{cita.idCita}})">x</a></td>
           </tr>
         {% endfor %}
       </table>
