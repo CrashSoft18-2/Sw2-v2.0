@@ -32,24 +32,25 @@ def inicio():
 
 @app.route('/profesor/<int:id>')
 def profesor(id):
-	profesor = Profesor.query.filter_by(idProfesor=id).first()
-	alumnoid = session['id']
-	citas = Cita.query.filter_by(idAlumno=alumnoid)
-	return render_template('detalleProfesor.html', profesor=profesor, citas=citas)
-
+	if session.get('AUTH') == True:
+		profesor = Profesor.query.filter_by(idProfesor=id).first()
+		alumnoid = session['id']
+		citas = Cita.query.filter_by(idAlumno=alumnoid)
+		return render_template('detalleProfesor.html', profesor=profesor, citas=citas)
+	else:
+		redirect(url_for('inicio'))
 
 @app.route('/login', methods=['POST'])
 def login():
-	if request.method == 'POST':
-		alumno = Alumno.query.filter_by(usuarioAlumno=request.form['uname'], contrasena=request.form['psw']).first()
-		if alumno:
-			session['AUTH'] = True
-			session['id'] = alumno.idAlumno
-			session['username'] = alumno.usuarioAlumno
-			session['nombre'] = alumno.nombre
-			return index()
-		else:
-			return render_template('login.html', val = True)
+	alumno = Alumno.query.filter_by(usuarioAlumno=request.form['uname'], contrasena=request.form['psw']).first()
+	if alumno:
+		session['AUTH'] = True
+		session['id'] = alumno.idAlumno
+		session['username'] = alumno.usuarioAlumno
+		session['nombre'] = alumno.nombre
+		redirect(url_for('index'))
+	else:
+		return render_template('login.html', val = True)
 
 def do_the_login():
 	connectToFirebase()
@@ -68,7 +69,7 @@ def do_the_login():
 			break
 	if Test.AUTH == True:
 		session['username'] = request.form['uname']
-		return index()
+		redirect(url_for('index'))
 	else:
 		return render_template('login.html', val = True)
 
@@ -84,18 +85,24 @@ def index():
 
 @app.route("/reservarCita/<int:idAs>")
 def reservarCita(idAs):
-	session['idAs'] = idAs
-	asesoria = Asesoria.query.filter_by(idAsesoria=idAs).first()
-	return render_template('reservarCita.html', asesoria=asesoria)
+	if session.get('AUTH') == True:
+		session['idAs'] = idAs
+		asesoria = Asesoria.query.filter_by(idAsesoria=idAs).first()
+		return render_template('reservarCita.html', asesoria=asesoria)
+	else:
+		redirect(url_for('inicio'))
 
 @app.route("/generarReserva", methods=['POST'])
 def generarReserva():
-	fecha = datetime.now().date()
-	cita = Cita(idAlumno=session['id'], idAsesoria=session['idAs'], fecha=fecha, pregunta=request.form['consulta'])
-	db.session.add(cita)
-	db.session.commit()
-	asesoria = Asesoria.query.filter_by(idAsesoria=session['idAs']).first()
-	return render_template('reservarCita.html', asesoria=asesoria)
+	if session.get('AUTH') == True:
+		fecha = datetime.now().date()
+		cita = Cita(idAlumno=session['id'], idAsesoria=session['idAs'], fecha=fecha, pregunta=request.form['consulta'])
+		db.session.add(cita)
+		db.session.commit()
+		asesoria = Asesoria.query.filter_by(idAsesoria=session['idAs']).first()
+		return render_template('reservarCita.html', asesoria=asesoria)
+	else:
+		redirect(url_for('inicio'))
 
 def connectToFirebase():
 	SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
