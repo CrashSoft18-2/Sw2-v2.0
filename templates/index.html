@@ -100,29 +100,6 @@
         </select>
       </span>
       <button onclick="buscar()">Buscar</button>
-
-      <table id="detalle">
-        <tr class="header">
-          <th style="width:14%;">Profesor</th>
-          <th style="width:14%;">Carrera</th>
-          <th style="width:12%;">Fecha</th>
-          <th style="width:12%;">Hora</th>
-          <th style="width:14%;">Lugar</th>
-          <th style="width:24%;">Consulta</th>
-          <!--<th style="width:10%;"></th>-->
-        </tr>
-        {% for cita in citas %}
-          <tr>
-            <td>{{cita.asesoria.profesor.nombre}}</td>
-            <td>{{cita.asesoria.profesor.carrera}}</td>
-            <td>{{cita.asesoria.fecha}}</td>
-            <td>{{cita.asesoria.hora}}</td>
-            <td>{{cita.asesoria.lugar}}</td>
-            <td>{{cita.consulta}}</td>
-            <!--<td>x</td>-->
-          </tr>
-        {% endfor %}
-      </table>
     </div>
     <div id="seminarios" class="tab-pane fade">
       <h3>Menu 3</h3>
