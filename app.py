@@ -23,7 +23,7 @@ from models import *
 
 @app.route("/")
 def inicio():
-	if session['AUTH']:
+	if session.get('AUTH') != None:
 		if session['AUTH'] == True:
 			return index()
 	else:
@@ -74,13 +74,13 @@ def do_the_login():
 
 @app.route("/index")
 def index():
-	if (session['AUTH'] == True):
+	if session.get('AUTH') == True:
 		profesores = Profesor.query.all()
 		alumnoid = session['id']
 		citas = Cita.query.filter_by(idAlumno=alumnoid)
 		return render_template('index.html', profesores=profesores, citas=citas)
 	else:
-		return render_template('login.html', val = session['AUTH'])
+		redirect(url_for('inicio'))
 
 @app.route("/reservarCita/<int:idAs>")
 def reservarCita(idAs):
