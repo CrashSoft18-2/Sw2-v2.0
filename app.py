@@ -108,7 +108,7 @@ def connectToFirebase():
 		cred = credentials.Certificate(json_URL)
 		firebase_admin.initialize_app(cred, {'databaseURL' : 'https://crashsoft-e0a3e.firebaseio.com/'})
 
-@app.route("/cancelarReserva/<int:id>", methods=['POST'])
+@app.route("/cancelarReserva/<int:id>")
 def cancelarReserva(id):
 	cita = Cita.query.filter_by(idCita = id).first()
 	db.session.delete(cita)
