@@ -22,7 +22,7 @@ from models import *
 def inicio():
 	if session.get('AUTH') != None:
 		if session['AUTH'] == True:
-			return index()
+			redirect('/index')
 	else:
 		session['AUTH'] = False
 	return render_template('login.html', val = session['AUTH'])
@@ -35,7 +35,7 @@ def profesor(id):
 		citas = Cita.query.filter_by(idAlumno=alumnoid)
 		return render_template('detalleProfesor.html', profesor=profesor, citas=citas)
 	else:
-		return inicio()
+		redirect('/index')
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -106,7 +106,7 @@ def cancelarReserva(id):
 	cita = Cita.query.filter_by(idCita = id).first()
 	db.session.delete(cita)
 	db.session.commit()
-	return redirect('/index')
+	return redirect('/profesor/1#miscitas')
 
 def connectToFirebase():
 	SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
