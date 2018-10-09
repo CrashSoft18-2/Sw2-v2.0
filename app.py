@@ -34,9 +34,8 @@ def profesor(id):
 		alumnoid = session['id']
 		citas = Cita.query.filter_by(idAlumno=alumnoid)
 		return render_template('detalleProfesor.html', profesor=profesor, citas=citas)
-		print("debug")
 	else:
-		redirect(url_for('inicio'))
+		return inicio()
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -46,7 +45,7 @@ def login():
 		session['id'] = alumno.idAlumno
 		session['username'] = alumno.usuarioAlumno
 		session['nombre'] = alumno.nombre
-		redirect(url_for('index'))
+		return index()
 	else:
 		return render_template('login.html', val = True)
 
@@ -79,7 +78,7 @@ def index():
 		citas = Cita.query.filter_by(idAlumno=alumnoid)
 		return render_template('index.html', profesores=profesores, citas=citas)
 	else:
-		redirect(url_for('inicio'))
+		return inicio()
 
 @app.route("/reservarCita/<int:idAs>")
 def reservarCita(idAs):
@@ -88,7 +87,7 @@ def reservarCita(idAs):
 		asesoria = Asesoria.query.filter_by(idAsesoria=idAs).first()
 		return render_template('reservarCita.html', asesoria=asesoria)
 	else:
-		redirect(url_for('inicio'))
+		return inicio()
 
 @app.route("/generarReserva", methods=['POST'])
 def generarReserva():
@@ -100,7 +99,7 @@ def generarReserva():
 		asesoria = Asesoria.query.filter_by(idAsesoria=session['idAs']).first()
 		return render_template('reservarCita.html', asesoria=asesoria)
 	else:
-		redirect(url_for('inicio'))
+		return inicio()
 
 def connectToFirebase():
 	SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
