@@ -22,6 +22,7 @@ from models import *
 def inicio():
 	if session.get('AUTH') != None:
 		if session['AUTH'] == True:
+			print("jgj")
 			redirect('/index')
 	else:
 		session['AUTH'] = False
