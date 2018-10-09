@@ -15,7 +15,7 @@ from datetime import datetime
 app = Flask(__name__)
 db = SQLAlchemy(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:postgres@localhost:5432/test'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://inrbkbfqwjvcnb:83df34940918d53940c4bd30b5a185d3d79726cd36230f4a402f4a8f8579e680@ec2-174-129-35-61.compute-1.amazonaws.com:5432/da8gvk43j45moa'#'postgres://postgres:postgres@localhost:5432/test'
 app.secret_key = b'1234'
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
@@ -107,8 +107,8 @@ def connectToFirebase():
 	#
 
 def init():
-	port = int(os.environ.get('PORT', 5000))
-	app.run(host='0.0.0.0', port=port, debug=True)
+    #port = int(os.environ.get('PORT', 5000))
+    #app.run(host='0.0.0.0', port=port, debug=True)
 	#firebase_admin.initialize_app()
 
 if __name__ == "__main__":
