@@ -22,7 +22,6 @@ from models import *
 def inicio():
 	if session.get('AUTH') != None:
 		if session['AUTH'] == True:
-			print("jgj")
 			redirect('/index')
 	else:
 		session['AUTH'] = False
@@ -47,6 +46,7 @@ def citas():
 def login():
 	alumno = Alumno.query.filter_by(usuarioAlumno=request.form['uname'], contrasena=request.form['psw']).first()
 	if alumno:
+		print("jgj")
 		session['AUTH'] = True
 		session['id'] = alumno.idAlumno
 		session['username'] = alumno.usuarioAlumno
