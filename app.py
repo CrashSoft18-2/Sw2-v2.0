@@ -100,6 +100,13 @@ def generarReserva():
 		return render_template('reservarCita.html', asesoria=asesoria)
 	else:
 		return inicio()
+	
+@app.route("/cancelarReserva", methods=['POST'])
+def cancelarReserva():
+	cita = Cita.query.filter_by(idCita = request.form['idCita'])
+	db.session.delete(cita)
+	db.session.commit()
+	return redirect('/index')
 
 def connectToFirebase():
 	SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
