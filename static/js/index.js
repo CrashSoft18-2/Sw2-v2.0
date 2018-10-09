@@ -43,3 +43,8 @@ function displayMisCitas(){
 function displaySeminarios(){
   window.location.replace("/index")
 }
+
+function cancelarCita(id){
+   window.location.replace("/cancelarReserva/" + id)
+}
+   
