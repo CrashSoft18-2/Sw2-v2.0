@@ -63,7 +63,7 @@
           <th style="width:12%;">Hora</th>
           <th style="width:14%;">Lugar</th>
           <th style="width:24%;">Consulta</th>
-          <!--<th style="width:10%;"></th>-->
+          <th style="width:10%;"></th>
         </tr>
         {% for cita in citas %}
           <tr>
@@ -73,7 +73,7 @@
             <td>{{cita.asesoria.hora}}</td>
             <td>{{cita.asesoria.lugar}}</td>
             <td>{{cita.pregunta}}</td>
-            <!--<td>x</td>-->
+	    <td><a onclick="cancelarReserva({{cita.idCita}})">x</a></td>
           </tr>
         {% endfor %}
       </table>
