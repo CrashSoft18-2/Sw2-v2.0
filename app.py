@@ -101,9 +101,9 @@ def generarReserva():
 	else:
 		return inicio()
 	
-@app.route("/cancelarReserva", methods=['POST'])
-def cancelarReserva():
-	cita = Cita.query.filter_by(idCita = request.form['idCita'])
+@app.route("/cancelarReserva/<int:id>")
+def cancelarReserva(id):
+	cita = Cita.query.filter_by(idCita = id)
 	db.session.delete(cita)
 	db.session.commit()
 	return redirect('/index')
