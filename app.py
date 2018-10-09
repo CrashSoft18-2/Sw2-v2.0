@@ -24,7 +24,7 @@ from models import *
 @app.route("/")
 def inicio():
 	if session['AUTH'] == True:
-		return index()
+		index()
 	else:
 		session['AUTH'] = False
 		return render_template('login.html', val = session['AUTH'])
@@ -32,7 +32,9 @@ def inicio():
 @app.route('/profesor/<int:id>')
 def profesor(id):
 	profesor = Profesor.query.filter_by(idProfesor=id).first()
-	return render_template('detalleProfesor.html', profesor=profesor)
+	alumnoid = session['id']
+	citas = Cita.filter_by(idAlumno=alumnoid)
+	return render_template('detalleProfesor.html', profesor=profesor, citas=citas)
 
 
 @app.route('/login', methods=['POST'])
@@ -73,7 +75,8 @@ def do_the_login():
 def index():
 	if (session['AUTH'] == True):
 		profesores = Profesor.query.all()
-		citas = Cita.query.all()
+		alumnoid = session['id']
+		citas = Cita.filter_by(idAlumno=alumnoid)
 		return render_template('index.html', profesores=profesores, citas=citas)
 	else:
 		return render_template('login.html', val = session['AUTH'])
