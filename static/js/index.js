@@ -28,7 +28,6 @@ function buscar() {
    }
  }
 
-function navigate(val){
-  console.log(val);
-  //window.location.replace("/detalleProfesor/1")
+function displayAsesorias(){
+  window.location.replace("/index")
 }
