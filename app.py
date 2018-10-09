@@ -23,11 +23,12 @@ from models import *
 
 @app.route("/")
 def inicio():
-	if session['AUTH'] == True:
-		return index()
+	if session['AUTH']:
+		if session['AUTH'] == True:
+			return index()
 	else:
 		session['AUTH'] = False
-		return render_template('login.html', val = session['AUTH'])
+	return render_template('login.html', val = session['AUTH'])
 
 @app.route('/profesor/<int:id>')
 def profesor(id):
