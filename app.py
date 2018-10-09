@@ -33,7 +33,7 @@ def inicio():
 def profesor(id):
 	profesor = Profesor.query.filter_by(idProfesor=id).first()
 	alumnoid = session['id']
-	citas = Cita.filter_by(idAlumno=alumnoid)
+	citas = Cita.query.filter_by(idAlumno=alumnoid)
 	return render_template('detalleProfesor.html', profesor=profesor, citas=citas)
 
 
@@ -76,7 +76,7 @@ def index():
 	if (session['AUTH'] == True):
 		profesores = Profesor.query.all()
 		alumnoid = session['id']
-		citas = Cita.filter_by(idAlumno=alumnoid)
+		citas = Cita.query.filter_by(idAlumno=alumnoid)
 		return render_template('index.html', profesores=profesores, citas=citas)
 	else:
 		return render_template('login.html', val = session['AUTH'])
