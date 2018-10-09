@@ -21,16 +21,11 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 from models import *
 
-class Test():
-	pass
-
-def test():
-	print(Alumno.query.all())
-
 @app.route("/")
 def inicio():
-	Test.AUTH = False
-	return render_template('login.html', val = Test.AUTH)
+	if not session['AUTH']:
+		session['AUTH'] = False
+	return render_template('login.html', val = session['AUTH'])
 
 @app.route('/profesor/<int:id>')
 def profesor(id):
@@ -43,7 +38,7 @@ def login():
 	if request.method == 'POST':
 		alumno = Alumno.query.filter_by(usuarioAlumno=request.form['uname'], contrasena=request.form['psw']).first()
 		if alumno:
-			Test.AUTH = True
+			session['AUTH'] = True
 			session['id'] = alumno.idAlumno
 			session['username'] = alumno.usuarioAlumno
 			session['nombre'] = alumno.nombre
@@ -74,12 +69,12 @@ def do_the_login():
 
 @app.route("/index")
 def index():
-	if (Test.AUTH == True):
+	if (session['AUTH'] == True):
 		profesores = Profesor.query.all()
 		citas = Cita.query.all()
 		return render_template('index.html', profesores=profesores, citas=citas)
 	else:
-		return render_template('login.html', val = Test.AUTH)
+		return render_template('login.html', val = session['AUTH'])
 
 @app.route("/reservarCita/<int:idAs>")
 def reservarCita(idAs):
