@@ -24,7 +24,7 @@ from models import *
 @app.route("/")
 def inicio():
 	if session['AUTH'] == True:
-		index()
+		return index()
 	else:
 		session['AUTH'] = False
 		return render_template('login.html', val = session['AUTH'])
