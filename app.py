@@ -108,12 +108,12 @@ def connectToFirebase():
 		cred = credentials.Certificate(json_URL)
 		firebase_admin.initialize_app(cred, {'databaseURL' : 'https://crashsoft-e0a3e.firebaseio.com/'})
 
-@app.route("/cancelarReserva", methods=['POST'])
-def cancelarReserva():
-	cita = Cita.query.filter_by(idCita = request.form['idCita'])
+@app.route("/cancelarReserva/<int:id>", methods=['POST'])
+def cancelarReserva(id):
+	cita = Cita.query.filter_by(idCita = id).first()
 	db.session.delete(cita)
 	db.session.commit()
-	return redirect('/index')
+	return redirect('/misCitas')
 
 def init():
     port = int(os.environ.get('PORT', 5000))
