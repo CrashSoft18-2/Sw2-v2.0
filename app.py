@@ -32,8 +32,7 @@ def profesor(id):
 	if session.get('AUTH') == True:
 		profesor = Profesor.query.filter_by(idProfesor=id).first()
 		alumnoid = session['id']
-		citas = Cita.query.filter_by(idAlumno=alumnoid)
-		return render_template('detalleProfesor.html', profesor=profesor, citas=citas)
+		return render_template('detalleProfesor.html', profesor=profesor)
 	else:
 		redirect('/index')
 
@@ -80,9 +79,7 @@ def do_the_login():
 def index():
 	if session.get('AUTH') == True:
 		profesores = Profesor.query.all()
-		alumnoid = session['id']
-		citas = Cita.query.filter_by(idAlumno=alumnoid)
-		return render_template('index.html', profesores=profesores, citas=citas)
+		return render_template('index.html', profesores=profesores)
 	else:
 		return inicio()
 
