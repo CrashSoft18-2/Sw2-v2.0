@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Asesorías UL</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui.css') }}" type="text/css" media="screen" />
+	<link type="text/css" href="{{ url_for('static', filename='css/jquery.ui.chatbox.css') }}" rel="stylesheet" />
+
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-1.4.2.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-ui.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.ui.chatbox.js') }}"></script>
+</head>
+<body>
+
+<div class="container">
+
+  <ul class="nav nav-tabs">
+    <li><a data-toggle="tab" onclick="displayAsesorias()">Asesorías</a></li>
+    <li><a data-toggle="tab" onclick="displayHistorial()">Historial</a></li>
+    <li class="active"><a data-toggle="tab" onclick="displayMisCitas()">Mis Citas</a></li>
+    <li><a data-toggle="tab" onclick="displaySeminarios()">Seminarios</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="asesorias" class="tab-pane fade">
+    </div>
+    <div id="historial" class="tab-pane fade">
+    </div>
+    <div id="miscitas" class="tab-pane fade in active">
+      <input type="text" id="prof1" class="input2" placeholder="Buscar por profesor">
+      <input type="text" id="fecha1" class="input2" placeholder="Buscar por fecha">
+      <input type="text" id="consulta1" class="input2" placeholder="Buscar por consulta">
+      <span style="margin: 1%;">
+        <select id="carrera1">
+          <option value="" selected>-Todos-</option>
+          <option value="Administración">Administración</option>
+          <option value="Arquitectura">Arquitectura</option>
+          <option value="Comunicación">Comunicación</option>
+          <option value="Contabilidad">Contabilidad</option>
+          <option value="Economía">Economía</option>
+          <option value="Ingeniería Civil">Ingeniería Civil</option>
+          <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
+          <option value="Ingeniería Industrial">Ingeniería Industrial</option>
+          <option value="Marketing">Marketing</option>
+          <option value="Negocios Internacionales">Negocios Internacionales</option>
+          <option value="Psicología">Psicología</option>
+          <option value="Programa de Estudios Generales">Programa de Estudios Generales</option>
+        </select>
+      </span>
+      <button onclick="buscar()">Buscar</button>
+
+      <table id="detalle">
+        <tr class="header">
+          <th style="width:14%;">Profesor</th>
+          <th style="width:14%;">Carrera</th>
+          <th style="width:12%;">Fecha</th>
+          <th style="width:12%;">Hora</th>
+          <th style="width:14%;">Lugar</th>
+          <th style="width:24%;">Consulta</th>
+          <!--<th style="width:10%;"></th>-->
+        </tr>
+        {% for cita in citas %}
+          <tr>
+            <td>{{cita.asesoria.profesor.nombre}}</td>
+            <td>{{cita.asesoria.profesor.carrera}}</td>
+            <td>{{cita.asesoria.fecha}}</td>
+            <td>{{cita.asesoria.hora}}</td>
+            <td>{{cita.asesoria.lugar}}</td>
+            <td>{{cita.consulta}}</td>
+            <!--<td>x</td>-->
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+    <div id="seminarios" class="tab-pane fade">
+    </div>
+  </div>
+</div>
+
+<div id="user_list">
+			<div id="user_list_header">
+				<span>Lista de Usuarios</span>
+				<a href="#" class="ui-corner-all ui-chatbox-icon" role="button"><span class="ui-icon ui-icon-minusthick">minimize</span></a></div>
+			<div id="user_list_content">
+				<ul>
+				</ul>
+			</div>
+</div>
+
+<script type="text/javascript">
+
+		$('#user_list_header').click(function(){
+			$('#user_list').toggleClass('collapsed')
+		})
+
+
+		var user_list = ["Anthony Del Pozo", "Diana Ayala", "Ashly Guerrero"];
+		var chats = [];
+
+		(function loadUserList(){
+			div_user_list = $('#user_list_content ul')
+			user_list.forEach(function (user, i) {
+				div_user_list.append(<li class="user_item" onClick="openChatBox(${i})"> ${user} <span>${i}</span></li>)
+			})
+		})()
+
+		$('.user_item').click(function(){
+		})
+
+		function openChatBox(i){
+			let chat = $("#c" + i)
+			if ( chat.length ){
+				chat.chatbox("option", "boxManager").toggleBox();
+				// $( "div[id^='c']" ).chatbox({hidden: true})
+				// chat.chatbox({hidden: false})
+			}else{
+				var div = $(<div id="c${i}"> </div>)
+				$(div).chatbox({id: "ME",
+												title : user_list[i],
+												user:{key : "value"},
+												offset: 230 + 240*$('.ui-chatbox').length,
+												width: 230,
+												messageSent : function(id, user, msg) {
+														// $("#log").append(id + " said: " + msg + "<br/>");
+														div.chatbox("option", "boxManager").addMsg(id, msg);
+												}});
+			}
+		}
+
+	</script>
+
+</body>
+</html>
