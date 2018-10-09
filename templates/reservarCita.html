@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Asesorías UL</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui.css') }}" type="text/css" media="screen" />
+	<link type="text/css" href="{{ url_for('static', filename='css/jquery.ui.chatbox.css') }}" rel="stylesheet" />
+
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-1.4.2.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-ui.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.ui.chatbox.js') }}"></script>
+</head>
+<body>
+
+<div class="container">
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#asesorias">Asesorías</a></li>
+    <li><a data-toggle="tab" href="#historial">Historial</a></li>
+    <li><a data-toggle="tab" href="#miscitas">Mis Citas</a></li>
+    <li><a data-toggle="tab" href="#seminarios">Seminarios</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="asesorias" class="tab-pane fade in active">
+      <label><strong>Reservar Asesoría</strong></label>
+      <div class="cabecera">
+        <div class="img">
+          <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/calendar-512.png" height="100" width="100">
+        </div>
+        <div class="detalles">
+          <label>Profesor: {{ asesoria.profesor.nombre }}</label><br/>
+          <label>Fecha: {{ asesoria.fecha }}</label><br/>
+          <label>Hora: {{ asesoria.hora }}</label><br/>
+        </div>
+      </div>
+      <div class="test">
+        <form action="{{ url_for('generarReserva') }}" method="post">
+          <label><strong>Consulta:</strong></label><br/>
+          <textarea rows="20" cols="150" name="consulta"></textarea>
+          <button type="submit">Reservar</button>
+        </form>
+      </div>
+    </div>
+    <div id="historial" class="tab-pane fade">
+      <h3>Menu 1</h3>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div id="miscitas" class="tab-pane fade">
+      <h3>Menu 2</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+    <div id="seminarios" class="tab-pane fade">
+      <h3>Menu 3</h3>
+      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </div>
+  </div>
+</div>
+
+<div id="user_list">
+			<div id="user_list_header">
+				<span>Lista de Usuarios</span>
+				<a href="#" class="ui-corner-all ui-chatbox-icon" role="button"><span class="ui-icon ui-icon-minusthick">minimize</span></a></div>
+			<div id="user_list_content">
+				<ul>
+				</ul>
+			</div>
+</div>
+
+<script type="text/javascript">
+
+		$('#user_list_header').click(function(){
+			$('#user_list').toggleClass('collapsed')
+		})
+
+
+		var user_list = ["Anthony Del Pozo", "Diana Ayala", "Ashly Guerrero"];
+		var chats = [];
+
+		(function loadUserList(){
+			div_user_list = $('#user_list_content ul')
+			user_list.forEach(function (user, i) {
+				div_user_list.append(<li class="user_item" onClick="openChatBox(${i})"> ${user} <span>${i}</span></li>)
+			})
+		})()
+
+		$('.user_item').click(function(){
+		})
+
+		function openChatBox(i){
+			let chat = $("#c" + i)
+			if ( chat.length ){
+				chat.chatbox("option", "boxManager").toggleBox();
+				// $( "div[id^='c']" ).chatbox({hidden: true})
+				// chat.chatbox({hidden: false})
+			}else{
+				var div = $(<div id="c${i}"> </div>)
+				$(div).chatbox({id: "ME",
+												title : user_list[i],
+												user:{key : "value"},
+												offset: 230 + 240*$('.ui-chatbox').length,
+												width: 230,
+												messageSent : function(id, user, msg) {
+														// $("#log").append(id + " said: " + msg + "<br/>");
+														div.chatbox("option", "boxManager").addMsg(id, msg);
+												}});
+			}
+		}
+
+	</script>
+
+</body>
+</html>
