@@ -31,3 +31,15 @@ function buscar() {
 function displayAsesorias(){
   window.location.replace("/index")
 }
+
+function displayHistorial(){
+  window.location.replace("/index")
+}
+
+function displayMisCitas(){
+  window.location.replace("/misCitas")
+}
+
+function displaySeminarios(){
+  window.location.replace("/index")
+}
