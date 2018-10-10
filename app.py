@@ -7,7 +7,7 @@ import psycopg2
 from flask import session
 from flask import flash
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+from datetime import datetime, date
 
 app = Flask(__name__)
 db = SQLAlchemy(app)
@@ -32,11 +32,9 @@ def profesor(id):
 	if session.get('AUTH') == True:
 		profesor = Profesor.query.filter_by(idProfesor=id).first()
 		date = Asesoria.query.filter_by(idProfesor=id).first().fecha
-		print(date)
-		print("jhghjgjkgjl")
-		print("TYPEEEE: {}".format(type(date)))
+		fecha = datetime.date.today()
 		alumnoid = session['id']
-		return render_template('detalleProfesor.html', profesor=profesor)
+		return render_template('detalleProfesor.html', profesor=profesor, fecha=fecha)
 	else:
 		redirect('/index')
 
