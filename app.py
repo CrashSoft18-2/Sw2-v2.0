@@ -115,6 +115,11 @@ def cancelarReserva(id):
 	db.session.commit()
 	return redirect('/misCitas')
 
+@app.route("/cerrarSesion")
+def cerrarSesion():
+	session['AUTH'] = False
+	return inicio()
+
 def connectToFirebase():
 	SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 	json_URL = SITE_ROOT + '/static/json/login.json'
