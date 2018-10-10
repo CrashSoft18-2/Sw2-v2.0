@@ -64,6 +64,7 @@ def detalleHistorial(id):
 def temasHistorial(id):
 	if session.get('AUTH') == True:
 		asesoria = Asesoria.query.filter_by(idAsesoria=int(id)).first()
+		print(asesoria)
 		return render_template('temasHistorial.html', asesoria=asesoria)
 	else:
 		return inicio()
