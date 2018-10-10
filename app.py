@@ -23,10 +23,10 @@ from models import *
 def inicio():
 	if session.get('AUTH') != None:
 		if session['AUTH'] == True:
-			redirect('/index')
+		return index()
 	else:
 		session['AUTH'] = False
-	return render_template('login.html', val = session['AUTH'])
+		return render_template('login.html', val = session['AUTH'])
 
 @app.route('/profesor/<int:id>')
 def profesor(id):
@@ -37,7 +37,7 @@ def profesor(id):
 		alumnoid = session['id']
 		return render_template('detalleProfesor.html', profesor=profesor, fecha=fecha)
 	else:
-		redirect('/index')
+		return index()
 
 @app.route('/misCitas')
 def citas():
@@ -49,7 +49,7 @@ def citas():
 def login():
 	alumno = Alumno.query.filter_by(usuarioAlumno=request.form['uname'], contrasena=request.form['psw']).first()
 	if alumno:
-		print("CODIGOOOOOO: {}".format(encode(request.form['psw'])))
+		print("CODIGOOOOOO: {}".format(encode(request.form['uname'], request.form['psw'])))
 		session['AUTH'] = True
 		session['id'] = alumno.idAlumno
 		session['username'] = alumno.usuarioAlumno
