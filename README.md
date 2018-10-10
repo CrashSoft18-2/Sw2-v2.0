@@ -40,6 +40,8 @@ Para acceder a la demo:
 ### Sprint 3
 - [x] Desarrollo historial alumnos (cabecera)
 - [x] Desarrollo historial alumnos (detalle)
+- [ ] Crear Tablas (seminarios, registroSeminario)
+- [ ] Insertar Data de Prueba (seminarios, registroSeminario)
 - [ ] Desarrollo seminarios (alumno)
 - [ ] Desarrollo mis seminarios (alumno)
 
