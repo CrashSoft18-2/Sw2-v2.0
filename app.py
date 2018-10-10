@@ -21,6 +21,7 @@ from models import *
 
 @app.route("/")
 def inicio():
+	print("sdjfhdksjfhdk")
 	if session.get('AUTH') != None:
 		if session['AUTH'] == True:
 			return index()
