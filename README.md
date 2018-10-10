@@ -31,6 +31,7 @@ Para acceder a la demo:
 - [x] Filtrar el menú de asesorías solo por las futuras.
 - [ ] Logout button
 - [ ] Encriptar contraseñas
+- [ ] Filtros
 - [ ] Bug fix chat
 - [ ] Chat funcional
 - [ ] Ordenar código (app.py, config.py, view.py, models.py)
