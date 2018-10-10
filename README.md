@@ -38,13 +38,14 @@ Para acceder a la demo:
 - [ ] **Ordenar código (separar por paquetes)**
 
 ### Sprint 3
-- [ ] Desarrollo historial alumnos (cabecera)
-- [ ] Desarrollo historial alumnos (detalle)
+- [x] Desarrollo historial alumnos (cabecera)
+- [x] Desarrollo historial alumnos (detalle)
 - [ ] Desarrollo seminarios (alumno)
 - [ ] Desarrollo mis seminarios (alumno)
 
 ### Sprint 4
-- [ ] Desarrollo próximas asesorías (profesor)
+- [ ] Desarrollo próximas asesorías profesor (cabecera)
+- [ ] Desarrollo próximas asesorías profesor (detalle)
 - [ ] Desarrollo historial profesor (cabecera)
 - [ ] Desarrollo historial profesor (detalle)
 - [ ] Desarrollo seminarios (profesor)
