@@ -49,7 +49,7 @@ def citas():
 def login():
 	alumno = Alumno.query.filter_by(usuarioAlumno=request.form['uname'], contrasena=request.form['psw']).first()
 	if alumno:
-		print("CODIGOOOOOO: {}".format(request.form['psw']))
+		print("CODIGOOOOOO: {}".format(encode(request.form['psw'])))
 		session['AUTH'] = True
 		session['id'] = alumno.idAlumno
 		session['username'] = alumno.usuarioAlumno
