@@ -44,14 +44,20 @@ def profesor(id):
 
 @app.route('/misCitas')
 def citas():
-	alumnoid = session['id']
-	citas = Cita.query.filter_by(idAlumno=alumnoid)
-	return render_template('misCitas.html', citas=citas)
+	if session.get('AUTH') == True:
+		alumnoid = session['id']
+		citas = Cita.query.filter_by(idAlumno=alumnoid)
+		return render_template('misCitas.html', citas=citas)
+	else:
+		return inicio()
 
 @app.route('/historial')
 def historial():
-	citas = Cita.query.all()
-	return render_template('historial.html', citas=citas)
+	if session.get('AUTH') == True:
+		profesores = Profesor.query.all()
+		return render_template('historial.html', profesores=profesores)
+	else:
+		return inicio()
 
 @app.route('/login', methods=['POST'])
 def login():
