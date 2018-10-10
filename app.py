@@ -25,6 +25,9 @@ def inicio():
 	if session.get('AUTH') != None:
 		if session['AUTH'] == True:
 			return index()
+		else:
+			session['AUTH'] = False
+			return render_template('login.html', val = session['AUTH'])
 	else:
 		session['AUTH'] = False
 		return render_template('login.html', val = session['AUTH'])
