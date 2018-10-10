@@ -51,7 +51,7 @@
           <th style="width:25%;">Disponibilidad</th>
         </tr>
         {% for asesoria in profesor.asesorias %}
-	      {% if True %}
+	      {% if datetime.date.today() < asesoria.fecha %}
 		  <tr onclick="">
 		    <td><a href="{{url_for('reservarCita', idAs=asesoria.idAsesoria) }}">{{asesoria.fecha}}</a></td>
 		    <td>{{asesoria.hora}}</td>
