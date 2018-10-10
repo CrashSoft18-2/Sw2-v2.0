@@ -50,11 +50,11 @@ def citas():
 	else:
 		return inicio()
 
-@app.route('/historial/<int:id>')
+@app.route('/historial/<id>')
 def detalleHistorial(id):
 	if session.get('AUTH') == True:
-		profesor = Profesor.query.filter_by(idProfesor=id).first()
-		date = Asesoria.query.filter_by(idProfesor=id).first().fecha
+		profesor = Profesor.query.filter_by(idProfesor=int(id)).first()
+		date = Asesoria.query.filter_by(idProfesor=int(id)).first().fecha
 		fecha = datetime.date.today()
 		return render_template('detalleHistorial.html', profesor=profesor, fecha=fecha)
 	else:
