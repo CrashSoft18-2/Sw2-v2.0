@@ -46,7 +46,6 @@ def citas():
 def login():
 	alumno = Alumno.query.filter_by(usuarioAlumno=request.form['uname'], contrasena=request.form['psw']).first()
 	if alumno:
-		print("jgj")
 		session['AUTH'] = True
 		session['id'] = alumno.idAlumno
 		session['username'] = alumno.usuarioAlumno
@@ -79,6 +78,7 @@ def do_the_login():
 @app.route("/index")
 def index():
 	if session.get('AUTH') == True:
+		print("jgj")
 		profesores = Profesor.query.all()
 		return render_template('index.html', profesores=profesores)
 	else:
