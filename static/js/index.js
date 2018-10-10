@@ -33,7 +33,7 @@ function displayAsesorias(){
 }
 
 function displayHistorial(){
-  window.location.replace("/index")
+  window.location.replace("/historial")
 }
 
 function displayMisCitas(){
