@@ -47,4 +47,8 @@ function displaySeminarios(){
 function cancelarCita(id){
    window.location.replace("/cancelarReserva/" + id)
 }
+
+function cerrarSesion(){
+   window.location.replace("/cerrarSesion")
+}
    
