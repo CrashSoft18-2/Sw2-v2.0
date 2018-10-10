@@ -60,7 +60,7 @@
         </tr>
         {% for profesor in profesores %}
           <tr>
-            <td><a href="{{url_for('profesor', id=profesor.idProfesor) }}">{{profesor.nombre}}</a></td>
+            <td><a href="{{url_for('historial', id=profesor.idProfesor) }}">{{profesor.nombre}}</a></td>
             <td>{{profesor.carrera}}</td>
             <td>
               {% for seccion in profesor.seccions %}
