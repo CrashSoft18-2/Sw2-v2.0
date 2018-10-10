@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Asesorías UL - Asesorías</title>
+  <title>Asesorías UL - Historial</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
@@ -23,48 +23,39 @@
 <div class="container">
 
   <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" onclick="displayAsesorias()">Asesorías</a></li>
-    <li><a data-toggle="tab" onclick="displayHistorial()">Historial</a></li>
+    <li><a data-toggle="tab" onclick="displayAsesorias()">Asesorías</a></li>
+    <li class="active"><a data-toggle="tab" onclick="displayHistorial()">Historial</a></li>
     <li><a data-toggle="tab" onclick="displayMisCitas()">Mis Citas</a></li>
     <li><a data-toggle="tab" onclick="displaySeminarios()">Seminarios</a></li>
   </ul>
 
   <div class="tab-content">
-    <div id="asesorias" class="tab-pane fade in active">
+    <div id="asesorias" class="tab-pane fade">
+    </div>
+    <div id="historial" class="tab-pane fade in active">
+      <label><strong>Reservar Asesoría</strong></label>
       <div class="cabecera">
-        <div>
-          <div class="img">
-            <img src="https://www.shareicon.net/download/2017/01/06/868320_people_512x512.png" height="100" width="100">
-          </div>
-          <div class="detalles">
-            <label><strong>{{profesor.nombre}}</strong></label><br/>
-            <label>Cursos:</label>
-            {% for seccion in profesor.seccions %}
-              <p>{{seccion.curso.nombre}}</p>
-            {% endfor %}
-          </div>
+        <div class="img">
+          <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/calendar-512.png" height="100" width="100">
+        </div>
+        <div class="detalles">
+          <label>Profesor: {{ asesoria.profesor.nombre }}</label><br/>
+          <label>Fecha: {{ asesoria.fecha }}</label><br/>
+          <label>Hora: {{ asesoria.hora }}</label><br/>
         </div>
       </div>
       <table id="detalle">
         <tr class="header">
-          <th style="width:25%;">Fecha</th>
-          <th style="width:25%;">Hora</th>
-          <th style="width:25%;">Lugar</th>
-          <th style="width:25%;">Disponibilidad</th>
+          <th style="width:50%;">Tema Tratado</th>
+          <th style="width:50%;">Conclusión</th>
         </tr>
-        {% for asesoria in profesor.asesorias %}
-	      {% if fecha < asesoria.fecha %}
-		  <tr onclick="">
-		    <td><a href="{{url_for('reservarCita', idAs=asesoria.idAsesoria) }}">{{asesoria.fecha}}</a></td>
-		    <td>{{asesoria.hora}}</td>
-		    <td>{{asesoria.lugar}}</td>
-		    <td>{{asesoria.disponibilidad}}</td>
-		  </tr>
-	      {% endif %}
+        {% for tema in asesoria.registros %}
+	  <tr onclick="">
+	    <td>{{asesoria.temaTratado}}</td>
+	    <td>{{asesoria.conclusion}}</td>
+	  </tr>
         {% endfor %}
       </table>
-    </div>
-    <div id="historial" class="tab-pane fade">
     </div>
     <div id="miscitas" class="tab-pane fade">
     </div>
