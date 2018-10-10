@@ -50,7 +50,7 @@ def login():
 		session['id'] = alumno.idAlumno
 		session['username'] = alumno.usuarioAlumno
 		session['nombre'] = alumno.nombre
-		redirect('/index')
+		return index()
 	else:
 		return render_template('login.html', val = True)
 
@@ -78,7 +78,6 @@ def do_the_login():
 @app.route("/index")
 def index():
 	if session.get('AUTH') == True:
-		print("jgj")
 		profesores = Profesor.query.all()
 		return render_template('index.html', profesores=profesores)
 	else:
