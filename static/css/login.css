@@ -7,6 +7,10 @@
   margin-bottom:5%;
 }
 
+.logout{
+  float: right;
+}
+
 .form{
   background-color: #d4d8dd;
   border-radius: 20px;
