@@ -48,6 +48,11 @@ def citas():
 	citas = Cita.query.filter_by(idAlumno=alumnoid)
 	return render_template('misCitas.html', citas=citas)
 
+@app.route('/historial')
+def historial():
+	citas = Cita.query.all()
+	return render_template('historial.html', citas=citas)
+
 @app.route('/login', methods=['POST'])
 def login():
 	pw = encode(request.form['uname'], request.form['psw'])
