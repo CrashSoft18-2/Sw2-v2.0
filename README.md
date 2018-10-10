@@ -35,13 +35,15 @@ Para acceder a la demo:
 - [ ] Ordenar código (app.py, config.py, view.py, models.py)
 
 ### Sprint 3
-- [ ] Desarrollo historial alumnos (cabecera y detalle)
+- [ ] Desarrollo historial alumnos (cabecera)
+- [ ] Desarrollo historial alumnos (detalle)
 - [ ] Desarrollo seminarios (alumno)
-- [ ] Desarrollo futuros seminarios (alumno)
+- [ ] Desarrollo mis seminarios (alumno)
 
 ### Sprint 4
 - [ ] Desarrollo próximas asesorías (profesor)
-- [ ] Desarrollo historial cabecera y detalle (profesor)
+- [ ] Desarrollo historial profesor (cabecera)
+- [ ] Desarrollo historial profesor (detalle)
 - [ ] Desarrollo seminarios (profesor)
 
 ### Sprint 5
