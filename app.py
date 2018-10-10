@@ -21,7 +21,6 @@ from models import *
 
 @app.route("/")
 def inicio():
-	print("sdjfhdksjfhdk")
 	if session.get('AUTH') != None:
 		if session['AUTH'] == True:
 			return index()
@@ -131,14 +130,13 @@ def connectToFirebase():
 		cred = credentials.Certificate(json_URL)
 		firebase_admin.initialize_app(cred, {'databaseURL' : 'https://crashsoft-e0a3e.firebaseio.com/'})
 
-def encode(key, string):
-    encoded_chars = []
-    for i in range(len(string)):
+def encode(key, clear):
+    enc = []
+    for i in range(len(clear)):
         key_c = key[i % len(key)]
-        encoded_c = chr(ord(string[i]) + ord(key_c) % 256)
-        encoded_chars.append(encoded_c)
-    encoded_string = "".join(encoded_chars)
-    return base64.urlsafe_b64encode(encoded_string)
+        enc_c = chr((ord(clear[i]) + ord(key_c)) % 256)
+        enc.append(enc_c)
+    return base64.urlsafe_b64encode("".join(enc).encode()).decode()
 
 def init():
     port = int(os.environ.get('PORT', 5000))
