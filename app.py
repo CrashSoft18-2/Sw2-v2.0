@@ -8,6 +8,7 @@ from flask import session
 from flask import flash
 from flask_sqlalchemy import SQLAlchemy
 import datetime
+import base64
 
 app = Flask(__name__)
 db = SQLAlchemy(app)
@@ -48,6 +49,7 @@ def citas():
 def login():
 	alumno = Alumno.query.filter_by(usuarioAlumno=request.form['uname'], contrasena=request.form['psw']).first()
 	if alumno:
+		print("CODIGOOOOOO: {}".format(request.form['psw']))
 		session['AUTH'] = True
 		session['id'] = alumno.idAlumno
 		session['username'] = alumno.usuarioAlumno
@@ -120,8 +122,14 @@ def connectToFirebase():
 		cred = credentials.Certificate(json_URL)
 		firebase_admin.initialize_app(cred, {'databaseURL' : 'https://crashsoft-e0a3e.firebaseio.com/'})
 
-#def connectToPostgres():
-	#
+def encode(key, string):
+    encoded_chars = []
+    for i in xrange(len(string)):
+        key_c = key[i % len(key)]
+        encoded_c = chr(ord(string[i]) + ord(key_c) % 256)
+        encoded_chars.append(encoded_c)
+    encoded_string = "".join(encoded_chars)
+    return base64.urlsafe_b64encode(encoded_string)
 
 def init():
     port = int(os.environ.get('PORT', 5000))
