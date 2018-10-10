@@ -54,9 +54,17 @@ def citas():
 def detalleHistorial(id):
 	if session.get('AUTH') == True:
 		profesor = Profesor.query.filter_by(idProfesor=int(id)).first()
-		date = Asesoria.query.filter_by(idProfesor=int(id)).first().fecha
 		fecha = datetime.date.today()
 		return render_template('detalleHistorial.html', profesor=profesor, fecha=fecha)
+	else:
+		return inicio()
+	
+
+@app.route('/temasHistorial/<id>')
+def temasHistorial(id):
+	if session.get('AUTH') == True:
+		asesoria = Asesoria.query.filter_by(idAsesoria=int(id)).first()
+		return render_template('temasHistorial.html', asesoria=asesoria)
 	else:
 		return inicio()
 	
