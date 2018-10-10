@@ -60,7 +60,7 @@ def detalleHistorial(id):
 	else:
 		return inicio()
 	
-@app.route('/')
+@app.route('/historial')
 def historial():
 	if session.get('AUTH') == True:
 		profesores = Profesor.query.all()
