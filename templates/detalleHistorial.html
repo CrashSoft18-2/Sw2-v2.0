@@ -55,7 +55,7 @@
         {% for asesoria in profesor.asesorias %}
 	      {% if fecha > asesoria.fecha %}
 		  <tr onclick="">
-		    <td>{{asesoria.fecha}}</td>
+		    <td><a href="{{url_for('temasHistorial', id=asesoria.idAsesoria) }}">{{asesoria.fecha}}</a></td>
 		    <td>{{asesoria.hora}}</td>
 		    <td>{{asesoria.lugar}}</td>
 		    <td>{{asesoria.disponibilidad}}</td>
