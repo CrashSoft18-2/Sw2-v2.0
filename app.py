@@ -7,7 +7,7 @@ import psycopg2
 from flask import session
 from flask import flash
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime, date
+import datetime
 
 app = Flask(__name__)
 db = SQLAlchemy(app)
@@ -97,7 +97,7 @@ def reservarCita(idAs):
 @app.route("/generarReserva", methods=['POST'])
 def generarReserva():
 	if session.get('AUTH') == True:
-		fecha = datetime.now().date()
+		fecha = datetime.date.today()
 		cita = Cita(idAlumno=session['id'], idAsesoria=session['idAs'], fecha=fecha, pregunta=request.form['consulta'])
 		db.session.add(cita)
 		db.session.commit()
