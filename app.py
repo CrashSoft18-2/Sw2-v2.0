@@ -56,7 +56,7 @@ def detalleHistorial(id):
 		profesor = Profesor.query.filter_by(idProfesor=id).first()
 		date = Asesoria.query.filter_by(idProfesor=id).first().fecha
 		fecha = datetime.date.today()
-		return render_template('detalleProfesor.html', profesor=profesor, fecha=fecha)
+		return render_template('detalleHistorial.html', profesor=profesor, fecha=fecha)
 	else:
 		return inicio()
 	
