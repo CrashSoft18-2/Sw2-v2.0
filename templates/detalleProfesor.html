@@ -51,12 +51,15 @@
           <th style="width:25%;">Disponibilidad</th>
         </tr>
         {% for asesoria in profesor.asesorias %}
-          <tr onclick="">
-            <td><a href="{{url_for('reservarCita', idAs=asesoria.idAsesoria) }}">{{asesoria.fecha}}</a></td>
-            <td>{{asesoria.hora}}</td>
-            <td>{{asesoria.lugar}}</td>
-            <td>{{asesoria.disponibilidad}}</td>
-          </tr>
+	      {% if True %}
+	      	  {% print(type(asesoria.fecha)) %}
+		  <tr onclick="">
+		    <td><a href="{{url_for('reservarCita', idAs=asesoria.idAsesoria) }}">{{asesoria.fecha}}</a></td>
+		    <td>{{asesoria.hora}}</td>
+		    <td>{{asesoria.lugar}}</td>
+		    <td>{{asesoria.disponibilidad}}</td>
+		  </tr>
+	      {% endif %}
         {% endfor %}
       </table>
     </div>
