@@ -50,7 +50,7 @@ def citas():
 	else:
 		return inicio()
 
-@app.route('/historial/<id>')
+@app.route('/detalleHistorial/<id>')
 def detalleHistorial(id):
 	if session.get('AUTH') == True:
 		profesor = Profesor.query.filter_by(idProfesor=int(id)).first()
