@@ -31,6 +31,10 @@ def inicio():
 def profesor(id):
 	if session.get('AUTH') == True:
 		profesor = Profesor.query.filter_by(idProfesor=id).first()
+		date = asesoria.query.filter_by(idProfesor=id).first().fecha
+		print(date)
+		print("jhghjgjkgjl")
+		print("TYPEEEE: {}".format(type(date)))
 		alumnoid = session['id']
 		return render_template('detalleProfesor.html', profesor=profesor)
 	else:
