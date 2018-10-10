@@ -29,6 +29,7 @@ Para acceder a la demo:
 ### Sprints 1 y 2 (pendientes)
 - [x] Convertir fecha y hora de la db, de manera que se pueda dividir entre futuros y pasados
 - [x] Filtrar el menú de asesorías solo por las futuras.
+- [ ] Logout button
 - [ ] Encriptar contraseñas
 - [ ] Bug fix chat
 - [ ] Chat funcional
