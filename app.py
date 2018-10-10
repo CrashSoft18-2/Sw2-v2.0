@@ -133,7 +133,7 @@ def connectToFirebase():
 
 def encode(key, string):
     encoded_chars = []
-    for i in xrange(len(string)):
+    for i in range(len(string)):
         key_c = key[i % len(key)]
         encoded_c = chr(ord(string[i]) + ord(key_c) % 256)
         encoded_chars.append(encoded_c)
