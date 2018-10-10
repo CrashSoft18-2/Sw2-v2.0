@@ -48,7 +48,7 @@ function buscarCitas() {
      td1 = tr[i].getElementsByTagName("td")[0];
      td3 = tr[i].getElementsByTagName("td")[1];
      td2 = tr[i].getElementsByTagName("td")[2];
-     td4 = tr[i].getElementsByTagName("td")[3];
+     td4 = tr[i].getElementsByTagName("td")[5];
      if (td1, td2, td3) {
        if ((td1.innerHTML.toUpperCase().indexOf(filterProf) > -1) && (td2.innerHTML.toUpperCase().indexOf(filterCurso) > -1) && (td3.innerHTML.toUpperCase().indexOf(filterCarr) > -1) && (td4.innerHTML.toUpperCase().indexOf(filterConsulta) > -1)) {
          tr[i].style.display = "";
