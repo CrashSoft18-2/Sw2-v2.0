@@ -27,12 +27,12 @@ Para acceder a la demo:
 ## To Do
 
 ### Sprints 1 y 2 (pendientes)
+- [x] Convertir fecha y hora de la db, de manera que se pueda dividir entre futuros y pasados
+- [x] Filtrar el menú de asesorías solo por las futuras.
 - [ ] Encriptar contraseñas
 - [ ] Bug fix chat
 - [ ] Chat funcional
 - [ ] Ordenar código (app.py, config.py, view.py, models.py)
-- [ ] Convertir fecha y hora de la db, de manera que se pueda dividir entre futuros y pasados
-- [ ] Filtrar el menú de asesorías solo por las futuras.
 
 ### Sprint 3
 - [ ] Desarrollo historial alumnos (cabecera y detalle)
