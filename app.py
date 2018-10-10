@@ -50,9 +50,9 @@ def citas():
 
 @app.route('/login', methods=['POST'])
 def login():
-	alumno = Alumno.query.filter_by(usuarioAlumno=request.form['uname'], contrasena=request.form['psw']).first()
+	pw = encode(request.form['uname'], request.form['psw'])
+	alumno = Alumno.query.filter_by(usuarioAlumno=request.form['uname'], contrasena=pw).first()
 	if alumno:
-		print("CODIGOOOOOO: {}".format(encode(request.form['uname'], request.form['psw'])))
 		session['AUTH'] = True
 		session['id'] = alumno.idAlumno
 		session['username'] = alumno.usuarioAlumno
