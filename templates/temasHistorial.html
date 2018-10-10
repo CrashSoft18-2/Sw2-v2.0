@@ -49,11 +49,10 @@
           <th style="width:50%;">Tema Tratado</th>
           <th style="width:50%;">Conclusión</th>
         </tr>
-	{% print(asesoria.registros) %}
         {% for tema in asesoria.registros %}
 	  <tr onclick="">
-	    <td>{{asesoria.temaTratado}}</td>
-	    <td>{{asesoria.conclusion}}</td>
+	    <td>{{tema.temaTratado}}</td>
+	    <td>{{tema.conclusion}}</td>
 	  </tr>
         {% endfor %}
       </table>
