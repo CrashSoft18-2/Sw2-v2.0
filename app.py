@@ -37,7 +37,7 @@ def profesor(id):
 		alumnoid = session['id']
 		return render_template('detalleProfesor.html', profesor=profesor, fecha=fecha)
 	else:
-		return index()
+		return inicio()
 
 @app.route('/misCitas')
 def citas():
