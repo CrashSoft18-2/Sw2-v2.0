@@ -37,7 +37,6 @@ def profesor(id):
 		profesor = Profesor.query.filter_by(idProfesor=id).first()
 		date = Asesoria.query.filter_by(idProfesor=id).first().fecha
 		fecha = datetime.date.today()
-		alumnoid = session['id']
 		return render_template('detalleProfesor.html', profesor=profesor, fecha=fecha)
 	else:
 		return inicio()
@@ -51,7 +50,17 @@ def citas():
 	else:
 		return inicio()
 
-@app.route('/historial')
+@app.route('/historial/<int:id>')
+def detalleHistorial(id):
+	if session.get('AUTH') == True:
+		profesor = Profesor.query.filter_by(idProfesor=id).first()
+		date = Asesoria.query.filter_by(idProfesor=id).first().fecha
+		fecha = datetime.date.today()
+		return render_template('detalleProfesor.html', profesor=profesor, fecha=fecha)
+	else:
+		return inicio()
+	
+@app.route('/')
 def historial():
 	if session.get('AUTH') == True:
 		profesores = Profesor.query.all()
