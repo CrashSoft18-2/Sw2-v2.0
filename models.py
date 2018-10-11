@@ -70,3 +70,26 @@ class Registro(db.Model):
 
     def __repr__(self):
         return '<Registro %r>' % self.idRegistro
+    
+class Seminario(db.Model):
+    idSeminario = db.Column(db.Integer, primary_key=True)
+    idProfesor = db.Column(db.Integer, db.ForeignKey('profesor.idProfesor'), nullable=False)
+    profesor = db.relationship('Profesor', backref=db.backref('profesor', lazy=True))
+    carrera = db.Column(db.String, nullable=False)
+    topic = db.Column(db.String, nullable=False)
+    fecha = db.Column(db.Date, nullable=False)
+    hora = db.Column(db.String, nullable=False)
+    lugar = db.Column(db.String, nullable=False)
+
+    def __repr__(self):
+        return '<Seminario %r>' % self.idSeminario
+    
+class registroSeminario(db.Model):
+    idRegistroSeminario = db.Column(db.Integer, primary_key=True)
+    idSeminario = db.Column(db.Integer, db.ForeignKey('seminario.idSeminario'), nullable=False)
+    seminario = db.relationship('Seminario', backref=db.backref('seminarios', lazy=True))
+    idAlumno = db.Column(db.Integer, db.ForeignKey('alumno.idAlumno'), nullable=False)
+    alumno = db.relationship('Seminario', backref=db.backref('alumnos', lazy=True))
+
+    def __repr__(self):
+        return '<RegistroSeminario %r>' % self.idRegistroSeminario
