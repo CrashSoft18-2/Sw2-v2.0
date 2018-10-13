@@ -1,9 +1,10 @@
 from flask import Flask
-import config
-import views
 import os
 
 app = Flask(__name__)
+
+import config
+import views
 
 def init():
     port = int(os.environ.get('PORT', 5000))
