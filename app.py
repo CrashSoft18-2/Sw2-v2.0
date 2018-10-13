@@ -1,11 +1,9 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 import config
 import views
 import os
 
 app = Flask(__name__)
-db = SQLAlchemy(app)
 
 def init():
     port = int(os.environ.get('PORT', 5000))
