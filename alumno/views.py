@@ -1,5 +1,5 @@
 from utils import *
-from models import *
+from alumno.models import *
 from flask import session, request, render_template, url_for, redirect
 
 import datetime
@@ -11,10 +11,10 @@ def inicio():
 			return index()
 		else:
 			session['AUTH'] = False
-			return render_template('login.html', val = session['AUTH'])
+			return render_template('alumno/login.html', val = session['AUTH'])
 	else:
 		session['AUTH'] = False
-		return render_template('login.html', val = session['AUTH'])
+		return render_template('alumno/login.html', val = session['AUTH'])
 
 @app.route('/profesor/<int:id>')
 def profesor(id):
@@ -22,7 +22,7 @@ def profesor(id):
 		profesor = Profesor.query.filter_by(idProfesor=id).first()
 		date = Asesoria.query.filter_by(idProfesor=id).first().fecha
 		fecha = datetime.date.today()
-		return render_template('detalleProfesor.html', profesor=profesor, fecha=fecha)
+		return render_template('alumno/detalleProfesor.html', profesor=profesor, fecha=fecha)
 	else:
 		return inicio()
 
@@ -31,7 +31,7 @@ def citas():
 	if session.get('AUTH') == True:
 		alumnoid = session['id']
 		citas = Cita.query.filter_by(idAlumno=alumnoid)
-		return render_template('misCitas.html', citas=citas)
+		return render_template('alumno/misCitas.html', citas=citas)
 	else:
 		return inicio()
 
@@ -40,7 +40,7 @@ def detalleHistorial(id):
 	if session.get('AUTH') == True:
 		profesor = Profesor.query.filter_by(idProfesor=int(id)).first()
 		fecha = datetime.date.today()
-		return render_template('detalleHistorial.html', profesor=profesor, fecha=fecha)
+		return render_template('alumno/detalleHistorial.html', profesor=profesor, fecha=fecha)
 	else:
 		return inicio()
 	
@@ -50,7 +50,7 @@ def temasHistorial(id):
 	if session.get('AUTH') == True:
 		asesoria = Asesoria.query.filter_by(idAsesoria=int(id)).first()
 		print(asesoria)
-		return render_template('temasHistorial.html', asesoria=asesoria)
+		return render_template('alumno/temasHistorial.html', asesoria=asesoria)
 	else:
 		return inicio()
 	
@@ -58,7 +58,7 @@ def temasHistorial(id):
 def historial():
 	if session.get('AUTH') == True:
 		profesores = Profesor.query.all()
-		return render_template('historial.html', profesores=profesores)
+		return render_template('alumno/historial.html', profesores=profesores)
 	else:
 		return inicio()
 
@@ -73,13 +73,13 @@ def login():
 		session['nombre'] = alumno.nombre
 		return index()
 	else:
-		return render_template('login.html', val = True)
+		return render_template('alumno/login.html', val = True)
   
 @app.route("/index")
 def index():
 	if session.get('AUTH') == True:
 		profesores = Profesor.query.all()
-		return render_template('index.html', profesores=profesores)
+		return render_template('alumno/index.html', profesores=profesores)
 	else:
 		return inicio()
 
@@ -88,7 +88,7 @@ def reservarCita(idAs):
 	if session.get('AUTH') == True:
 		session['idAs'] = idAs
 		asesoria = Asesoria.query.filter_by(idAsesoria=idAs).first()
-		return render_template('reservarCita.html', asesoria=asesoria)
+		return render_template('alumno/reservarCita.html', asesoria=asesoria)
 	else:
 		return inicio()
 
@@ -100,7 +100,7 @@ def generarReserva():
 		db.session.add(cita)
 		db.session.commit()
 		asesoria = Asesoria.query.filter_by(idAsesoria=session['idAs']).first()
-		return render_template('reservarCita.html', asesoria=asesoria)
+		return render_template('alumno/reservarCita.html', asesoria=asesoria)
 	else:
 		return inicio()
 
