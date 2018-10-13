@@ -76,7 +76,7 @@ def login():
 	else:
 		return render_template('login.html', val = True)
   
-  @app.route("/index")
+@app.route("/index")
 def index():
 	if session.get('AUTH') == True:
 		profesores = Profesor.query.all()
