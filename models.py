@@ -1,4 +1,7 @@
-from app import db
+from flask_sqlalchemy import SQLAlchemy
+from app import app
+
+db = SQLAlchemy(app)
 
 class Alumno(db.Model):
     idAlumno = db.Column(db.Integer, primary_key=True)
