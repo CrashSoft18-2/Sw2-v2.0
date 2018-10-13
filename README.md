@@ -34,8 +34,8 @@ Para acceder a la demo:
 - [x] Filtros
 - [ ] Bug fix chat
 - [ ] Chat funcional
-- [ ] **Ordenar código (app.py, config.py, view.py, models.py)**
-- [ ] **Ordenar código (separar por paquetes)**
+- [x] **Ordenar código (app.py, config.py, view.py, models.py)**
+- [x] **Ordenar código (separar por paquetes)**
 
 ### Sprint 3
 - [x] Desarrollo historial alumnos (cabecera)
