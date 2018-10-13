@@ -3,7 +3,7 @@ import os
 
 app = Flask(__name__)
 
-import views
+from views import *
 import config
 
 def init():
