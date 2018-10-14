@@ -95,7 +95,7 @@ def reservarCita(idAs):
 @app.route("/inscripcion/<int:id>")
 def inscripcion(id):
 	if session.get('AUTH') == True:
-		registro = registroSeminario(idAlumno=session['id'], idAsesoria=id)
+		registro = registroSeminario(idAlumno=session['id'], idSeminario=id)
 		db.session.add(registro)
 		db.session.commit()
 		return seminarios()
