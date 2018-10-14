@@ -111,6 +111,11 @@ def cancelarReserva(id):
 	db.session.commit()
 	return redirect('/misCitas')
 
+@app.route("/seminarios")
+def seminarios():
+	seminarios = Seminario.query.order_by(seminario.fecha)
+	return render_template('alumno/seminarios.html', seminarios=seminarios)
+
 @app.route("/cerrarSesion")
 def cerrarSesion():
 	session['AUTH'] = False
