@@ -16,7 +16,7 @@ def inicio():
 		session['AUTH'] = False
 		return render_template('alumno/login.html', val = session['AUTH'])
 
-@app.route('/profesor/<int:id>')
+@app.route("/profesor/<int:id>")
 def profesor(id):
 	if session.get('AUTH') == True:
 		profesor = Profesor.query.filter_by(idProfesor=id).first()
@@ -26,7 +26,7 @@ def profesor(id):
 	else:
 		return inicio()
 
-@app.route('/misCitas')
+@app.route("/misCitas")
 def citas():
 	if session.get('AUTH') == True:
 		alumnoid = session['id']
@@ -45,7 +45,7 @@ def detalleHistorial(id):
 		return inicio()
 	
 
-@app.route('/temasHistorial/<id>')
+@app.route("/temasHistorial/<id>")
 def temasHistorial(id):
 	if session.get('AUTH') == True:
 		asesoria = Asesoria.query.filter_by(idAsesoria=int(id)).first()
@@ -54,7 +54,7 @@ def temasHistorial(id):
 	else:
 		return inicio()
 	
-@app.route('/historial')
+@app.route("/historial")
 def historial():
 	if session.get('AUTH') == True:
 		profesores = Profesor.query.all()
@@ -62,7 +62,7 @@ def historial():
 	else:
 		return inicio()
 
-@app.route('/login', methods=['POST'])
+@app.route("/login", methods=['POST'])
 def login():
 	pw = encode(request.form['uname'], request.form['psw'])
 	alumno = Alumno.query.filter_by(usuarioAlumno=request.form['uname'], contrasena=pw).first()
