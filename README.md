@@ -41,9 +41,9 @@ Para acceder a la demo:
 - [x] Desarrollo historial alumnos (cabecera)
 - [x] Desarrollo historial alumnos (detalle)
 - [x] Crear Tablas (seminarios, registroSeminario)
-- [ ] Insertar Data de Prueba (seminarios, registroSeminario)
-- [ ] Desarrollo seminarios (alumno)
-- [ ] Desarrollo mis seminarios (alumno)
+- [x] Insertar Data de Prueba (seminarios, registroSeminario)
+- [x] Desarrollo seminarios (alumno)
+- [x] Desarrollo mis seminarios (alumno)
 
 ### Sprint 4
 - [ ] Desarrollo próximas asesorías profesor (cabecera)
