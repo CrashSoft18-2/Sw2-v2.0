@@ -49,7 +49,6 @@ def detalleHistorial(id):
 def temasHistorial(id):
 	if session.get('AUTH') == True:
 		asesoria = Asesoria.query.filter_by(idAsesoria=int(id)).first()
-		print(asesoria)
 		return render_template('alumno/temasHistorial.html', asesoria=asesoria)
 	else:
 		return inicio()
@@ -91,6 +90,28 @@ def reservarCita(idAs):
 		return render_template('alumno/reservarCita.html', asesoria=asesoria)
 	else:
 		return inicio()
+	
+
+@app.route("/inscripcion/<int:id>")
+def inscripcion(id):
+	if session.get('AUTH') == True:
+		registro = registroSeminario(idAlumno=session['id'], idAsesoria=id)
+		db.session.add(registro)
+		db.session.commit()
+		return seminarios()
+	else:
+		return inicio()
+	
+@app.route("/cancelarSeminario/<int:id>")
+def cancelarSeminario(id):
+	if session.get('AUTH') == True:
+		registro = registroSeminario.query.filter_by(id=id).first()
+		db.session.delete(registro)
+		db.session.commit()
+		seminarios = Seminario.query.order_by(Seminario.fecha, Seminario.hora).all()
+		return registroSeminarios()
+	else:
+		return inicio()
 
 @app.route("/generarReserva", methods=['POST'])
 def generarReserva():
@@ -106,20 +127,29 @@ def generarReserva():
 
 @app.route("/cancelarReserva/<int:id>")
 def cancelarReserva(id):
-	cita = Cita.query.filter_by(idCita = id).first()
-	db.session.delete(cita)
-	db.session.commit()
-	return redirect('/misCitas')
+	if session.get('AUTH') == True:
+		cita = Cita.query.filter_by(idCita = id).first()
+		db.session.delete(cita)
+		db.session.commit()
+		return redirect('/misCitas')
+	else:
+		return inicio()
 
 @app.route("/seminarios")
 def seminarios():
-	seminarios = Seminario.query.order_by(Seminario.fecha, Seminario.hora).all()
-	return render_template('alumno/seminarios.html', seminarios=seminarios)
+	if session.get('AUTH') == True:
+		seminarios = Seminario.query.order_by(Seminario.fecha, Seminario.hora).all()
+		return render_template('alumno/seminarios.html', seminarios=seminarios)
+	else:
+		return inicio()
 
 @app.route("/misSeminarios")
 def registroSeminarios():
-	seminarios = registroSeminario.query.filter_by(idAlumno=session['id']).join(Seminario).order_by(Seminario.fecha, Seminario.hora).all()
-	return render_template('alumno/misSeminarios.html', registros=seminarios)
+	if session.get('AUTH') == True:
+		seminarios = registroSeminario.query.filter_by(idAlumno=session['id']).join(Seminario).order_by(Seminario.fecha, Seminario.hora).all()
+		return render_template('alumno/misSeminarios.html', registros=seminarios)
+	else:
+		return inicio()
 
 @app.route("/cerrarSesion")
 def cerrarSesion():
