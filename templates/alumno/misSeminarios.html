@@ -25,8 +25,8 @@
     <li><a data-toggle="tab" onclick="displayAsesorias()">Asesorías</a></li>
     <li><a data-toggle="tab" onclick="displayHistorial()">Historial</a></li>
     <li><a data-toggle="tab" onclick="displayMisCitas()">Mis Citas</a></li>
-    <li class="active"><a data-toggle="tab" onclick="displaySeminarios()">Seminarios</a></li>
-    <li><a data-toggle="tab" onclick="displayMisSeminarios()">Mis Seminarios</a></li>
+    <li><a data-toggle="tab" onclick="displaySeminarios()">Seminarios</a></li>
+    <li class="active"><a data-toggle="tab" onclick="displayMisSeminarios()">Mis Seminarios</a></li>
   </ul>
 
   <div class="tab-content">
@@ -36,7 +36,9 @@
     </div>
     <div id="miscitas" class="tab-pane fade">
     </div>
-    <div id="seminarios" class="tab-pane fade in active">
+    <div id="seminarios" class="tab-pane fade">
+    </div>
+    <div id="misSeminarios" class="tab-pane fade in active">
       <input type="text" id="prof" class="input" placeholder="Buscar por profesor">
       <input type="text" id="topic" class="input" placeholder="Buscar por topic">
       <span style="margin: 1%;">
@@ -80,8 +82,6 @@
           </tr>
         {% endfor %}
       </table>
-    </div>
-    <div id="misSeminarios" class="tab-pane fade">
     </div>
   </div>
 </div>
