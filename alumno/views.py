@@ -105,7 +105,7 @@ def inscripcion(id):
 @app.route("/cancelarSeminario/<int:id>")
 def cancelarSeminario(id):
 	if session.get('AUTH') == True:
-		registro = registroSeminario.query.filter_by(id=id).first()
+		registro = registroSeminario.query.filter_by(idSeminario=id).first()
 		db.session.delete(registro)
 		db.session.commit()
 		seminarios = Seminario.query.order_by(Seminario.fecha, Seminario.hora).all()
