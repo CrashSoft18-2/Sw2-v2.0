@@ -83,6 +83,14 @@ function cancelarCita(id){
    window.location.replace("/cancelarReserva/" + id)
 }
 
+function inscripcion(id){
+   window.location.replace("/inscripcion/" + id)
+}
+
+function cancelarSeminario(id){
+   window.location.replace("/cancelarSeminario/" + id)
+}
+
 function cerrarSesion(){
    window.location.replace("/cerrarSesion")
 }
