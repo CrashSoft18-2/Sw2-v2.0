@@ -113,7 +113,7 @@ def cancelarReserva(id):
 
 @app.route("/seminarios")
 def seminarios():
-	seminarios = Seminario.query.order_by(Seminario.fecha)
+	seminarios = Seminario.query.order_by(Seminario.fecha).all()
 	return render_template('alumno/seminarios.html', seminarios=seminarios)
 
 @app.route("/cerrarSesion")
