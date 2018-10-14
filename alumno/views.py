@@ -118,7 +118,7 @@ def seminarios():
 
 @app.route("/misSeminarios")
 def registroSeminarios():
-	seminarios = registroSeminario.query.join(Seminario).filter_by(idAlumno=session['id']).order_by(Seminario.fecha, Seminario.hora).all()
+	seminarios = registroSeminario.query.filter_by(idAlumno=session['id']).join(Seminario).order_by(Seminario.fecha, Seminario.hora).all()
 	return render_template('alumno/misSeminarios.html', registros=seminarios)
 
 @app.route("/cerrarSesion")
