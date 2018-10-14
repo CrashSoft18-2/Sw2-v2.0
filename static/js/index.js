@@ -59,6 +59,34 @@ function buscarCitas() {
    }
  }
 
+
+function buscarSeminario() {
+   var prof, carr, curso, filterProf, filterCarr, filterCurso, table, tr, td1, td2, td3, td4, i;
+   prof = document.getElementById("prof");
+   filterProf = prof.value.toUpperCase();
+
+   carr = document.getElementById("carrera");
+   filterCarr = carr.value.toUpperCase();
+   
+   topic = document.getElementById("topic");
+   filterTopic = topic.value.toUpperCase();
+   
+   table = document.getElementById("detalle");
+   tr = table.getElementsByTagName("tr");
+   for (i = 0; i < tr.length; i++) {
+     td1 = tr[i].getElementsByTagName("td")[0];
+     td3 = tr[i].getElementsByTagName("td")[1];
+     td2 = tr[i].getElementsByTagName("td")[2];
+     if (td1, td2, td3) {
+       if ((td1.innerHTML.toUpperCase().indexOf(filterProf) > -1) && (td2.innerHTML.toUpperCase().indexOf(filterTopic) > -1) && (td3.innerHTML.toUpperCase().indexOf(filterCarr) > -1)) {
+         tr[i].style.display = "";
+       } else {
+         tr[i].style.display = "none";
+       }
+     }
+   }
+ }
+
 function displayAsesorias(){
   window.location.replace("/index")
 }
