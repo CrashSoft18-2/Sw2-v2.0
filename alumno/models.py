@@ -78,7 +78,6 @@ class Seminario(db.Model):
     idSeminario = db.Column(db.Integer, primary_key=True)
     idProfesor = db.Column(db.Integer, db.ForeignKey('profesor.idProfesor'), nullable=False)
     profesor = db.relationship('Profesor', backref=db.backref('profesor', lazy=True))
-    carrera = db.Column(db.String, nullable=False)
     topic = db.Column(db.String, nullable=False)
     fecha = db.Column(db.Date, nullable=False)
     hora = db.Column(db.String, nullable=False)
