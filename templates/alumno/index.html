@@ -144,7 +144,7 @@
 		user.nombre = String(child.val().nombre);
 		usuarios.push(user);
 		    
-		div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = 'openChatBox(" + user + ")'>" + user.nombre + "<span>" + user.id + "</span> </li>");
+		div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = 'openChatBox(" + JSON.stringify(user) + ")'>" + user.nombre + "<span>" + user.id + "</span> </li>");
 	    	
 		$('.user_item').click(function(){
 		});
