@@ -164,7 +164,7 @@
 			var div = $("<div id = '" + usuarios[index].user + "'> </div>");
 			$(div).chatbox({id: "ME",
 					title : usuarios[index].nombre,
-					user: user,
+					user: usuarios[index],
 					offset: 230 + 240*$('.ui-chatbox').length,
 					width: 230,
 					messageSent : function(id, user, msg) {
