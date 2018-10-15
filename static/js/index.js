@@ -61,7 +61,7 @@ function buscarCitas() {
 
 
 function buscarSeminario() {
-   var prof, carr, curso, filterProf, filterCarr, filterCurso, table, tr, td1, td2, td3, td4, i;
+   var prof, carr, curso, filterProf, filterCarr, filterCurso, table, tr, td1, td2, td3, i;
    prof = document.getElementById("prof");
    filterProf = prof.value.toUpperCase();
 
@@ -75,10 +75,10 @@ function buscarSeminario() {
    tr = table.getElementsByTagName("tr");
    for (i = 0; i < tr.length; i++) {
      td1 = tr[i].getElementsByTagName("td")[0];
-     td3 = tr[i].getElementsByTagName("td")[1];
-     td2 = tr[i].getElementsByTagName("td")[2];
+     td2 = tr[i].getElementsByTagName("td")[1];
+     td3 = tr[i].getElementsByTagName("td")[2];
      if (td1, td2, td3) {
-       if ((td1.innerHTML.toUpperCase().indexOf(filterProf) > -1) && (td2.innerHTML.toUpperCase().indexOf(filterTopic) > -1) && (td3.innerHTML.toUpperCase().indexOf(filterCarr) > -1)) {
+       if ((td1.innerHTML.toUpperCase().indexOf(filterProf) > -1) && (td2.innerHTML.toUpperCase().indexOf(filterCarr) > -1) && (td3.innerHTML.toUpperCase().indexOf(filterTopic) > -1)) {
          tr[i].style.display = "";
        } else {
          tr[i].style.display = "none";
