@@ -56,4 +56,4 @@ Para acceder a la demo:
 
 ### Sprint 5
 - [ ] Desarrollo App Administrador
-- [ ] Bug fix
+- [ ] Bugs fix
