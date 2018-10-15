@@ -113,7 +113,7 @@
 </div>
 
 <script type="text/javascript">
-	firebase.database().ref().child("Usuarios").on('value', function(snapshot) {
+	firebase.database().ref().child("Usuarios").child("Alumnos").on('value', function(snapshot) {
 	    snapshot.forEach(function(child) {
 		var childData = child.val();
 		console.log(childData);
