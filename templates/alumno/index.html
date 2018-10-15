@@ -113,12 +113,25 @@
 </div>
 
 <script type="text/javascript">
+	
+	$('#user_list_header').click(function(){
+		$('#user_list').toggleClass('collapsed')
+	})
+	
+	var chats = [];
+	div_user_list = $('#user_list_content ul')
+	
 	var usuarios = [];
 	firebase.database().ref().child("Usuarios").child("Alumnos").on('value', function(snapshot) {
 	    snapshot.forEach(function(child) {
 		var childData = child.val();
 		var user = [child.val().id, child.val().user, child.val().nombre]
 		usuarios.push(user);
+		    
+		div_user_list.append( "<li class = 'user_item' onClick = 'openChatBox(" + user[0] + ")'>" + user[2] + "<span>" + user[0] + "</span> </li>")
+	    	
+		$('.user_item').click(function(){
+		})
 	    });
 	});
 	
@@ -127,23 +140,13 @@
 		var childData = child.val();
 		var user = [child.val().id, child.val().user, child.val().nombre]
 		usuarios.push(user);
+		    
+		 div_user_list.append( "<li class = 'user_item' onClick = 'openChatBox(" + user[0] + ")'>" + user[2] + "<span>" + user[0] + "</span> </li>")
+	    	
+		$('.user_item').click(function(){
+		})
 	    });
 	});
-
-	$('#user_list_header').click(function(){
-		$('#user_list').toggleClass('collapsed')
-	})
-
-	var chats = [];
-
-	div_user_list = $('#user_list_content ul')
-	usuarios.forEach(function (user, i) {
-		console.log(user);
-		div_user_list.append( "<li class = 'user_item' onClick = 'openChatBox(" + i + ")'>" + user[2] + "<span>" + 1 + "</span> </li>")
-	})
-
-	$('.user_item').click(function(){
-	})
 
 	function openChatBox(i){
 		let chat = $("#c" + i)
