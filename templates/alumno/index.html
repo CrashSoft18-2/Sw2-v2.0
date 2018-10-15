@@ -113,12 +113,24 @@
 </div>
 
 <script type="text/javascript">
+	var usuarios;
 	firebase.database().ref().child("Usuarios").child("Alumnos").on('value', function(snapshot) {
 	    snapshot.forEach(function(child) {
 		var childData = child.val();
-		console.log(childData);
+		var user = [child.val().id, child.val().user, child.val().nombre]
+		usuarios.push(user);
 	    });
 	});
+	
+	firebase.database().ref().child("Usuarios").child("Profesores").on('value', function(snapshot) {
+	    snapshot.forEach(function(child) {
+		var childData = child.val();
+		var user = [child.val().id, child.val().user, child.val().nombre]
+		usuarios.push(user);
+	    });
+	});
+	
+	console.log(usuarios);
 
 	$('#user_list_header').click(function(){
 		$('#user_list').toggleClass('collapsed')
