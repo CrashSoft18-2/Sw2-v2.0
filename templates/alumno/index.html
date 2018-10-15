@@ -148,14 +148,14 @@
 	    });
 	});
 
-	function openChatBox(i){
+	function openChatBox(user){
 		let chat = $("#c" + i)
 		if ( chat.length ){
 			chat.chatbox("option", "boxManager").toggleBox();
 			// $( "div[id^='c']" ).chatbox({hidden: true})
 			// chat.chatbox({hidden: false})
 		}else{
-			var div = $("<div id = '" + i + "'> </div>")
+			var div = $("<div id = '" + user[1] + "'> </div>")
 			$(div).chatbox({id: "ME",
 					title : user[2],
 					user:{key : "value"},
