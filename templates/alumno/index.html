@@ -159,7 +159,7 @@
 	function openChatBox(index){
 		let chat = $("#" + usuarios[index].user);
 		if (chat.length){
-			console.log(chat.parentNode);
+			console.log(chat.parent());
 			//chat.chatbox("option", "boxManager").toggleBox();
 			//chat.toggleContent();
 		} else {
