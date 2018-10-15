@@ -129,7 +129,7 @@
 		user.nombre = String(child.val().nombre);
 		usuarios.push(JSON.stringify(user));
 		    
-		div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = 'openChatBox(" + String.fromCharCode(39) + JSON.stringify(user) + String.fromCharCode(39) + ")'>" + user.nombre + "<span>" + user.id + "</span> </li>");
+		div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = " + String.fromCharCode(34) + "openChatBox(" + String.fromCharCode(39) + JSON.stringify(user) + String.fromCharCode(39) + ")" + String.fromCharCode(34) + ">" + user.nombre + "<span>" + user.id + "</span> </li>");
 	    	
 		$('.user_item').click(function(){
 		});
@@ -144,7 +144,7 @@
 		user.nombre = String(child.val().nombre);
 		usuarios.push(user);
 		    
-		div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = 'openChatBox(" + String.fromCharCode(39) + JSON.stringify(user) + String.fromCharCode(39) + ")'>" + user.nombre + "<span>" + user.id + "</span> </li>");
+		div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = " + String.fromCharCode(34) + "openChatBox(" + String.fromCharCode(39) + JSON.stringify(user) + String.fromCharCode(39) + ")" + String.fromCharCode(34) + ">" + user.nombre + "<span>" + user.id + "</span> </li>");
 	    	
 		$('.user_item').click(function(){
 		});
