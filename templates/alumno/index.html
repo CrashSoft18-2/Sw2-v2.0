@@ -136,15 +136,12 @@
 		$('#user_list').toggleClass('collapsed')
 	})
 
-
-	var user_list = ["Anthony Del Pozo", "Diana Ayala", "Ashly Guerrero"];
 	var chats = [];
 
 	(function loadUserList(){
 		div_user_list = $('#user_list_content ul')
-		user_list.forEach(function (user, i) {
-		test = "<li class = 'user_item' onClick = 'openChatBox("
-			div_user_list.append( test + i + ")'>" + user + "<span>" + i + "</span> </li>")
+		usuarios.forEach(function (user, i) {
+			div_user_list.append( "<li class = 'user_item' onClick = 'openChatBox(" + i + ")'>" + user[1] + "<span>" + 1 + "</span> </li>")
 		})
 	})()
 
