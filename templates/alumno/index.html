@@ -128,7 +128,7 @@
 		var user = [child.val().id, child.val().user, child.val().nombre]
 		usuarios.push(user);
 		    
-		div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = 'openChatBox(" + user[0] + ")'>" + user[2] + "<span>" + user[0] + "</span> </li>")
+		div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = 'openChatBox(" + user + ")'>" + user[2] + "<span>" + user[0] + "</span> </li>")
 	    	
 		$('.user_item').click(function(){
 		})
@@ -157,7 +157,7 @@
 		}else{
 			var div = $("<div id = '" + i + "'> </div>")
 			$(div).chatbox({id: "ME",
-					title : usuarios[i][2],
+					title : user[2],
 					user:{key : "value"},
 					offset: 230 + 240*$('.ui-chatbox').length,
 					width: 230,
