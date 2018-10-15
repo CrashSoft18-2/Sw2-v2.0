@@ -129,8 +129,6 @@
 		usuarios.push(user);
 	    });
 	});
-	
-	console.log(usuarios);
 
 	$('#user_list_header').click(function(){
 		$('#user_list').toggleClass('collapsed')
@@ -141,6 +139,7 @@
 	(function loadUserList(){
 		div_user_list = $('#user_list_content ul')
 		usuarios.forEach(function (user, i) {
+			console.log(user);
 			div_user_list.append( "<li class = 'user_item' onClick = 'openChatBox(" + i + ")'>" + user[1] + "<span>" + 1 + "</span> </li>")
 		})
 	})()
