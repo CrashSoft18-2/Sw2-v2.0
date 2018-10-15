@@ -140,7 +140,7 @@
 		div_user_list = $('#user_list_content ul')
 		usuarios.forEach(function (user, i) {
 			console.log(user);
-			div_user_list.append( "<li class = 'user_item' onClick = 'openChatBox(" + i + ")'>" + user[1] + "<span>" + 1 + "</span> </li>")
+			div_user_list.append( "<li class = 'user_item' onClick = 'openChatBox(" + i + ")'>" + user[2] + "<span>" + 1 + "</span> </li>")
 		})
 	})()
 
