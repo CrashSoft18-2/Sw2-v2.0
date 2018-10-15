@@ -32,8 +32,10 @@ Para acceder a la demo:
 - [x] Logout button
 - [x] Encriptar contraseñas
 - [ ] Filtros
-- [ ] Bug fix chat
-- [ ] Chat funcional
+- [ ] Chat - Bug fix
+- [x] Chat - Lista de usuarios
+- [ ] Chat - Envío de Mensajes
+- [ ] Chat - Recepción de Mensajes
 - [x] **Ordenar código (app.py, config.py, view.py, models.py)**
 - [x] **Ordenar código (separar por paquetes)**
 
