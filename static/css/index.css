@@ -8,6 +8,11 @@ width:60%;
 display:inline-block;
 }
 
+#user_list_content{
+overflow:scroll; 
+height:400px;
+}
+
 ul{
 padding: 0;
 }
