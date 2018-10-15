@@ -157,7 +157,7 @@
 	});
 
 	function openChatBox(index){
-		let chat = $("#c" + usuarios[index][0]);
+		let chat = $("#c" + usuarios[index].id);
 		if ( chat.length > 0){
 			console.log("yes");
 			chat.chatbox("option", "boxManager").toggleBox();
@@ -167,9 +167,9 @@
 			console.log("no");
 			console.log(usuarios);
 			console.log(index);
-			var div = $("<div id = '" + usuarios[index][1] + "'> </div>");
+			var div = $("<div id = '" + usuarios[index].user + "'> </div>");
 			$(div).chatbox({id: "ME",
-					title : usuarios[index][2],
+					title : usuarios[index].nombre,
 					user:{key : "value"},
 					offset: 230 + 240*$('.ui-chatbox').length,
 					width: 230,
