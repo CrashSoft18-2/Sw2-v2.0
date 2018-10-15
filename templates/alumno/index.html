@@ -127,7 +127,6 @@
 		user.id = child.val().id;
 		user.user = child.val().user;
 		user.nombre = String(child.val().nombre);
-		usuarios.push(JSON.stringify(user));
 		    
 		div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = " + String.fromCharCode(34) + "openChatBox(" + String.fromCharCode(39) + JSON.stringify(user) + String.fromCharCode(39) + ")" + String.fromCharCode(34) + ">" + user.nombre + "<span>" + user.id + "</span> </li>");
 	    	
@@ -152,7 +151,6 @@
 	});
 
 	function openChatBox(user){
-		var usuario = JSON.parse(user);
 		let chat = $("#c" + usuario.id);
 		if ( chat.length ){
 			chat.chatbox("option", "boxManager").toggleBox();
