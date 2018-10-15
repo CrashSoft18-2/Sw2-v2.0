@@ -158,7 +158,7 @@
 
 	function openChatBox(index){
 		let chat = $("#c" + usuarios[index][0]);
-		if ( chat.length ){
+		if ( chat.length > 0){
 			chat.chatbox("option", "boxManager").toggleBox();
 			// $( "div[id^='c']" ).chatbox({hidden: true})
 			// chat.chatbox({hidden: false})
