@@ -10,7 +10,7 @@ display:inline-block;
 
 #user_list_content{
 overflow:scroll; 
-height:400px;
+height:600px;
 }
 
 ul{
