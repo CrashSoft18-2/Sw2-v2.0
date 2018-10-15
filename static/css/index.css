@@ -8,6 +8,10 @@ width:60%;
 display:inline-block;
 }
 
+ul{
+padding: 0;
+}
+
 .tab-links{
 margin-bottom: 0;
 margin-left: 0;
