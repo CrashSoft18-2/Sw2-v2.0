@@ -160,6 +160,7 @@
 		let chat = $("#" + usuarios[index].user);
 		if (chat.length){
 			chat.chatbox("option", "boxManager").toggleBox();
+			chat.toggleContent();
 		} else {
 			var div = $("<div id = '" + usuarios[index].user + "'> </div>");
 			$(div).chatbox({id: "ME",
