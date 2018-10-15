@@ -123,10 +123,13 @@
 	var usuarios = [];
 	firebase.database().ref().child("Usuarios").child("Alumnos").on('value', function(snapshot) {
 	    snapshot.forEach(function(child) {
-		var user = [child.val().id, child.val().user, String(child.val().nombre)];
+		var user = {}
+		user.id = child.val().id;
+		user.user = child.val().user;
+		user.nombre = String(child.val().nombre);
 		usuarios.push(user);
 		    
-		div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = 'openChatBox(" + user + ")'>" + user[2] + "<span>" + user[0] + "</span> </li>");
+		div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = 'openChatBox(" + user + ")'>" + user.nombre + "<span>" + user.id + "</span> </li>");
 	    	
 		$('.user_item').click(function(){
 		});
@@ -135,10 +138,13 @@
 	
 	firebase.database().ref().child("Usuarios").child("Profesores").on('value', function(snapshot) {
 	    snapshot.forEach(function(child) {
-		var user = [child.val().id, child.val().user, String(child.val().nombre)];
+		var user = {}
+		user.id = child.val().id;
+		user.user = child.val().user;
+		user.nombre = String(child.val().nombre);
 		usuarios.push(user);
 		    
-		 div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = 'openChatBox(" + user + ")'>" + user[2] + "<span>" + user[0] + "</span> </li>");
+		div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = 'openChatBox(" + user + ")'>" + user.nombre + "<span>" + user.id + "</span> </li>");
 	    	
 		$('.user_item').click(function(){
 		});
@@ -146,15 +152,15 @@
 	});
 
 	function openChatBox(user){
-		let chat = $("#c" + user[0]);
+		let chat = $("#c" + user.id);
 		if ( chat.length ){
 			chat.chatbox("option", "boxManager").toggleBox();
 			// $( "div[id^='c']" ).chatbox({hidden: true})
 			// chat.chatbox({hidden: false})
 		}else{
-			var div = $("<div id = '" + user[1] + "'> </div>");
+			var div = $("<div id = '" + user.user + "'> </div>");
 			$(div).chatbox({id: "ME",
-					title : user[2],
+					title : user.nombre,
 					user:{key : "value"},
 					offset: 230 + 240*$('.ui-chatbox').length,
 					width: 230,
