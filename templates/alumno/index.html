@@ -157,20 +157,14 @@
 	});
 
 	function openChatBox(index){
-		let chat = $("#c" + usuarios[index].id);
-		if ( chat.length > 0){
-			console.log("yes");
+		let chat = $("#" + usuarios[index].user);
+		if (chat.length){
 			chat.chatbox("option", "boxManager").toggleBox();
-			// $( "div[id^='c']" ).chatbox({hidden: true})
-			// chat.chatbox({hidden: false})
-		}else{
-			console.log("no");
-			console.log(usuarios);
-			console.log(index);
+		} else {
 			var div = $("<div id = '" + usuarios[index].user + "'> </div>");
 			$(div).chatbox({id: "ME",
 					title : usuarios[index].nombre,
-					user:{key : "value"},
+					user: user,
 					offset: 230 + 240*$('.ui-chatbox').length,
 					width: 230,
 					messageSent : function(id, user, msg) {
