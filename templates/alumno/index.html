@@ -113,49 +113,46 @@
 </div>
 
 <script type="text/javascript">
-	
 	$('#user_list_header').click(function(){
-		$('#user_list').toggleClass('collapsed')
-	})
+		$('#user_list').toggleClass('collapsed');
+	});
 	
 	var chats = [];
-	div_user_list = $('#user_list_content ul')
+	div_user_list = $('#user_list_content ul');
 	
 	var usuarios = [];
 	firebase.database().ref().child("Usuarios").child("Alumnos").on('value', function(snapshot) {
 	    snapshot.forEach(function(child) {
-		var childData = child.val();
-		var user = [child.val().id, child.val().user, child.val().nombre]
+		var user = [child.val().id, child.val().user, child.val().nombre];
 		usuarios.push(user);
 		    
-		div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = 'openChatBox(" + user + ")'>" + user[2] + "<span>" + user[0] + "</span> </li>")
+		div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = 'openChatBox(" + user + ")'>" + user[2] + "<span>" + user[0] + "</span> </li>");
 	    	
 		$('.user_item').click(function(){
-		})
+		});
 	    });
 	});
 	
 	firebase.database().ref().child("Usuarios").child("Profesores").on('value', function(snapshot) {
 	    snapshot.forEach(function(child) {
-		var childData = child.val();
-		var user = [child.val().id, child.val().user, child.val().nombre]
+		var user = [child.val().id, child.val().user, child.val().nombre];
 		usuarios.push(user);
 		    
-		 div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = 'openChatBox(" + user[0] + ")'>" + user[2] + "<span>" + user[0] + "</span> </li>")
+		 div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = 'openChatBox(" + user[0] + ")'>" + user[2] + "<span>" + user[0] + "</span> </li>");
 	    	
 		$('.user_item').click(function(){
-		})
+		});
 	    });
 	});
 
 	function openChatBox(user){
-		let chat = $("#c" + i)
+		let chat = $("#c" + user[0]);
 		if ( chat.length ){
 			chat.chatbox("option", "boxManager").toggleBox();
 			// $( "div[id^='c']" ).chatbox({hidden: true})
 			// chat.chatbox({hidden: false})
 		}else{
-			var div = $("<div id = '" + user[1] + "'> </div>")
+			var div = $("<div id = '" + user[1] + "'> </div>");
 			$(div).chatbox({id: "ME",
 					title : user[2],
 					user:{key : "value"},
@@ -167,7 +164,6 @@
 					}});
 			}
 	}
-
 </script>
 
 </body>
