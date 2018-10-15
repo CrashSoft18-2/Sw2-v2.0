@@ -71,7 +71,7 @@ function buscarSeminario() {
    topic = document.getElementById("topic");
    filterTopic = topic.value.toUpperCase();
    
-   table = document.getElementById("detalle");
+   table = document.getElementById("myTable");
    tr = table.getElementsByTagName("tr");
    for (i = 0; i < tr.length; i++) {
      td1 = tr[i].getElementsByTagName("td")[0];
