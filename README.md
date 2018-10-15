@@ -31,7 +31,7 @@ Para acceder a la demo:
 - [x] Filtrar el menú de asesorías solo por las futuras.
 - [x] Logout button
 - [x] Encriptar contraseñas
-- [ ] Filtros
+- [x] Filtros
 - [ ] Chat - Bug fix
 - [x] Chat - Lista de usuarios
 - [ ] Chat - Envío de Mensajes
