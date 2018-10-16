@@ -159,7 +159,10 @@
 	function openChatBox(index){
 		let chat = $("#" + usuarios[index].user);
 		if (chat.length){
-			chat.parent().parent().children()[0].className += " ui-state-focus";
+			if (chat.parent().parent().children()[0].className.indexOf(ui-state-focus) != -1){
+				chat.parent().parent().children()[0].className += " ui-state-focus";
+				chat.parent().parent().children()[1].style.display = "none";
+			}
 			//chat.chatbox("option", "boxManager").toggleBox();
 			//chat.toggleContent();
 		} else {
