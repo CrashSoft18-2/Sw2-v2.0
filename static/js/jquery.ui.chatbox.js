@@ -137,7 +137,7 @@
                     //uiChatbox.hide();
                     var chat = uiChatbox.next()
                     while(chat.length > 0){
-                       chat[0].style.right = parseInt(uiChatbox.next()[0].style.right)-240 + "px"
+                       chat[0].style.right = parseInt(chat[0].style.right)-240 + "px"
                        chat = chat.next();
                     }
                     uiChatbox.remove();
