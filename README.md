@@ -32,7 +32,7 @@ Para acceder a la demo:
 - [x] Logout button
 - [x] Encriptar contraseñas
 - [x] Filtros
-- [ ] Chat - Bug fix
+- [x] Chat - Bug fix
 - [x] Chat - Lista de usuarios
 - [ ] Chat - Envío de Mensajes
 - [ ] Chat - Recepción de Mensajes
