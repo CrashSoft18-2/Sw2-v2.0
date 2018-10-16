@@ -1,7 +1,4 @@
 import base64
-from firebase_admin import credentials
-from firebase_admin import db as dbFirebase
-import firebase_admin
 import os
 
 def encode(key, clear):
