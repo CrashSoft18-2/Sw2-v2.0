@@ -135,7 +135,7 @@
                        function() { uiChatboxTitlebarClose.removeClass('ui-state-hover'); })
                 .click(function(event) {
                     //uiChatbox.hide();
-                    console.log(uiChatbox.next().position());
+                    uiChatbox.next()[0].style.right = parseInt(uiChatbox.next()[0].style.right)-240 + "px"
                     uiChatbox.remove();
                     self.options.boxClosed(self.options.id);
                     return false;
