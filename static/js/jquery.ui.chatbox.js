@@ -134,7 +134,8 @@
                 .hover(function() { uiChatboxTitlebarClose.addClass('ui-state-hover'); },
                        function() { uiChatboxTitlebarClose.removeClass('ui-state-hover'); })
                 .click(function(event) {
-                    uiChatbox.hide();
+                    //uiChatbox.hide();
+                    uiChatbox.remove();
                     self.options.boxClosed(self.options.id);
                     return false;
                 })
