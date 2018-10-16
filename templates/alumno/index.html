@@ -177,6 +177,12 @@
 					}});
 			}
 	}
+	
+	function closeChatBox(index){
+		let chat = $("#" + usuarios[index].user);
+		chat.parent().parent().remove();
+	}
+	
 </script>
 
 </body>
