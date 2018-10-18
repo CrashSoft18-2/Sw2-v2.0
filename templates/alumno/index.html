@@ -172,6 +172,7 @@
 		var usuario;
 		for(i = 0; i < usuarios.length; i++){
 			if(usuarios[i].user == user){
+				usuario.index = i;
 				usuario = usuarios[i];
 				break;
 			}
@@ -179,52 +180,10 @@
 		return usuario;
 	}
 	
-	function onChildAdded(message){
-		if(message.from != {{usuario}}){
-			user = buscarUsuario(message.from);
-		}else{
-			user = buscarUsuario(message.to);
-		}
-			
-		let chat = $("#" + user.user);
-		if (chat.length){
-			if (chat.parent().parent().children()[1].style.display == "none"){
-				chat.parent().parent().children()[1].style.display = "block";
-			}
-			chat.chatbox("option", "boxManager").addMsg(user.nombre.split(" ")[0], message.message);
-		} else {
-			div = $("<div id = '" + message.from + "'> </div>");
-			
-			$(div).chatbox({id: usuario[0].nombre.split(" ")[0],
-					title : user.nombre,
-					user: user,
-					offset: 230 + 240*$('.ui-chatbox').length,
-					width: 230,
-					messageSent : function(id, user, msg) {
-						var ref = firebase.database().ref("Mensajes");
-						var message = {
-							"from": usuario[0].user,
-							"to": user.user,
-							"message": msg,
-							"timestamp": Date.now()
-						}
-						var newRef = ref.push();
-						console.log(newRef);
-						newRef.set(message);
-						div.chatbox("option", "boxManager").addMsg(id, msg);
-					}});
-			div.chatbox("option", "boxManager").addMsg(user.nombre.split(" ")[0], message.message);
-		}
+	function onChildAdded(user){
+		usuario = buscarUsuario(user);
+		openChatBox(usuario.index);
 	}
-		
-	firebase.database().ref().child("user-messages").child("{{usuario}}").on('child_added', function(snapshot) {
-		firebase.database().ref().child("Mensajes").child(snapshot.key).on('value', function(mensaje) {
-			if(mensaje.val().timestamp > currentTime){
-				//onChildAdded(mensaje.val());
-				console.log(mensaje.val());
-			}
-		});
-	});
 
 	function openChatBox(index){
 		let chat = $("#" + usuarios[index].user);
@@ -264,20 +223,18 @@
 		firebase.database().ref().child("user-messages").child("{{usuario}}").on('value', function(snapshot) {
 		    snapshot.forEach(function(child) {
 				firebase.database().ref().child("Mensajes").child(child.key).on('value', function(childsnapshot) {
-					if (childsnapshot.val().timestamp <= currentTime){
-						var id;
-						if(child.val() == "1"){
-							id = usuario[0].nombre.split(" ")[0];
-							user = buscarUsuario(childsnapshot.val().to);
-						} else if(child.val() == "2"){
-							user = buscarUsuario(childsnapshot.val().from);
-							id = user.nombre.split(" ")[0];
-						}
-						if(chat.length){
-							chat.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
-						} else{
-							div.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
-						}
+					var id;
+					if(child.val() == "1"){
+						id = usuario[0].nombre.split(" ")[0];
+						user = buscarUsuario(childsnapshot.val().to);
+					} else if(child.val() == "2"){
+						user = buscarUsuario(childsnapshot.val().from);
+						id = user.nombre.split(" ")[0];
+					}
+					if(chat.length){
+						chat.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
+					} else{
+						div.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
 					}
 				});
 		    });
