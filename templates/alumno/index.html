@@ -180,9 +180,14 @@
 					offset: 230 + 240*$('.ui-chatbox').length,
 					width: 230,
 					messageSent : function(id, user, msg) {
-						console.log(Date.now());
-						console.log(id, user, msg);
-						console.log(firebase.database().ref("Mensajes"));
+						var ref = firebase.database().ref("Mensajes");
+						var message = {
+							"from": usuario[0].user,
+							"to": user.user,
+							"message": msg,
+							"timestamp": Date.now()
+						}
+						
 						div.chatbox("option", "boxManager").addMsg(id, msg);
 					}});
 			}
