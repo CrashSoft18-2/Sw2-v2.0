@@ -167,13 +167,14 @@
 	});
 
 	function openChatBox(index){
+		var div;
 		let chat = $("#" + usuarios[index].user);
 		if (chat.length){
 			if (chat.parent().parent().children()[1].style.display == "none"){
 				chat.parent().parent().children()[1].style.display = "block";
 			}
 		} else {
-			var div = $("<div id = '" + usuarios[index].user + "'> </div>");
+			div = $("<div id = '" + usuarios[index].user + "'> </div>");
 			$(div).chatbox({id: usuario[0].nombre.split(" ")[0],
 					title : usuarios[index].nombre,
 					user: usuarios[index],
@@ -198,7 +199,9 @@
 			firebase.database().ref().child("Mensajes").child(snapshot.key).on('value', function(mensaje) {
 				    if (chat.length){
 					chat.children().remove();
-					chat.addMsg(mensaje.from, mensaje.mensaje);
+					chat.chatbox("option", "boxManager").addMsg(mensaje.from, mensaje.mensaje);
+				    } else{
+					div.chatbox("option", "boxManager").addMsg(mensaje.from, mensaje.mensaje);
 				    }
 			});
 		});
