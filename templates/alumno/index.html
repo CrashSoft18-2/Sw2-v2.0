@@ -147,7 +147,11 @@
 	
 	function getMessages(){
 		firebase.database().ref().child("Mensajes").on('child_added', function(snapshot) {
-		    console.log(snapshot.value);
+			firebase.database().ref().child("Mensajes").child(snapshot.key).on('value', function(mensaje) {
+			    	mensaje.forEach(function(child) {
+				    console.log(child.key+": "+child.val());
+				});
+			});
 		})
 	}
 	
