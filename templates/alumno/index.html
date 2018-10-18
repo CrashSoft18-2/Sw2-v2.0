@@ -266,9 +266,9 @@
 					var id;
 					if(child.val() == "1"){
 						id = usuario[0].nombre.split(" ")[0];
-						user = buscarUsuario(message.to);
+						user = buscarUsuario(childsnapshot.val().to);
 					} else if(child.val() == "2"){
-						user = buscarUsuario(message.from);
+						user = buscarUsuario(childsnapshot.val().from);
 						id = user.nombre.split(" ")[0];
 					}
 					if(chat.length){
