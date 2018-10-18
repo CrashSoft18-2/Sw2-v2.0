@@ -188,6 +188,7 @@
 							"timestamp": Date.now()
 						}
 						var newRef = ref.push();
+						console.log(newRef);
 						newRef.set(message);
 						div.chatbox("option", "boxManager").addMsg(id, msg);
 					}});
