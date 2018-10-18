@@ -257,21 +257,19 @@
 						ref_storage.child(user.user).update(data)
 						newRef.set(message);
 						
-						firebase.database().ref().child("user-messages").child("{{usuario}}").on('value', function(snapshot) {
-						    snapshot.forEach(function(child) {
-								firebase.database().ref().child("Mensajes").child(child.key).on('value', function(childsnapshot) {
-								    snapshot.forEach(function(bchild) {
-										console.log("prev: " + bchild.value());
-								    });
-								});
-						    });
-						});
-						
-						
-						
-						
 					}});
 		}
+
+		firebase.database().ref().child("user-messages").child("{{usuario}}").on('value', function(snapshot) {
+		    snapshot.forEach(function(child) {
+				firebase.database().ref().child("Mensajes").child(child.key).on('value', function(childsnapshot) {
+				    snapshot.forEach(function(bchild) {
+						console.log("prev: " + bchild.value());
+				    });
+				});
+		    });
+		});
+						
 	}
 </script>
 
