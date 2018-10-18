@@ -197,7 +197,7 @@
 		
 		firebase.database().ref().child("Mensajes").on('child_added', function(snapshot) {
 			firebase.database().ref().child("Mensajes").child(snapshot.key).on('value', function(mensaje) {
-				div.chatbox("option", "boxManager").addMsg(mensaje.from, mensaje.mensaje);
+				div.chatbox("option", "boxManager").addMsg(mensaje.val().from, mensaje.val().message);
 			});
 		});
 	}
