@@ -124,6 +124,7 @@
 	var usuarios = [];
 	var usuario = [];
 	var div;
+	var currentTime = Date.now()
 	
 	firebase.database().ref().child("Usuarios").child("Alumnos").on('value', function(snapshot) {
 	    snapshot.forEach(function(child) {
@@ -218,8 +219,10 @@
 		
 	firebase.database().ref().child("user-messages").child("{{usuario}}").on('child_added', function(snapshot) {
 		firebase.database().ref().child("Mensajes").child(snapshot.key).on('value', function(mensaje) {
-			//onChildAdded(mensaje.val());
-			console.log(mensaje);
+			if(mensaje.val().timestamp > currentTime){
+				//onChildAdded(mensaje.val());
+				console.log(mensaje.val());
+			}
 		});
 	});
 
@@ -253,6 +256,20 @@
 						data[val] = "2";
 						ref_storage.child(user.user).update(data)
 						newRef.set(message);
+						
+						firebase.database().ref().child("user-messages").child("{{usuario}}").on('value', function(snapshot) {
+						    snapshot.forEach(function(child) {
+								firebase.database().ref().child("Mensajes").child(child.key).on('value', function(childsnapshot) {
+								    snapshot.forEach(function(bchild) {
+										console.log("prev: " + bchild.value());
+								    });
+								});
+						    });
+						});
+						
+						
+						
+						
 					}});
 		}
 	}
