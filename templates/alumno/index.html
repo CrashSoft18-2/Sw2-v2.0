@@ -245,12 +245,8 @@
 							"timestamp": Date.now()
 						}
 						var newRef = ref.push();
-						value = usuario[0].user + "/" + newRef.key
-						value2 = user.user + "/" + newRef.key
-						ref_storage.update({
-							value: "1",
-							value2: "2"
-						});
+						ref_storage.ref(usuario[0].user).update({ newRef.key: "1" });
+						ref_storage.ref(user.user).update({ newRef.key: "2" });
 						newRef.set(message);
 						div.chatbox("option", "boxManager").addMsg(id, msg);
 					}});
