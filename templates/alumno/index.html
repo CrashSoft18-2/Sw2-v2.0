@@ -216,9 +216,10 @@
 		}
 	}
 		
-	firebase.database().ref().child("Mensajes").on('child_added', function(snapshot) {
+	firebase.database().ref().child("user-messages").child("{{usuario}}").on('child_added', function(snapshot) {
 		firebase.database().ref().child("Mensajes").child(snapshot.key).on('value', function(mensaje) {
-			onChildAdded(mensaje.val());
+			//onChildAdded(mensaje.val());
+			console.log(mensaje);
 		});
 	});
 
@@ -236,7 +237,6 @@
 					offset: 230 + 240*$('.ui-chatbox').length,
 					width: 230,
 					messageSent : function(id, user, msg) {
-						sentMessage();
 						var ref = firebase.database().ref("Mensajes");
 						var ref_storage = firebase.database().ref("user-messages");
 						var message = {
@@ -246,19 +246,16 @@
 							"timestamp": Date.now()
 						}
 						var newRef = ref.push();
-						var val = newRef.key
-						ref_storage.ref(usuario[0].user).update({ val: "1" });
-						ref_storage.ref(user.user).update({ val: "2" });
+						var val = newRef.key;
+						var data = {};
+						date[val] = "1";
+						ref_storage.child(usuario[0].user).update(json)'
+						date[val] = "2";
+						ref_storage.child(user.user).update(json)
 						newRef.set(message);
-						div.chatbox("option", "boxManager").addMsg(id, msg);
 					}});
 		}
 	}
-	
-	function sentMessage(id, user, msg){
-		console.log("Sfgfg");
-	}
-	
 </script>
 
 </body>
