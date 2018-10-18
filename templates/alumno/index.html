@@ -248,9 +248,9 @@
 						var newRef = ref.push();
 						var val = newRef.key;
 						var data = {};
-						date[val] = "1";
+						data[val] = "1";
 						ref_storage.child(usuario[0].user).update(json)
-						date[val] = "2";
+						data[val] = "2";
 						ref_storage.child(user.user).update(json)
 						newRef.set(message);
 					}});
