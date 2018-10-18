@@ -187,7 +187,8 @@
 							"message": msg,
 							"timestamp": Date.now()
 						}
-						
+						var newRef = ref.push();
+						newRef.set(message);
 						div.chatbox("option", "boxManager").addMsg(id, msg);
 					}});
 			}
