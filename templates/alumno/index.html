@@ -228,6 +228,7 @@
 
 	function openChatBox(index){
 		let chat = $("#" + usuarios[index].user);
+		var div;
 		if (chat.length){
 			if (chat.parent().parent().children()[1].style.display == "none"){
 				chat.parent().parent().children()[1].style.display = "block";
@@ -263,16 +264,20 @@
 		firebase.database().ref().child("user-messages").child("{{usuario}}").on('value', function(snapshot) {
 		    snapshot.forEach(function(child) {
 				firebase.database().ref().child("Mensajes").child(child.key).on('value', function(childsnapshot) {
-					var id;
-					if(child.val() == "1"){
-						id = usuario[0].nombre.split(" ")[0];
-						user = buscarUsuario(childsnapshot.val().to);
-					} else if(child.val() == "2"){
-						user = buscarUsuario(childsnapshot.val().from);
-						id = user.nombre.split(" ")[0];
-					}
-					if(chat.length){
-						chat.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
+					if (child.val().timestamp <= currentTime){
+						var id;
+						if(child.val() == "1"){
+							id = usuario[0].nombre.split(" ")[0];
+							user = buscarUsuario(childsnapshot.val().to);
+						} else if(child.val() == "2"){
+							user = buscarUsuario(childsnapshot.val().from);
+							id = user.nombre.split(" ")[0];
+						}
+						if(chat.length){
+							chat.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
+						} else{
+							div.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
+						}
 					}
 				});
 		    });
