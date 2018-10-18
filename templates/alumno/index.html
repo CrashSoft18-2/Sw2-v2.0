@@ -198,7 +198,7 @@
 			firebase.database().ref().child("Mensajes").child(snapshot.key).on('value', function(mensaje) {
 				    if (chat.length){
 					chat.children().remove();
-					chat.addMessage(mensaje.from, mensaje.mensaje);
+					chat.addMsg(mensaje.from, mensaje.mensaje);
 				    }
 			});
 		});
