@@ -245,18 +245,19 @@
 		});
 						
 	}
-	
-	firebase.database().ref().child("user-messages").child("{{usuario}}").on('child_added', function(snapshot) {
-			firebase.database().ref().child("Mensajes").child(snapshot.key).on('value', function(childsnapshot) {
-				var id;
-				if(snapshot.val() == "1"){
-					user = buscarUsuario(childsnapshot.val().to);
-				} else if(snapshot.val() == "2"){
-					user = buscarUsuario(childsnapshot.val().from);
-				}
-				onChildAdded(user.user);
-			});
-	});
+	setTimeout(function(){
+		firebase.database().ref().child("user-messages").child("{{usuario}}").on('child_added', function(snapshot) {
+				firebase.database().ref().child("Mensajes").child(snapshot.key).on('value', function(childsnapshot) {
+					var id;
+					if(snapshot.val() == "1"){
+						user = buscarUsuario(childsnapshot.val().to);
+					} else if(snapshot.val() == "2"){
+						user = buscarUsuario(childsnapshot.val().from);
+					}
+					onChildAdded(user.user);
+				});
+		});
+	}, 3000);
 </script>
 
 </body>
