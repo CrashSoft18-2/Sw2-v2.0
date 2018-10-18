@@ -237,6 +237,7 @@
 					width: 230,
 					messageSent : function(id, user, msg) {
 						var ref = firebase.database().ref("Mensajes");
+						var ref_storage = firebase.database().ref("user-messages");
 						var message = {
 							"from": usuario[0].user,
 							"to": user.user,
@@ -244,7 +245,8 @@
 							"timestamp": Date.now()
 						}
 						var newRef = ref.push();
-						console.log(newRef);
+						ref_storage.child(usuario[0].user).child(newRef.key).set(1)
+						ref_storage.child(user.user).child(newRef.key).set(2)
 						newRef.set(message);
 						div.chatbox("option", "boxManager").addMsg(id, msg);
 					}});
