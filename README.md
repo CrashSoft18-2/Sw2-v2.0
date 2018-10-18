@@ -57,3 +57,7 @@ Para acceder a la demo:
 ### Sprint 5
 - [ ] Desarrollo App Administrador
 - [ ] Bugs fix
+
+## Utils
+
+https://stackoverflow.com/questions/46592801/how-to-insert-items-in-firebase-database-using-different-ids
