@@ -133,16 +133,15 @@
 		 
 		if(user.user != "{{ usuario }}"){
 		   usuarios.push(user);
+		   div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = " + String.fromCharCode(34) + "openChatBox(" + index + ")" + String.fromCharCode(34) + ">" + user.nombre + "<span>" + user.id + "</span> </li>");
+	    	
+		   $('.user_item').click(function(){
+		   });
+
+		   index++;
 		} else{
 		   usuario.push(user);
 		}
-		    
-		div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = " + String.fromCharCode(34) + "openChatBox(" + index + ")" + String.fromCharCode(34) + ">" + user.nombre + "<span>" + user.id + "</span> </li>");
-	    	
-		$('.user_item').click(function(){
-		});
-		
-		index++;
 	    });
 	});
 	
@@ -155,16 +154,15 @@
 		
 		if(user.user != "{{ usuario }}"){
 		   usuarios.push(user);
+		   div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = " + String.fromCharCode(34) + "openChatBox(" + index + ")" + String.fromCharCode(34) + ">" + user.nombre + "<span>" + user.id + "</span> </li>");
+	    	
+		   $('.user_item').click(function(){
+		   });
+
+		   index++;
 		} else{
 		   usuario.push(user);
 		}
-		    
-		div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = " + String.fromCharCode(34) + "openChatBox(" + index + ")" + String.fromCharCode(34) + ">" + user.nombre + "<span>" + user.id + "</span> </li>");
-	    	
-		$('.user_item').click(function(){
-		});
-		    
-		index++;
 	    });
 	});
 
@@ -188,7 +186,6 @@
 					}});
 			}
 	}
-	//dslkgnfkjgnjdkfhnjdkhfgjhjjgkhlklk
 	
 </script>
 
