@@ -122,6 +122,7 @@
 	div_user_list = $('#user_list_content ul');
 	
 	var usuarios = [];
+	
 	firebase.database().ref().child("Usuarios").child("Alumnos").on('value', function(snapshot) {
 	    snapshot.forEach(function(child) {
 		var user = {}
@@ -164,22 +165,19 @@
 			}
 		} else {
 			var div = $("<div id = '" + usuarios[index].user + "'> </div>");
-			$(div).chatbox({id: "ME",
+			$(div).chatbox({id: usuarios[index].nombre[0].split(" "),
 					title : usuarios[index].nombre,
 					user: usuarios[index],
 					offset: 230 + 240*$('.ui-chatbox').length,
 					width: 230,
 					messageSent : function(id, user, msg) {
-							// $("#log").append(id + " said: " + msg + "<br/>");
+							console.log(Date.now());
+							console.log(d, user, msg);
 							div.chatbox("option", "boxManager").addMsg(id, msg);
 					}});
 			}
 	}
 	
-	function closeChatBox(index){
-		let chat = $("#" + usuarios[index].user);
-		chat.parent().parent().remove();
-	}
 	
 </script>
 
