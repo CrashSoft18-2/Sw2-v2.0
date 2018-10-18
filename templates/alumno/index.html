@@ -145,9 +145,11 @@
 	    });
 	});
 	
-	firebase.database().ref().child("Mensajes").on('child_added', function(snapshot) {
-	    console.log(snapshot);
-	})
+	function getMessages(){
+		firebase.database().ref().child("Mensajes").on('child_added', function(snapshot) {
+		    console.log(snapshot.value);
+		})
+	}
 	
 	firebase.database().ref().child("Usuarios").child("Profesores").on('value', function(snapshot) {
 	    snapshot.forEach(function(child) {
@@ -171,6 +173,7 @@
 	});
 
 	function openChatBox(index){
+		getMessages()
 		let chat = $("#" + usuarios[index].user);
 		if (chat.length){
 			if (chat.parent().parent().children()[1].style.display == "none"){
