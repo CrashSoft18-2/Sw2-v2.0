@@ -34,7 +34,7 @@ Para acceder a la demo:
 - [x] Filtros
 - [x] Chat - Bug fix
 - [x] Chat - Lista de usuarios
-- [ ] Chat - Envío de Mensajes
+- [x] Chat - Envío de Mensajes
 - [ ] Chat - Recepción de Mensajes
 - [x] **Ordenar código (app.py, config.py, view.py, models.py)**
 - [x] **Ordenar código (separar por paquetes)**
