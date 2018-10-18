@@ -264,7 +264,7 @@
 		firebase.database().ref().child("user-messages").child("{{usuario}}").on('value', function(snapshot) {
 		    snapshot.forEach(function(child) {
 				firebase.database().ref().child("Mensajes").child(child.key).on('value', function(childsnapshot) {
-					if (child.val().timestamp <= currentTime){
+					if (childsnapshot.val().timestamp <= currentTime){
 						var id;
 						if(child.val() == "1"){
 							id = usuario[0].nombre.split(" ")[0];
