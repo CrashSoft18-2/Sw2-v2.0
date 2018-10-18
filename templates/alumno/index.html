@@ -165,7 +165,7 @@
 			}
 		} else {
 			var div = $("<div id = '" + usuarios[index].user + "'> </div>");
-			$(div).chatbox({id: usuarios[index].nombre[0].split(" "),
+			$(div).chatbox({id: usuarios[index].nombre.split(" ")[0],
 					title : usuarios[index].nombre,
 					user: usuarios[index],
 					offset: 230 + 240*$('.ui-chatbox').length,
