@@ -220,7 +220,7 @@
 					}});
 		}
 
-		firebase.database().ref().child("user-messages").child("{{usuario}}").on('value', function(snapshot) {
+		firebase.database().ref().child("user-messages").child("{{usuario}}").on('child_added', function(snapshot) {
 		    snapshot.forEach(function(child) {
 				firebase.database().ref().child("Mensajes").child(child.key).on('value', function(childsnapshot) {
 					var id;
