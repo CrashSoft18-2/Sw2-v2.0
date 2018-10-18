@@ -249,9 +249,9 @@
 						var val = newRef.key;
 						var data = {};
 						data[val] = "1";
-						ref_storage.child(usuario[0].user).update(json)
+						ref_storage.child(usuario[0].user).update(data)
 						data[val] = "2";
-						ref_storage.child(user.user).update(json)
+						ref_storage.child(user.user).update(data)
 						newRef.set(message);
 					}});
 		}
