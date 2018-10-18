@@ -145,6 +145,10 @@
 	    });
 	});
 	
+	firebase.database().ref().child("Mensajes").on('child_added', function(snapshot) {
+	    console.log(snapshot);
+	})
+	
 	firebase.database().ref().child("Usuarios").child("Profesores").on('value', function(snapshot) {
 	    snapshot.forEach(function(child) {
 		var user = {}
