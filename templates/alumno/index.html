@@ -189,8 +189,8 @@
 		if (chat.length){
 			if (chat.parent().parent().children()[1].style.display == "none"){
 				chat.parent().parent().children()[1].style.display = "block";
-				chat.chatbox("option", "boxManager").addMsg(user.nombre.split(" ")[0], message.message);
 			}
+			chat.chatbox("option", "boxManager").addMsg(user.nombre.split(" ")[0], message.message);
 		} else {
 			div = $("<div id = '" + message.from + "'> </div>");
 			
