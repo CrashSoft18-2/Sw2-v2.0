@@ -123,6 +123,7 @@
 	
 	var usuarios = [];
 	var usuario = [];
+	var div;
 	
 	firebase.database().ref().child("Usuarios").child("Alumnos").on('value', function(snapshot) {
 	    snapshot.forEach(function(child) {
@@ -165,9 +166,19 @@
 		}
 	    });
 	});
+	
+	function onChildAdded(message){
+		test = $("<div id = '" + message.from + "'> </div>");
+		test.chatbox("option", "boxManager").addMsg(mensaje.val().from, mensaje.val().message);
+	}
+		
+	firebase.database().ref().child("Mensajes").on('child_added', function(snapshot) {
+		firebase.database().ref().child("Mensajes").child(snapshot.key).on('value', function(mensaje) {
+			onChildAdded(mensaje.val());
+		});
+	});
 
 	function openChatBox(index){
-		var div;
 		let chat = $("#" + usuarios[index].user);
 		if (chat.length){
 			if (chat.parent().parent().children()[1].style.display == "none"){
@@ -194,12 +205,6 @@
 						div.chatbox("option", "boxManager").addMsg(id, msg);
 					}});
 		}
-		
-		firebase.database().ref().child("Mensajes").on('child_added', function(snapshot) {
-			firebase.database().ref().child("Mensajes").child(snapshot.key).on('value', function(mensaje) {
-				div.chatbox("option", "boxManager").addMsg(mensaje.val().from, mensaje.val().message);
-			});
-		});
 	}
 	
 </script>
