@@ -263,9 +263,17 @@
 		firebase.database().ref().child("user-messages").child("{{usuario}}").on('value', function(snapshot) {
 		    snapshot.forEach(function(child) {
 				firebase.database().ref().child("Mensajes").child(child.key).on('value', function(childsnapshot) {
-				    childsnapshot.forEach(function(bchild) {
-						console.log("prev: " + bchild.val());
-				    });
+					var id;
+					if(child.val() == "1"){
+						id = usuario[0].nombre.split(" ")[0];
+						user = buscarUsuario(message.to);
+					} else if(child.val() == "2"){
+						user = buscarUsuario(message.from);
+						id = user.nombre.split(" ")[0];
+					}
+					if(chat.length){
+						chat.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
+					}
 				});
 		    });
 		});
