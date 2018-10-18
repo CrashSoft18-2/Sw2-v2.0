@@ -167,7 +167,6 @@
 	});
 
 	function openChatBox(index){
-		var box;
 		let chat = $("#" + usuarios[index].user);
 		if (chat.length){
 			if (chat.parent().parent().children()[1].style.display == "none"){
@@ -175,7 +174,7 @@
 			}
 		} else {
 			var div = $("<div id = '" + usuarios[index].user + "'> </div>");
-			box = $(div).chatbox({id: usuario[0].nombre.split(" ")[0],
+			$(div).chatbox({id: usuario[0].nombre.split(" ")[0],
 					title : usuarios[index].nombre,
 					user: usuarios[index],
 					offset: 230 + 240*$('.ui-chatbox').length,
@@ -193,7 +192,7 @@
 						newRef.set(message);
 						div.chatbox("option", "boxManager").addMsg(id, msg);
 					}});
-			console.log(box);
+			div.chatbox("option", "boxManager").addMsg("wgfrgga", "sffgFG");
 		}
 		
 		firebase.database().ref().child("Mensajes").on('child_added', function(snapshot) {
