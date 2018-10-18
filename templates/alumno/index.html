@@ -169,15 +169,15 @@
 	});
 	
 	function buscarUsuario(user){
-		var usuario;
+		var us;
 		for(i = 0; i < usuarios.length; i++){
 			if(usuarios[i].user == user){
-				usuario.index = i;
-				usuario = usuarios[i];
+				us = usuarios[i];
+				us.index = i;
 				break;
 			}
 		}
-		return usuario;
+		return us;
 	}
 	
 	function onChildAdded(user){
@@ -231,10 +231,15 @@
 						user = buscarUsuario(childsnapshot.val().from);
 						id = user.nombre.split(" ")[0];
 					}
-					if(chat.length){
-						chat.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
-					} else{
-						div.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
+					
+					if (user.user == usuarios[index].user){
+						if(chat.length){
+							chat.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
+						} else{
+							div.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
+						}
+					} else {
+						onChildAdded(user.user);
 					}
 				});
 		    });
