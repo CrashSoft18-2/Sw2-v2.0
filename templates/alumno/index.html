@@ -167,9 +167,49 @@
 	    });
 	});
 	
+	function buscarUsuario(user){
+		var usuario;
+		for(i = 0; i < usuarios.length; i++){
+			if(usuarios[i].user == user){
+				usuario = usuario[i];
+				break;
+			}
+		}
+		return usuario;
+	}
+	
 	function onChildAdded(message){
-		test = $("<div id = '" + message.from + "'> </div>");
-		test.chatbox("option", "boxManager").addMsg(message.from, message.message);
+		let chat = $("#" + message.from);
+		if (chat.length){
+			if (chat.parent().parent().children()[1].style.display == "none"){
+				chat.parent().parent().children()[1].style.display = "block";
+				chat.chatbox("option", "boxManager").addMsg(id, msg);
+			}
+		} else {
+			div = $("<div id = '" + message.from + "'> </div>");
+			
+			user = buscarUsuario(message.from);
+			
+			$(div).chatbox({id: usuario[0].nombre.split(" ")[0],
+					title : user.nombre,
+					user: user,
+					offset: 230 + 240*$('.ui-chatbox').length,
+					width: 230,
+					messageSent : function(id, user, msg) {
+						var ref = firebase.database().ref("Mensajes");
+						var message = {
+							"from": usuario[0].user,
+							"to": user.user,
+							"message": msg,
+							"timestamp": Date.now()
+						}
+						var newRef = ref.push();
+						console.log(newRef);
+						newRef.set(message);
+						div.chatbox("option", "boxManager").addMsg(id, msg);
+					}});
+			div.chatbox("option", "boxManager").addMsg(message.from, message.message);
+		}
 	}
 		
 	firebase.database().ref().child("Mensajes").on('child_added', function(snapshot) {
