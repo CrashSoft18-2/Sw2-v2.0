@@ -145,16 +145,6 @@
 	    });
 	});
 	
-	function getMessages(){
-		firebase.database().ref().child("Mensajes").on('child_added', function(snapshot) {
-			firebase.database().ref().child("Mensajes").child(snapshot.key).on('value', function(mensaje) {
-			    	mensaje.forEach(function(child) {
-				    console.log(child.key+": "+child.val());
-				});
-			});
-		})
-	}
-	
 	firebase.database().ref().child("Usuarios").child("Profesores").on('value', function(snapshot) {
 	    snapshot.forEach(function(child) {
 		var user = {}
@@ -177,7 +167,6 @@
 	});
 
 	function openChatBox(index){
-		getMessages()
 		let chat = $("#" + usuarios[index].user);
 		if (chat.length){
 			if (chat.parent().parent().children()[1].style.display == "none"){
@@ -203,7 +192,17 @@
 						newRef.set(message);
 						div.chatbox("option", "boxManager").addMsg(id, msg);
 					}});
-			}
+		}
+		
+		firebase.database().ref().child("Mensajes").on('child_added', function(snapshot) {
+			firebase.database().ref().child("Mensajes").child(snapshot.key).on('value', function(mensaje) {
+				    if (chat.length){
+					chat.children().remove();
+					chat.addMessage(mensaje.from, mensaje.mensaje);
+				    }
+				});
+			});
+		})
 	}
 	
 </script>
