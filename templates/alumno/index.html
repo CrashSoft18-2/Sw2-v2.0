@@ -221,7 +221,7 @@
 		}
 
 		firebase.database().ref().child("user-messages").child("{{usuario}}").on('child_added', function(snapshot) {
-			firebase.database().ref().child("Mensajes").child(child.key).on('value', function(childsnapshot) {
+			firebase.database().ref().child("Mensajes").child(snapshot.key).on('value', function(childsnapshot) {
 				var id;
 				if(snapshot.val() == "1"){
 					id = usuario[0].nombre.split(" ")[0];
