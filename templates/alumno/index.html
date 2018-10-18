@@ -179,16 +179,20 @@
 	}
 	
 	function onChildAdded(message){
-		let chat = $("#" + message.from);
+		if(message.from != {{usuario}}){
+			user = buscarUsuario(message.from);
+		}else{
+			user = buscarUsuario(message.to);
+		}
+			
+		let chat = $("#" + user.user);
 		if (chat.length){
 			if (chat.parent().parent().children()[1].style.display == "none"){
 				chat.parent().parent().children()[1].style.display = "block";
-				chat.chatbox("option", "boxManager").addMsg(id, msg);
+				chat.chatbox("option", "boxManager").addMsg(user.nombre.split(" ")[0], message.message);
 			}
 		} else {
 			div = $("<div id = '" + message.from + "'> </div>");
-			
-			user = buscarUsuario(message.from);
 			
 			$(div).chatbox({id: usuario[0].nombre.split(" ")[0],
 					title : user.nombre,
@@ -208,7 +212,7 @@
 						newRef.set(message);
 						div.chatbox("option", "boxManager").addMsg(id, msg);
 					}});
-			div.chatbox("option", "boxManager").addMsg(message.from, message.message);
+			div.chatbox("option", "boxManager").addMsg(user.nombre.split(" ")[0], message.message);
 		}
 	}
 		
