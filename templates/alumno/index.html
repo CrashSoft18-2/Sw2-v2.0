@@ -169,7 +169,7 @@
 	
 	function onChildAdded(message){
 		test = $("<div id = '" + message.from + "'> </div>");
-		test.chatbox("option", "boxManager").addMsg(mensaje.val().from, mensaje.val().message);
+		test.chatbox("option", "boxManager").addMsg(message.from, message.message);
 	}
 		
 	firebase.database().ref().child("Mensajes").on('child_added', function(snapshot) {
