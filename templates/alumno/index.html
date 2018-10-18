@@ -184,21 +184,6 @@
 		usuario = buscarUsuario(user);
 		openChatBox(usuario.index);
 	}
-	
-	firebase.database().ref().child("user-messages").child("{{usuario}}").on('child_added', function(snapshot) {
-			firebase.database().ref().child("Mensajes").child(snapshot.key).on('value', function(childsnapshot) {
-				var id;
-				if(snapshot.val() == "1"){
-					id = usuario[0].nombre.split(" ")[0];
-					user = buscarUsuario(childsnapshot.val().to);
-				} else if(snapshot.val() == "2"){
-					user = buscarUsuario(childsnapshot.val().from);
-					id = user.nombre.split(" ")[0];
-				}
-				onChildAdded(user.user);
-			});
-
-		});
 
 	function openChatBox(index){
 		let chat = $("#" + usuarios[index].user);
@@ -260,6 +245,22 @@
 		});
 						
 	}
+	
+		
+	firebase.database().ref().child("user-messages").child("{{usuario}}").on('child_added', function(snapshot) {
+			firebase.database().ref().child("Mensajes").child(snapshot.key).on('value', function(childsnapshot) {
+				var id;
+				if(snapshot.val() == "1"){
+					id = usuario[0].nombre.split(" ")[0];
+					user = buscarUsuario(childsnapshot.val().to);
+				} else if(snapshot.val() == "2"){
+					user = buscarUsuario(childsnapshot.val().from);
+					id = user.nombre.split(" ")[0];
+				}
+				onChildAdded(user.user);
+			});
+
+	});
 </script>
 
 </body>
