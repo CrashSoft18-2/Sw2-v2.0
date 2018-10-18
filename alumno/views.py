@@ -78,7 +78,7 @@ def login():
 def index():
 	if session.get('AUTH') == True:
 		profesores = Profesor.query.all()
-		username = session['AUTH']
+		username = session['username']
 		return render_template('alumno/index.html', profesores=profesores, usuario=username)
 	else:
 		return inicio()
