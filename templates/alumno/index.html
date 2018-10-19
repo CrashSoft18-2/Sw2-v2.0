@@ -243,7 +243,7 @@
 		}
 
         //Mostrar mensajes de conversaciones anteriores al abrir el chat
-		firebase.database().ref().child("user-messages").child("{{usuario}}").on('child_added', function(snapshot) {
+		/*firebase.database().ref().child("user-messages").child("{{usuario}}").on('child_added', function(snapshot) {
 			firebase.database().ref().child("Mensajes").child(snapshot.key).on('value', function(childsnapshot) {
 				var id;
 				if(snapshot.val() == "1"){
@@ -265,7 +265,7 @@
 				}
 			});
 
-		});
+		});*/
 						
 	}
 </script>
