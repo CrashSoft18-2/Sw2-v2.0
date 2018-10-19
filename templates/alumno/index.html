@@ -255,28 +255,26 @@
 			});
 
 		});
-		
 		for(i = 0; i < mensajes.length; i++){
-		
-		firebase.database().ref().child("Mensajes").child(mensajes[i].key).once('value', function(childsnapshot) {
-					console.log("Childsnapshot:   " + childsnapshot.key + "//////" + childsnapshot.val());
-					var id;
-					if(mensajes[i].val == "1"){
-						id = usuario[0].nombre.split(" ")[0];
-						user = buscarUsuario(childsnapshot.val().to);
-					} else if(mensajes[i].val == "2"){
-						user = buscarUsuario(childsnapshot.val().from);
-						id = user.nombre.split(" ")[0];
-					}
+			console.log(mensajes);
+			firebase.database().ref().child("Mensajes").child(mensajes[i].key).once('value', function(childsnapshot) {
+				var id;
+				if(mensajes[i].val == "1"){
+					id = usuario[0].nombre.split(" ")[0];
+					user = buscarUsuario(childsnapshot.val().to);
+				} else if(mensajes[i].val == "2"){
+					user = buscarUsuario(childsnapshot.val().from);
+					id = user.nombre.split(" ")[0];
+				}
 
-					if (user.user == usuarios[index].user){
-						if(chat.length){
-							chat.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
-						} else{
-							div.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
-						}
+				if (user.user == usuarios[index].user){
+					if(chat.length){
+						chat.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
+					} else{
+						div.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
 					}
-				});
+				}
+			});
 		}			
 	}
 </script>
