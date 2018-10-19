@@ -173,6 +173,7 @@
 	    });
 	});
 	
+    abrirAlRecibir()
     //Abrir ventana de chat al recibir mensaje
     function abrirAlRecibir(){
         firebase.database().ref().child("user-messages").child("{{usuario}}").on('child_added', function(snapshot) {
