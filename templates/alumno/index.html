@@ -244,8 +244,11 @@
 
         //Mostrar mensajes de conversaciones anteriores al abrir el chat
 		firebase.database().ref().child("user-messages").child("{{usuario}}").once('value', function(snapshot) {
+			console.log(snapshot);
 			snapshot.forEach(function(child) {
+				console.log(child);
 				firebase.database().ref().child("Mensajes").child(child.key).once('value', function(childsnapshot) {
+					console.log(childsnapshot);
 					var id;
 					if(child.val() == "1"){
 						id = usuario[0].nombre.split(" ")[0];
