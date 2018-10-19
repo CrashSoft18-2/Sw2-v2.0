@@ -220,6 +220,7 @@
 					offset: 230 + 240*$('.ui-chatbox').length,
 					width: 230,
 					messageSent : function(id, user, msg) {
+						//Guarda en base de datos los mensajes tras enviarlos en el chat
 						var ref = firebase.database().ref("Mensajes");
 						var ref_storage = firebase.database().ref("user-messages");
 						var message = {
