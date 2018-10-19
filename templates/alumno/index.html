@@ -250,7 +250,7 @@
 				console.log("Child:  " + child.key + "//////" + child.val());
 				var msg = {};
 				msg.key = child.key;
-				msg.val = child.val;
+				msg.val = child.val();
 				mensajes.push(msg);
 			});
 
@@ -261,10 +261,10 @@
 		firebase.database().ref().child("Mensajes").child(mensajes[i].key).once('value', function(childsnapshot) {
 					console.log("Childsnapshot:   " + childsnapshot.key + "//////" + childsnapshot.val());
 					var id;
-					if(mensajes[i].val() == "1"){
+					if(mensajes[i].val == "1"){
 						id = usuario[0].nombre.split(" ")[0];
 						user = buscarUsuario(childsnapshot.val().to);
-					} else if(mensajes[i].val() == "2"){
+					} else if(mensajes[i].val == "2"){
 						user = buscarUsuario(childsnapshot.val().from);
 						id = user.nombre.split(" ")[0];
 					}
