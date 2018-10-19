@@ -202,8 +202,8 @@
 	}
 	
 	function onChildAdded(user){
-		usuario = buscarUsuario(user);
-		openChatBox(usuario.index);
+		var usuario_temp= buscarUsuario(user);
+		openChatBox(usuario_temp.index);
 	}
 
 	function openChatBox(index){
