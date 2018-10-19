@@ -113,10 +113,13 @@
 </div>
 
 <script type="text/javascript">
+    
+    //Funcion colapsar chat
 	$('#user_list_header').click(function(){
 		$('#user_list').toggleClass('collapsed');
 	});
-	
+	//////////////////////////////////////////////
+    
 	var chats = [];
 	var index = 0;
 	div_user_list = $('#user_list_content ul');
@@ -126,6 +129,7 @@
 	var div;
 	var currentTime = Date.now()
 	
+    //Agregar alumnos a la lista del chat
 	firebase.database().ref().child("Usuarios").child("Alumnos").on('value', function(snapshot) {
 	    snapshot.forEach(function(child) {
 		var user = {}
@@ -147,6 +151,7 @@
 	    });
 	});
 	
+    //Agregar profesores a la lista del chat
 	firebase.database().ref().child("Usuarios").child("Profesores").on('value', function(snapshot) {
 	    snapshot.forEach(function(child) {
 		var user = {}
@@ -168,6 +173,21 @@
 	    });
 	});
 	
+    //Abrir ventana de chat al recibir mensaje
+    function abrirAlRecibir(){
+        firebase.database().ref().child("user-messages").child("{{usuario}}").on('child_added', function(snapshot) {
+				firebase.database().ref().child("Mensajes").child(snapshot.key).on('value', function(childsnapshot) {
+					var id;
+					if(snapshot.val() == "1"){
+						user = buscarUsuario(childsnapshot.val().to);
+					} else if(snapshot.val() == "2"){
+						user = buscarUsuario(childsnapshot.val().from);
+					}
+					onChildAdded(user.user);
+				});
+        });
+    }
+    
 	function buscarUsuario(user){
 		var us;
 		for(i = 0; i < usuarios.length; i++){
@@ -220,6 +240,7 @@
 					}});
 		}
 
+        //Mostrar mensajes de conversaciones anteriores al abrir el chat
 		firebase.database().ref().child("user-messages").child("{{usuario}}").on('child_added', function(snapshot) {
 			firebase.database().ref().child("Mensajes").child(snapshot.key).on('value', function(childsnapshot) {
 				var id;
@@ -245,19 +266,6 @@
 		});
 						
 	}
-	setTimeout(function(){
-		firebase.database().ref().child("user-messages").child("{{usuario}}").on('child_added', function(snapshot) {
-				firebase.database().ref().child("Mensajes").child(snapshot.key).on('value', function(childsnapshot) {
-					var id;
-					if(snapshot.val() == "1"){
-						user = buscarUsuario(childsnapshot.val().to);
-					} else if(snapshot.val() == "2"){
-						user = buscarUsuario(childsnapshot.val().from);
-					}
-					onChildAdded(user.user);
-				});
-		});
-	}, 30000);
 </script>
 
 </body>
