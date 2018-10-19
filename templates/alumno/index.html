@@ -255,6 +255,11 @@
 			});
 
 		});
+		
+		n = 1;
+		
+		if(n == 1){
+		
 		for(i = 0; i < mensajes.length; i++){
 			console.log(mensajes);
 			firebase.database().ref().child("Mensajes").child(mensajes[i].key).once('value', function(childsnapshot) {
@@ -275,7 +280,9 @@
 					}
 				}
 			});
-		}			
+		}
+		}
+		n++;
 	}
 </script>
 
