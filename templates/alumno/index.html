@@ -264,7 +264,7 @@
 					if(mensajes[i].val() == "1"){
 						id = usuario[0].nombre.split(" ")[0];
 						user = buscarUsuario(childsnapshot.val().to);
-					} else if(child.val() == "2"){
+					} else if(mensajes[i].val() == "2"){
 						user = buscarUsuario(childsnapshot.val().from);
 						id = user.nombre.split(" ")[0];
 					}
