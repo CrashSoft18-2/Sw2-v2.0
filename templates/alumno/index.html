@@ -243,8 +243,8 @@
 		}
 
         //Mostrar mensajes de conversaciones anteriores al abrir el chat
-		/*firebase.database().ref().child("user-messages").child("{{usuario}}").on('child_added', function(snapshot) {
-			firebase.database().ref().child("Mensajes").child(snapshot.key).on('value', function(childsnapshot) {
+		firebase.database().ref().child("user-messages").child("{{usuario}}").once('value', function(snapshot) {
+			firebase.database().ref().child("Mensajes").child(snapshot.key).once('value', function(childsnapshot) {
 				var id;
 				if(snapshot.val() == "1"){
 					id = usuario[0].nombre.split(" ")[0];
@@ -265,7 +265,7 @@
 				}
 			});
 
-		});*/
+		});
 						
 	}
 </script>
