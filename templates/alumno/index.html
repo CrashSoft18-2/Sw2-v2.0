@@ -257,8 +257,9 @@
 		});
 		
 		n = 1;
-		if(n == 1){
+		
 		for(i = 0; i < mensajes.length; i++){
+			if(n < mensajes.length){
 			console.log(mensajes);
 			firebase.database().ref().child("Mensajes").child(mensajes[i].key).once('value', function(childsnapshot) {
 				var id;
@@ -278,9 +279,9 @@
 					}
 				}
 			});
+			}
+			n++;
 		}
-		}
-		n++;
 	}
 </script>
 
