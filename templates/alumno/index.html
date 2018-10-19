@@ -209,6 +209,7 @@
 	function openChatBox(index){
 		let chat = $("#" + usuarios[index].user);
 		var div;
+		var mensajes = [];
 		if (chat.length){
 			if (chat.parent().parent().children()[1].style.display == "none"){
 				chat.parent().parent().children()[1].style.display = "block";
@@ -247,10 +248,20 @@
 			console.log(snapshot.val());
 			snapshot.forEach(function(child) {
 				console.log("Child:  " + child.key + "//////" + child.val());
-				firebase.database().ref().child("Mensajes").child(child.key).once('value', function(childsnapshot) {
+				var msg = {};
+				msg.key = child.key;
+				msg.val = child.val;
+				mensajes.append(msg);
+			});
+
+		});
+		
+		for(i = 0; i < mensajes.length; i++){
+		
+		firebase.database().ref().child("Mensajes").child(mensajes[i].key).once('value', function(childsnapshot) {
 					console.log("Childsnapshot:   " + childsnapshot.key + "//////" + childsnapshot.val());
 					var id;
-					if(child.val() == "1"){
+					if(mensajes[i].val() == "1"){
 						id = usuario[0].nombre.split(" ")[0];
 						user = buscarUsuario(childsnapshot.val().to);
 					} else if(child.val() == "2"){
@@ -266,10 +277,7 @@
 						}
 					}
 				});
-			});
-
-		});
-						
+		}			
 	}
 </script>
 
