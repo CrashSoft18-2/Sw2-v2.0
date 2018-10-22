@@ -3,7 +3,7 @@ import os
 
 app = Flask(__name__)
 
-from profesor.views import *
+from alumno.views import *
 
 import config
 
