@@ -20,7 +20,7 @@ def inicio():
 		session['AUTH'] = False
 		return render_template('alumno/login.html', val = session['AUTH'])
 
-@app.route("/profesor/<int:id>")
+@app.route("/alumno/displayProfesor/<int:id>")
 def profesor(id):
 	if session.get('AUTH') == True:
 		profesor = Profesor.query.filter_by(idProfesor=id).first()
@@ -30,7 +30,7 @@ def profesor(id):
 	else:
 		return inicio()
 
-@app.route("/misCitas")
+@app.route("/alumno/displayMisCitas")
 def citas():
 	if session.get('AUTH') == True:
 		alumnoid = session['id']
@@ -39,7 +39,7 @@ def citas():
 	else:
 		return inicio()
 
-@app.route('/detalleHistorial/<id>')
+@app.route('/alumno/detalleHistorial/<id>')
 def detalleHistorial(id):
 	if session.get('AUTH') == True:
 		profesor = Profesor.query.filter_by(idProfesor=int(id)).first()
@@ -49,7 +49,7 @@ def detalleHistorial(id):
 		return inicio()
 	
 
-@app.route("/temasHistorial/<id>")
+@app.route("/alumno/temasHistorial/<id>")
 def temasHistorial(id):
 	if session.get('AUTH') == True:
 		asesoria = Asesoria.query.filter_by(idAsesoria=int(id)).first()
@@ -57,7 +57,7 @@ def temasHistorial(id):
 	else:
 		return inicio()
 	
-@app.route("/historial")
+@app.route("/alumno/displayHistorial")
 def historial():
 	if session.get('AUTH') == True:
 		profesores = Profesor.query.all()
@@ -65,12 +65,13 @@ def historial():
 	else:
 		return inicio()
 
-@app.route("/login", methods=['POST'])
+@app.route("/alumno/login", methods=['POST'])
 def login():
 	pw = encode(request.form['uname'], request.form['psw'])
 	alumno = Alumno.query.filter_by(usuarioAlumno=request.form['uname'], contrasena=pw).first()
 	if alumno:
 		session['AUTH'] = True
+		session['type'] = "ALUMNO"
 		session['id'] = alumno.idAlumno
 		session['username'] = alumno.usuarioAlumno
 		session['nombre'] = alumno.nombre
@@ -78,7 +79,7 @@ def login():
 	else:
 		return render_template('alumno/login.html', val = True)
   
-@app.route("/index")
+@app.route("/alumno/displayAsesorias")
 def index():
 	if session.get('AUTH') == True:
 		profesores = Profesor.query.all()
@@ -87,7 +88,7 @@ def index():
 	else:
 		return inicio()
 
-@app.route("/reservarCita/<int:idAs>")
+@app.route("/alumno/reservarCita/<int:idAs>")
 def reservarCita(idAs):
 	if session.get('AUTH') == True:
 		session['idAs'] = idAs
@@ -107,7 +108,7 @@ def inscripcion(id):
 	else:
 		return inicio()
 	
-@app.route("/cancelarSeminario/<int:id>")
+@app.route("/alumno/cancelarSeminario/<int:id>")
 def cancelarSeminario(id):
 	if session.get('AUTH') == True:
 		registro = registroSeminario.query.filter_by(idRegistroSeminario=id).first()
@@ -117,7 +118,7 @@ def cancelarSeminario(id):
 	else:
 		return inicio()
 
-@app.route("/generarReserva", methods=['POST'])
+@app.route("/alumno/generarReserva", methods=['POST'])
 def generarReserva():
 	if session.get('AUTH') == True:
 		fecha = datetime.date.today()
@@ -129,7 +130,7 @@ def generarReserva():
 	else:
 		return inicio()
 
-@app.route("/cancelarReserva/<int:id>")
+@app.route("/alumno/cancelarReserva/<int:id>")
 def cancelarReserva(id):
 	if session.get('AUTH') == True:
 		cita = Cita.query.filter_by(idCita = id).first()
@@ -139,7 +140,7 @@ def cancelarReserva(id):
 	else:
 		return inicio()
 
-@app.route("/seminarios")
+@app.route("/alumno/displaySeminarios")
 def seminarios():
 	if session.get('AUTH') == True:
 		seminarios = Seminario.query.order_by(Seminario.fecha, Seminario.hora).all()
@@ -147,7 +148,7 @@ def seminarios():
 	else:
 		return inicio()
 
-@app.route("/misSeminarios")
+@app.route("/alumno/misSeminarios")
 def registroSeminarios():
 	if session.get('AUTH') == True:
 		seminarios = registroSeminario.query.filter_by(idAlumno=session['id']).join(Seminario).order_by(Seminario.fecha, Seminario.hora).all()
@@ -155,7 +156,7 @@ def registroSeminarios():
 	else:
 		return inicio()
 
-@app.route("/cerrarSesion")
+@app.route("/alumno/cerrarSesion")
 def cerrarSesion():
 	session['AUTH'] = False
 	return inicio()
