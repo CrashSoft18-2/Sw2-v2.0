@@ -125,7 +125,6 @@ var USUARIO_ACTUAL = sessionStorage.getItem('user');
 						newRef.set(message);
 						
 					}});
-		}
         //Mostrar mensajes de conversaciones anteriores al abrir el chat
 		firebase.database().ref().child("user-messages").child(USUARIO_ACTUAL).once('value').then(function(snapshot) {
 			snapshot.forEach(function(child) {
@@ -151,5 +150,5 @@ var USUARIO_ACTUAL = sessionStorage.getItem('user');
 				});
 			});
 		});
-	
+		}
 	}
