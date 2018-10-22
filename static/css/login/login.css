@@ -76,6 +76,7 @@ body{
 
 .error{
   color: #ff0400;
+  font-weight: bold;
 }
 
 a{
