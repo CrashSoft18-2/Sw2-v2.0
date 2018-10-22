@@ -61,8 +61,8 @@ var USUARIO_ACTUAL = sessionStorage.getItem('user');
     abrirAlRecibir()
     //Abrir ventana de chat al recibir mensaje
     function abrirAlRecibir(){
-        firebase.database().ref().child("user-messages").child(USUARIO_ACTUAL).once('value').then(function(snapshot) {
-				firebase.database().ref().child("Mensajes").child(snapshot.key).on('child_added', function(childsnapshot) {
+        firebase.database().ref().child("user-messages").child(USUARIO_ACTUAL).on('child_added', function(snapshot) {
+				firebase.database().ref().child("Mensajes").child(snapshot.key).once('value').then(function(childsnapshot) {
 					var id;
 					if(snapshot.val() == "1"){
 						user = buscarUsuario(childsnapshot.val().to);
