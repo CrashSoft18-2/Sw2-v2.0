@@ -69,6 +69,11 @@ body{
   font-family: Verdana, Geneva, sans-serif;
 }
 
+.div_error{
+  font-size: 12px;
+  text-align: center;
+}
+
 .error{
   color: #ff0400;
 }
