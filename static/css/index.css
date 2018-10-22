@@ -167,3 +167,16 @@ display:block;
 	text-align: center;
 	float: right;
 }
+
+button{
+	width: 60px;
+	height: 20px;
+	background-color: #ff9e3e;
+	border: none;
+	color: #ffffff !important;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 13px !important;
+	border-radius: 5px;
+}
