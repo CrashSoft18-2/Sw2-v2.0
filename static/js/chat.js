@@ -1,3 +1,6 @@
+
+var USUARIO_ACTUAL = sessionStorage.getItem('user');
+
 //Funcion colapsar chat
 	$('#user_list_header').click(function(){
 		$('#user_list').toggleClass('collapsed');
@@ -21,7 +24,7 @@
 		user.user = child.val().user;
 		user.nombre = String(child.val().nombre);
 		 
-		if(user.user != "{{ usuario }}"){
+		if(user.user != USUARIO_ACTUAL){
 		   usuarios.push(user);
 		   div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = " + String.fromCharCode(34) + "openChatBox(" + index + ")" + String.fromCharCode(34) + ">" + user.nombre + "<span>" + user.id + "</span> </li>");
 	    	
@@ -42,7 +45,7 @@
 		user.user = child.val().user;
 		user.nombre = String(child.val().nombre);
 		
-		if(user.user != "{{ usuario }}"){
+		if(user.user != USUARIO_ACTUAL){
 		   usuarios.push(user);
 		   div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = " + String.fromCharCode(34) + "openChatBox(" + index + ")" + String.fromCharCode(34) + ">" + user.nombre + "<span>" + user.id + "</span> </li>");
 	    	
@@ -58,7 +61,7 @@
     abrirAlRecibir()
     //Abrir ventana de chat al recibir mensaje
     function abrirAlRecibir(){
-        firebase.database().ref().child("user-messages").child("{{usuario}}").on('child_added', function(snapshot) {
+        firebase.database().ref().child("user-messages").child(USUARIO_ACTUAL).on('child_added', function(snapshot) {
 				firebase.database().ref().child("Mensajes").child(snapshot.key).on('value', function(childsnapshot) {
 					var id;
 					if(snapshot.val() == "1"){
@@ -124,7 +127,7 @@
 					}});
 		}
         //Mostrar mensajes de conversaciones anteriores al abrir el chat
-		firebase.database().ref().child("user-messages").child("{{usuario}}").once('value', function(snapshot) {
+		firebase.database().ref().child("user-messages").child(USUARIO_ACTUAL).once('value', function(snapshot) {
 			console.log(snapshot.val());
 			snapshot.forEach(function(child) {
 				console.log("Child:  " + child.key + "//////" + child.val());
