@@ -5,6 +5,10 @@ from flask import session, request, render_template, url_for, redirect
 import datetime
 
 @app.route("/")
+def select():
+	return render_template('index.html')
+	
+@app.route("/alumno")
 def inicio():
 	if session.get('AUTH') != None:
 		if session['AUTH'] == True:
