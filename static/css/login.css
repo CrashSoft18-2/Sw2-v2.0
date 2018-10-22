@@ -19,13 +19,13 @@
   flex-direction: column;
   margin-top: 7%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  
 }
 
 .label{
   margin-top: 10px;
   margin-right: 10px;
   margin-left: 10px;
-  font-family: Verdana, Geneva, sans-serif;
   margin-bottom: 5px;
 }
 
@@ -66,8 +66,18 @@ button{
 
 body{
   background-color: #fc8005;
+  font-family: Verdana, Geneva, sans-serif;
 }
 
 .error{
   color: #ff0400;
+}
+
+a{
+  color: #fc8005;
+  font-size: 12px;
+}
+
+.a{
+  text-align: center;
 }
