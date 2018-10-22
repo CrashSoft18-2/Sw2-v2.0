@@ -179,10 +179,10 @@ def cerrarSesion():
 	return inicio()
 
 @app.route("/profesor")
-def profesor():
+def profesorUC():
 	return render_template('temp/temp.html')
 
 
 @app.route("/administrador")
-def administrador():
+def administradorUC():
 	return render_template('temp/temp.html')
