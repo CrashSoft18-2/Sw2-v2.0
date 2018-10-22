@@ -5,8 +5,18 @@
     margin: auto;
     text-align: center;
 }
-.table{
-    width:50;
+#table{
+  background-color: #d4d8dd;
+  border-radius: 20px;
+  height: 75%;
+  width: 70%;
+  display: block;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 7%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 body{
   background-color: #fc8005;
