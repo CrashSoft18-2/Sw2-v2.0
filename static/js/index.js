@@ -88,38 +88,38 @@ function buscarSeminario() {
  }
 
 function displayAsesorias(){
-  window.location.replace("/index")
+  window.location.replace("/alumno/displayAsesorias")
 }
 
 function displayHistorial(){
-  window.location.replace("/historial")
+  window.location.replace("/alumno/displayHistorial")
 }
 
 function displayMisCitas(){
-  window.location.replace("/misCitas")
+  window.location.replace("/alumno/displayMisCitas")
 }
 
 function displaySeminarios(){
-  window.location.replace("/seminarios")
+  window.location.replace("/alumno/displaySeminarios")
 }
 
 function displayMisSeminarios(){
-  window.location.replace("/misSeminarios")
+  window.location.replace("/alumno/displayMisSeminarios")
 }
 
 function cancelarCita(id){
-   window.location.replace("/cancelarReserva/" + id)
+   window.location.replace("/alumno/cancelarReserva/" + id)
 }
 
 function inscripcion(id){
-   window.location.replace("/inscripcion/" + id)
+   window.location.replace("/alumno/inscripcionSeminario/" + id)
 }
 
 function cancelarSeminario(id){
-   window.location.replace("/cancelarSeminario/" + id)
+   window.location.replace("/alumno/cancelarSeminario/" + id)
 }
 
 function cerrarSesion(){
-   window.location.replace("/cerrarSesion")
+   window.location.replace("/alumno/cerrarSesion")
 }
    
