@@ -130,6 +130,7 @@ var USUARIO_ACTUAL = sessionStorage.getItem('user');
 		firebase.database().ref().child("user-messages").child(USUARIO_ACTUAL).once('value').then(function(snapshot) {
 			snapshot.forEach(function(child) {
 				if(chat.length){
+					console.log(chat.length);
 					chat.empty();
 				}
 				firebase.database().ref().child("Mensajes").child(child.key).once('value').then(function(childsnapshot) {
