@@ -98,7 +98,6 @@ var USUARIO_ACTUAL = sessionStorage.getItem('user');
 			if (chat.parent().parent().children()[1].style.display == "none"){
 				chat.parent().parent().children()[1].style.display = "block";
 			}
-			chat.empty();
 		} else {
 			div = $("<div id = '" + usuarios[index].user + "'> </div>");
 			$(div).chatbox({id: usuario[0].nombre.split(" ")[0],
@@ -129,6 +128,9 @@ var USUARIO_ACTUAL = sessionStorage.getItem('user');
 		}
         //Mostrar mensajes de conversaciones anteriores al abrir el chat
 		firebase.database().ref().child("user-messages").child(USUARIO_ACTUAL).once('value').then(function(snapshot) {
+			if(chat.length){
+				chat.empty();
+			}
 			snapshot.forEach(function(child) {
 				firebase.database().ref().child("Mensajes").child(child.key).once('value').then(function(childsnapshot) {
 					var id;
