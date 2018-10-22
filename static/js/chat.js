@@ -138,8 +138,8 @@ var USUARIO_ACTUAL = sessionStorage.getItem('user');
 			});
 		});
 		
+		console.log(mensajes);
 		for(i = 0; i < mensajes.length; i++){
-			console.log(mensajes);
 			firebase.database().ref().child("Mensajes").child(mensajes[i].key).once('value', function(childsnapshot) {
 				var id;
 				if(mensajes[i].val == "1"){
