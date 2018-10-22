@@ -24,10 +24,10 @@ def inicio():
 			return index()
 		else:
 			session['AUTH'] = False
-			return render_template('index.html')
+			return render_template('alumno/login.html')
 	else:
 		session['AUTH'] = False
-		return render_template('index.html')
+		return render_template('alumno/login.html')
 
 @app.route("/alumno/displayProfesor/<int:id>")
 def profesor(id):
