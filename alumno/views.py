@@ -26,7 +26,8 @@ def profesor(id):
 		profesor = Profesor.query.filter_by(idProfesor=id).first()
 		date = Asesoria.query.filter_by(idProfesor=id).first().fecha
 		fecha = datetime.date.today()
-		return render_template('alumno/detalleProfesor.html', profesor=profesor, fecha=fecha)
+		username = session['username']
+		return render_template('alumno/detalleProfesor.html', profesor=profesor, fecha=fecha, usuario=username)
 	else:
 		return inicio()
 
@@ -35,7 +36,8 @@ def citas():
 	if session.get('AUTH') == True:
 		alumnoid = session['id']
 		citas = Cita.query.filter_by(idAlumno=alumnoid)
-		return render_template('alumno/misCitas.html', citas=citas)
+		username = session['username']
+		return render_template('alumno/misCitas.html', citas=citas, usuario=username)
 	else:
 		return inicio()
 
@@ -44,7 +46,8 @@ def detalleHistorial(id):
 	if session.get('AUTH') == True:
 		profesor = Profesor.query.filter_by(idProfesor=int(id)).first()
 		fecha = datetime.date.today()
-		return render_template('alumno/detalleHistorial.html', profesor=profesor, fecha=fecha)
+		username = session['username']
+		return render_template('alumno/detalleHistorial.html', profesor=profesor, fecha=fecha, usuario=username)
 	else:
 		return inicio()
 	
@@ -53,7 +56,8 @@ def detalleHistorial(id):
 def temasHistorial(id):
 	if session.get('AUTH') == True:
 		asesoria = Asesoria.query.filter_by(idAsesoria=int(id)).first()
-		return render_template('alumno/temasHistorial.html', asesoria=asesoria)
+		username = session['username']
+		return render_template('alumno/temasHistorial.html', asesoria=asesoria, usuario=username)
 	else:
 		return inicio()
 	
@@ -61,7 +65,8 @@ def temasHistorial(id):
 def historial():
 	if session.get('AUTH') == True:
 		profesores = Profesor.query.all()
-		return render_template('alumno/historial.html', profesores=profesores)
+		username = session['username']
+		return render_template('alumno/historial.html', profesores=profesores, usuario=username)
 	else:
 		return inicio()
 
@@ -75,7 +80,7 @@ def login():
 		session['id'] = alumno.idAlumno
 		session['username'] = alumno.usuarioAlumno
 		session['nombre'] = alumno.nombre
-		return index()
+		return redirect("/alumno/displayAsesorias")
 	else:
 		return render_template('alumno/login.html', val = True)
   
@@ -93,12 +98,13 @@ def reservarCita(idAs):
 	if session.get('AUTH') == True:
 		session['idAs'] = idAs
 		asesoria = Asesoria.query.filter_by(idAsesoria=idAs).first()
-		return render_template('alumno/reservarCita.html', asesoria=asesoria)
+		username = session['username']
+		return render_template('alumno/reservarCita.html', asesoria=asesoria, usuario=username)
 	else:
 		return inicio()
 	
 
-@app.route("/inscripcion/<int:id>")
+@app.route("/alumno/inscripcionSeminario/<int:id>")
 def inscripcion(id):
 	if session.get('AUTH') == True:
 		registro = registroSeminario(idAlumno=session['id'], idSeminario=id)
@@ -125,8 +131,9 @@ def generarReserva():
 		cita = Cita(idAlumno=session['id'], idAsesoria=session['idAs'], fecha=fecha, pregunta=request.form['consulta'])
 		db.session.add(cita)
 		db.session.commit()
+		username = session['username']
 		asesoria = Asesoria.query.filter_by(idAsesoria=session['idAs']).first()
-		return render_template('alumno/reservarCita.html', asesoria=asesoria)
+		return render_template('alumno/reservarCita.html', asesoria=asesoria, usuario=username)
 	else:
 		return inicio()
 
@@ -144,7 +151,8 @@ def cancelarReserva(id):
 def seminarios():
 	if session.get('AUTH') == True:
 		seminarios = Seminario.query.order_by(Seminario.fecha, Seminario.hora).all()
-		return render_template('alumno/seminarios.html', seminarios=seminarios)
+		username = session['username']
+		return render_template('alumno/seminarios.html', seminarios=seminarios, usuario=username)
 	else:
 		return inicio()
 
@@ -152,7 +160,8 @@ def seminarios():
 def registroSeminarios():
 	if session.get('AUTH') == True:
 		seminarios = registroSeminario.query.filter_by(idAlumno=session['id']).join(Seminario).order_by(Seminario.fecha, Seminario.hora).all()
-		return render_template('alumno/misSeminarios.html', registros=seminarios)
+		username = session['username']
+		return render_template('alumno/misSeminarios.html', registros=seminarios, usuario=username)
 	else:
 		return inicio()
 
