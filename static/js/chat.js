@@ -98,6 +98,7 @@ var USUARIO_ACTUAL = sessionStorage.getItem('user');
 			if (chat.parent().parent().children()[1].style.display == "none"){
 				chat.parent().parent().children()[1].style.display = "block";
 			}
+			chat.empty();
 		} else {
 			div = $("<div id = '" + usuarios[index].user + "'> </div>");
 			$(div).chatbox({id: usuario[0].nombre.split(" ")[0],
@@ -140,7 +141,6 @@ var USUARIO_ACTUAL = sessionStorage.getItem('user');
 					}
 					if (user.user == usuarios[index].user){
 						if(chat.length){
-							chat.empty();
 							chat.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
 						} else{
 							div.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
