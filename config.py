@@ -1,4 +1,5 @@
 from app import app
+import os
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 app.secret_key = b'1234'
