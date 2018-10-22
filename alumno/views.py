@@ -177,3 +177,12 @@ def registroSeminarios():
 def cerrarSesion():
 	session['AUTH'] = False
 	return inicio()
+
+@app.route("/profesor")
+def profesor():
+	return render_template('temp/temp.html')
+
+
+@app.route("/administrador")
+def administrador():
+	return render_template('temp/temp.html')
