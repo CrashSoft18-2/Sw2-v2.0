@@ -1,4 +1,4 @@
-from alumno import *
+from alumno.views import *
 
 @app.route("/profesor")
 def inicio():
