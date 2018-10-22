@@ -6,7 +6,16 @@ import datetime
 
 @app.route("/")
 def select():
-	return render_template('index.html')
+	if session.get('AUTH') != None:
+		if session['AUTH'] == True:
+			return index()
+		else:
+			session['AUTH'] = False
+			return render_template('index.html')
+	else:
+		session['AUTH'] = False
+		return render_template('index.html')
+
 	
 @app.route("/alumno")
 def inicio():
@@ -15,10 +24,10 @@ def inicio():
 			return index()
 		else:
 			session['AUTH'] = False
-			return render_template('alumno/login.html', val = session['AUTH'])
+			return render_template('index.html')
 	else:
 		session['AUTH'] = False
-		return render_template('alumno/login.html', val = session['AUTH'])
+		return render_template('index.html')
 
 @app.route("/alumno/displayProfesor/<int:id>")
 def profesor(id):
@@ -156,7 +165,7 @@ def seminarios():
 	else:
 		return inicio()
 
-@app.route("/alumno/misSeminarios")
+@app.route("/alumno/displayMisSeminarios")
 def registroSeminarios():
 	if session.get('AUTH') == True:
 		seminarios = registroSeminario.query.filter_by(idAlumno=session['id']).join(Seminario).order_by(Seminario.fecha, Seminario.hora).all()
