@@ -1,8 +1,6 @@
 from utils import *
 from models import *
 from flask import session, request, render_template, url_for, redirect
-from profesor.views import *
-
 import datetime
 
 @app.route("/")
