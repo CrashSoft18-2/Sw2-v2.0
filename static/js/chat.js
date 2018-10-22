@@ -127,7 +127,7 @@ var USUARIO_ACTUAL = sessionStorage.getItem('user');
 					}});
 		}
         //Mostrar mensajes de conversaciones anteriores al abrir el chat
-		firebase.database().ref().child("user-messages").child(USUARIO_ACTUAL).once('value', function(snapshot) {
+		firebase.database().ref().child("user-messages").child(USUARIO_ACTUAL).once('value').then(function(snapshot) {
 			console.log(snapshot.val());
 			snapshot.forEach(function(child) {
 				console.log("Child:  " + child.key + "//////" + child.val());
@@ -140,7 +140,7 @@ var USUARIO_ACTUAL = sessionStorage.getItem('user');
 		
 		console.log(mensajes);
 		for(i = 0; i < mensajes.length; i++){
-			firebase.database().ref().child("Mensajes").child(mensajes[i].key).once('value', function(childsnapshot) {
+			firebase.database().ref().child("Mensajes").child(mensajes[i].key).once('value').then(function(childsnapshot) {
 				var id;
 				if(mensajes[i].val == "1"){
 					id = usuario[0].nombre.split(" ")[0];
