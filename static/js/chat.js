@@ -129,7 +129,7 @@ var USUARIO_ACTUAL = sessionStorage.getItem('user');
         //Mostrar mensajes de conversaciones anteriores al abrir el chat
 		firebase.database().ref().child("user-messages").child(USUARIO_ACTUAL).once('value').then(function(snapshot) {
 			snapshot.forEach(function(child) {
-				if(chat.length){
+				if(chat.length >= 0){
 					console.log(chat.length);
 					chat.empty();
 				}
