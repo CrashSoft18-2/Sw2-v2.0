@@ -140,7 +140,7 @@ var USUARIO_ACTUAL = sessionStorage.getItem('user');
 					}
 					if (user.user == usuarios[index].user){
 						if(chat.length){
-							chat.remove();
+							chat.chatbox("option", "boxManager").remove();
 							chat.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
 						} else{
 							div.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
