@@ -5,5 +5,5 @@ function displayProfesor(){
   window.location.replace("/profesor")
 }
 function displayAdministrador(){
-  //window.location.replace("/administrador")
+  window.location.replace("/administrador")
 }
