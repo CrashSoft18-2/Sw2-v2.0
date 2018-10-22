@@ -1,12 +1,21 @@
 .logo{
-    margin-top: 10%;
-    width: 20%;
+    margin-top: 5%;
+    width: 90%;
+    height: 90%
 }
 .imgcontainer{
+    vertical-align: center;
     margin: auto;
     text-align: center;
+    width: 200;
+    height: 200;
+    border-radius: 50%;
+    margin-top: 5%;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 #table{
+  background-color: #ffffff;
   width: 70%;
   display: block;
   margin: auto;
@@ -17,10 +26,11 @@
 }
 table{
   text-align:center;
+  vertical-align: center !important;
 }
 td{
-  vertical-align: center;
+  vertical-align: center  !important;
 }
 body{
-  background-color: #fc8005;
+  background-color: #fc8005 !important;
 }
