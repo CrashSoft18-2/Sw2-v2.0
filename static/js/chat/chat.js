@@ -157,7 +157,7 @@ var mensajes = []
 						}
 						
 						if (user.user == usuarios[index].user){
-							if (noRepetido(mensaje)){
+							if (noRepetido(child.key)){
 								mensajes.push(child.key);
 								if(chat.length){
 									chat.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
