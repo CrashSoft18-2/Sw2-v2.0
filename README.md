@@ -58,7 +58,3 @@ Para acceder a la demo:
 - [ ] Desarrollo App Administrador
 - [ ] Arreglar bug del Chat
 - [ ] Bugs fix (Otros)
-
-## Utils
-
-https://stackoverflow.com/questions/46592801/how-to-insert-items-in-firebase-database-using-different-ids
