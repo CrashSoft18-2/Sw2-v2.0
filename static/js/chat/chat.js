@@ -106,7 +106,6 @@ var mensajes = []
 	function openChatBox(index){
 		let chat = $("#" + usuarios[index].user);
 		var div;
-		var mensajes = [];
 		if (chat.length){
 			if (chat.parent().parent().children()[1].style.display == "none"){
 				chat.parent().parent().children()[1].style.display = "block";
