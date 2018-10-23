@@ -94,8 +94,8 @@ var mensajes = []
 
 	function noRepetido(id){
 		var no = false;
-		for(i = 0; i<mensaje.length; i++){
-			if(mensaje[i] == id){
+		for(i = 0; i< mensajes.length; i++){
+			if(mensajes[i] == id){
 				no = true
 				break;
 			}
