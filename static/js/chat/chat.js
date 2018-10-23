@@ -142,7 +142,9 @@ var USUARIO_ACTUAL = sessionStorage.getItem('user');
 							id = user.nombre.split(" ")[0];
 						}
 						if (user.user == usuarios[index].user){
+							console.log(childsnapshot.val().message);
 							if(chat.length){
+								console.log(chat);
 								chat.empty();
 								chat.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
 							} else{
