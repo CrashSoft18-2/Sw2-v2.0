@@ -145,7 +145,6 @@ var USUARIO_ACTUAL = sessionStorage.getItem('user');
 							console.log(childsnapshot.val().message);
 							if(chat.length){
 								console.log(chat);
-								chat.empty();
 								chat.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
 							} else{
 								div.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
