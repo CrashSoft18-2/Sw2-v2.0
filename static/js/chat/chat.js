@@ -93,10 +93,10 @@ var mensajes = []
 	}
 
 	function noRepetido(id){
-		var no = false;
+		var noRepe = true;
 		let chat = $("#" + id);
 		if (chat.length){
-			no = true;
+			noRepe = false;
 		}
 		return no;
 	}
