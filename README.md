@@ -35,7 +35,7 @@ Para acceder a la demo:
 - [x] Chat - Bug fix
 - [x] Chat - Lista de usuarios
 - [x] Chat - Envío de Mensajes
-- [ ] Chat - Recepción de Mensajes
+- [x] Chat - Recepción de Mensajes
 - [x] **Ordenar código (app.py, config.py, view.py, models.py)**
 - [x] **Ordenar código (separar por paquetes)**
 
@@ -56,7 +56,8 @@ Para acceder a la demo:
 
 ### Sprint 5
 - [ ] Desarrollo App Administrador
-- [ ] Bugs fix
+- [ ] Arreglar bug del Chat
+- [ ] Bugs fix (Otros)
 
 ## Utils
 
