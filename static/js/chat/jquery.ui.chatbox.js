@@ -34,10 +34,11 @@
                 init: function(elem) {
                     this.elem = elem;
                 },
-                addMsg: function(peer, msg) {
+                addMsg: function(peer, msg, id) {
                     var self = this;
                     var box = self.elem.uiChatboxLog;
                     var e = document.createElement('div');
+                    e.setAttribute("id", id);
                     box.append(e);
                     $(e).hide();
 
