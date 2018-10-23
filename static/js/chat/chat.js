@@ -70,6 +70,7 @@ var mensajes = []
 					} else if(snapshot.val() == "2"){
 						user = buscarUsuario(childsnapshot.val().from);
 					}
+					onChildAdded(user);
 				});
         });
     }
