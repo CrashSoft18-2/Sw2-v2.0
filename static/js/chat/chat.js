@@ -98,7 +98,7 @@ var mensajes = []
 		if (chat.length){
 			noRepe = false;
 		}
-		return no;
+		return noRepe;
 	}
 
 	function openChatBox(index){
