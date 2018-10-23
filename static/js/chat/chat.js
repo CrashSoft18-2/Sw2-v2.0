@@ -70,7 +70,6 @@ var mensajes = []
 					} else if(snapshot.val() == "2"){
 						user = buscarUsuario(childsnapshot.val().from);
 					}
-					onChildAdded(user.user);
 				});
         });
     }
@@ -93,12 +92,10 @@ var mensajes = []
 	}
 
 	function noRepetido(id){
-		var no = true;
-		for(i = 0; i< mensajes.length; i++){
-			if(mensajes[i] == id){
-				no = false;
-				break;
-			}
+		var no = false;
+		let chat = $("#" + id);
+		if (chat.length){
+			no = true;
 		}
 		return no;
 	}
@@ -156,9 +153,9 @@ var mensajes = []
 							if (noRepetido(child.key)){
 								mensajes.push(child.key);
 								if(chat.length){
-									chat.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
+									chat.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message, child.key);
 								} else{
-									div.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message);
+									div.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message, child.key);
 								}
 							}
 						}
