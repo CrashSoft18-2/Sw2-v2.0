@@ -9,5 +9,5 @@ def profesorInicio():
 	return render_template('profesor/login.html')
 
 @app.route("/profesor/login", methods=['POST'])
-def login():
+def loginProfesor():
 	return render_template('temp/temp.html')
