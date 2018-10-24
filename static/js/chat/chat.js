@@ -141,6 +141,7 @@ var mensajes = []
 			firebase.database().ref().child("user-messages").child(USUARIO_ACTUAL).once('value').then(function(snapshot) {
 				snapshot.forEach(function(child) {
 					firebase.database().ref().child("Mensajes").child(child.key).once('value').then(function(childsnapshot) {
+						console.log(childsnapshot)
 						var id;
 						if(child.val() == "1"){
 							id = usuario[0].nombre.split(" ")[0];
