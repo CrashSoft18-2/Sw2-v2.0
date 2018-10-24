@@ -5,5 +5,5 @@ from flask import session, request, render_template, url_for, redirect
 import datetime
 
 @app.route("/profesor")
-def inicio():
+def inicio_1():
 	return render_template('profesor/login.html', val=False)
