@@ -7,6 +7,17 @@ import datetime
 
 @app.route("/profesor")
 def profesorInicio():
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Profesor':
+			return loginProfesor()
+		elif session['AUTH'] == 'Alumno':
+			return redirect("/alumno"/)
+		else:
+			session['AUTH'] = 'Vacio'
+			return render_template('alumno/login.html', val = False)
+	else:
+		session['AUTH'] = 'Vacio'
+		return render_template('alumno/login.html', val = False)
 	return render_template('profesor/login.html')
 
 @app.route("/profesor/login", methods=['POST'])
