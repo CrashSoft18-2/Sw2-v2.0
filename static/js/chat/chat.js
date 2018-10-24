@@ -69,7 +69,7 @@ function agregarProfesores(){
 		
 		if(user.user != USUARIO_ACTUAL){
 		   usuarios.push(user);
-		   div_user_list.append( "<li style='list-style: none;' class = 'user_item' onClick = " + String.fromCharCode(34) + "openChatBox(" + index + ")" + String.fromCharCode(34) + ">" + user.nombre + "<span class='span'>" + "<img src='http://icons.iconarchive.com/icons/iconsmind/outline/256/Professor-icon.png' alt='alumno' height='25' width='25'>" + "</span> </li>");
+		   div_user_list.append( "<li style='list-style: none;' id='" + user.user + user.id + "' class = 'user_item' onClick = " + String.fromCharCode(34) + "openChatBox(" + index + ")" + String.fromCharCode(34) + ">" + user.nombre + "<span class='span'>" + "<img src='http://icons.iconarchive.com/icons/iconsmind/outline/256/Professor-icon.png' alt='alumno' height='25' width='25'>" + "</span> </li>");
 	    	
 		   $('.user_item').click(function(){
 		   });
