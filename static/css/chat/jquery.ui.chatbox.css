@@ -75,3 +75,8 @@
     border: 0;
 }
 
+#user_list_content{
+    padding-bottom: 0 !important;
+    overflow: scroll; 
+    height: 555px;
+}
