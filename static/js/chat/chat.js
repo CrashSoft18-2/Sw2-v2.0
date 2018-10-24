@@ -15,6 +15,11 @@ window.onload = main;
 function main(){
 	$('#user_list_header').click(function(){
 		$('#user_list').toggleClass('collapsed');
+		if ($('#searchChat).is(":visible")){
+			$('#searchChat).hide();
+		} else{
+		      	$('#searchChat).show();
+		}
 	});
 	$('#user_list').append("<input type='text' onkeyup='filter()' id='searchChat' placeholder='Buscar Contactos'/>");
 	agregarAlumnos();
