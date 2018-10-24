@@ -27,9 +27,9 @@ function filter(){
 	
 	$('.user_item').each(function(){
 		if(this.textContent.indexOf(expr) == -1){
-			this.hide();
+			this.css("display", "none");
 		} else {
-			this.show();
+			this.css("display", "block");
 		}
 	});
 }
