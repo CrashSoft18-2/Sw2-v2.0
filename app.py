@@ -5,7 +5,6 @@ import os
 app = Flask(__name__)
 db = SQLAlchemy(app)
 
-import models
 from profesor import views
 from alumno import views
 
