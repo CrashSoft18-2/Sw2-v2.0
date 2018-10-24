@@ -16,6 +16,7 @@ function main(){
 	$('#user_list_header').click(function(){
 		$('#user_list').toggleClass('collapsed');
 	});
+	$('#user_list').append("<input type='text' id='searchChat'/>");
 	agregarAlumnos();
 	agregarProfesores();
 	abrirAlRecibir();
