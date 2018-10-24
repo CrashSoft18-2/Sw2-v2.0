@@ -64,6 +64,5 @@
 }
 
 #searchChat{
-    background: url(http://www.clker.com/cliparts/9/T/2/h/X/7/search-icon-hi.png) no-repeat scroll 7px 7px;
-    padding-left:30px;
+    font-family: 'FontAwesome';
 }
