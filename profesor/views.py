@@ -12,6 +12,8 @@ def profesorInicio():
 			return loginProfesor()
 		elif session['AUTH'] == 'Alumno':
 			return redirect('/alumno')
+		elif session['AUTH'] == 'Administrador':
+			return redirect('/administrador')
 		else:
 			session['AUTH'] = 'Vacio'
 			return render_template('profesor/login.html', val = False)
