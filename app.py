@@ -7,6 +7,7 @@ db = SQLAlchemy(app)
 
 from alumno.views import *
 from profesor.views import *
+from administrador.views import *
 
 import config
 
