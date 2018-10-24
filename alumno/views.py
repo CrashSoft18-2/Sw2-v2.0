@@ -178,12 +178,3 @@ def registroSeminarios():
 def cerrarSesion():
 	session['AUTH'] = False
 	return inicio()
-
-@app.route("/profesor")
-def profesorUC():
-	return render_template('temp/temp.html')
-
-
-@app.route("/administrador")
-def administradorUC():
-	return render_template('temp/temp.html')
