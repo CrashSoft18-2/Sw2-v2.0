@@ -16,10 +16,18 @@ function main(){
 	$('#user_list_header').click(function(){
 		$('#user_list').toggleClass('collapsed');
 	});
-	$('#user_list').append("<input type='text' id='searchChat'/>");
+	$('#user_list').append("<input type='text' onkeypress='filter()' id='searchChat' placeholder='&#61447; Buscar'/>");
 	agregarAlumnos();
 	agregarProfesores();
 	abrirAlRecibir();
+}
+
+function filter(){
+	expr = document.getElementById("searchChat").value;
+	
+	$('.user_item').each(function(item){
+		console.log(item.text());
+	});
 }
 	
 	
