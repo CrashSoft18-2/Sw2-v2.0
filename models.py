@@ -1,8 +1,3 @@
-
-from app import db
-
-
-
 class Alumno(db.Model):
     idAlumno = db.Column(db.Integer, primary_key=True)
     usuarioAlumno = db.Column(db.String, unique=True, nullable=False)
