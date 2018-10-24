@@ -16,7 +16,7 @@ function main(){
 	$('#user_list_header').click(function(){
 		$('#user_list').toggleClass('collapsed');
 	});
-	$('#user_list').append("<input type='text' onkeypress='filter()' id='searchChat' placeholder='&#61447; Buscar'/>");
+	$('#user_list').append("<input type='text' onkeypress='filter()' id='searchChat' placeholder='Buscar Contactos'/>");
 	agregarAlumnos();
 	agregarProfesores();
 	abrirAlRecibir();
