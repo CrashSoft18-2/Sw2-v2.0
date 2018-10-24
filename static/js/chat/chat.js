@@ -26,7 +26,7 @@ function filter(){
 	expr = document.getElementById("searchChat").value;
 	
 	$('.user_item').each(function(){
-		if(this.textContent.indexOf(expr) == -1){
+		if(this.textContent.toUpperCase().indexOf(expr.toUpperCase()) == -1){
 			$('#' + this.id).hide();
 		} else {
 			$('#' + this.id).show();
