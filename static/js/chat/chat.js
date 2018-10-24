@@ -16,7 +16,7 @@ function main(){
 	$('#user_list_header').click(function(){
 		$('#user_list').toggleClass('collapsed');
 	});
-	$('#user_list').append("<input type='text' onkeypress='filter()' id='searchChat' placeholder='Buscar Contactos'/>");
+	$('#user_list').append("<input type='text' onkeyup='filter()' id='searchChat' placeholder='Buscar Contactos'/>");
 	agregarAlumnos();
 	agregarProfesores();
 	abrirAlRecibir();
@@ -83,17 +83,17 @@ function agregarProfesores(){
    
     //Abrir ventana de chat al recibir mensaje
 function abrirAlRecibir(){
-firebase.database().ref().child("user-messages").child(USUARIO_ACTUAL).on('child_added', function(snapshot) {
-			firebase.database().ref().child("Mensajes").child(snapshot.key).once('value').then(function(childsnapshot) {
-				var id;
-				if(snapshot.val() == "1"){
-					user = buscarUsuario(childsnapshot.val().to);
-				} else if(snapshot.val() == "2"){
-					user = buscarUsuario(childsnapshot.val().from);
-				}
-				onChildAdded(user.user);
-			});
-});
+	firebase.database().ref().child("user-messages").child(USUARIO_ACTUAL).on('child_added', function(snapshot) {
+				firebase.database().ref().child("Mensajes").child(snapshot.key).once('value').then(function(childsnapshot) {
+					var id;
+					if(snapshot.val() == "1"){
+						user = buscarUsuario(childsnapshot.val().to);
+					} else if(snapshot.val() == "2"){
+						user = buscarUsuario(childsnapshot.val().from);
+					}
+					onChildAdded(user.user);
+				});
+	});
 }
 
 function buscarUsuario(user){
@@ -155,33 +155,33 @@ function openChatBox(index){
 					ref_storage.child(user.user).update(data)
 					newRef.set(message);
 
-				}});
-		}
+		}});
+	}
 
 		//Mostrar mensajes de conversaciones anteriores al abrir el chat
-		firebase.database().ref().child("user-messages").child(USUARIO_ACTUAL).once('value').then(function(snapshot) {
-			snapshot.forEach(function(child) {
-				firebase.database().ref().child("Mensajes").child(child.key).once('value').then(function(childsnapshot) {
-					var id;
-					if(child.val() == "1"){
-						id = usuario[0].nombre.split(" ")[0];
-						user = buscarUsuario(childsnapshot.val().to);
-					} else if(child.val() == "2"){
-						user = buscarUsuario(childsnapshot.val().from);
-						id = user.nombre.split(" ")[0];
-					}
+	firebase.database().ref().child("user-messages").child(USUARIO_ACTUAL).once('value').then(function(snapshot) {
+		snapshot.forEach(function(child) {
+			firebase.database().ref().child("Mensajes").child(child.key).once('value').then(function(childsnapshot) {
+				var id;
+				if(child.val() == "1"){
+					id = usuario[0].nombre.split(" ")[0];
+					user = buscarUsuario(childsnapshot.val().to);
+				} else if(child.val() == "2"){
+					user = buscarUsuario(childsnapshot.val().from);
+					id = user.nombre.split(" ")[0];
+				}
 
-					if (user.user == usuarios[index].user){
-						if (noRepetido(child.key)){
-							mensajes.push(child.key);
-							if(chat.length){
-								chat.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message, child.key);
-							} else{
-								div.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message, child.key);
-							}
+				if (user.user == usuarios[index].user){
+					if (noRepetido(child.key)){
+						mensajes.push(child.key);
+						if(chat.length){
+							chat.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message, child.key);
+						} else{
+							div.chatbox("option", "boxManager").addMsg(id, childsnapshot.val().message, child.key);
 						}
 					}
-				});
+				}
 			});
 		});
-	}
+	});
+}
