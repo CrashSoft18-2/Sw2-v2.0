@@ -46,7 +46,7 @@ function main(){
 	
 	
     //Agregar profesores a la lista del chat
-function agregarProfesor(){
+function agregarProfesores(){
 	firebase.database().ref().child("Usuarios").child("Profesores").on('value', function(snapshot) {
 	    snapshot.forEach(function(child) {
 		var user = {}
