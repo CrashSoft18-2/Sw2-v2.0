@@ -26,7 +26,11 @@ function filter(){
 	expr = document.getElementById("searchChat").value;
 	
 	$('.user_item').each(function(){
-		console.log(this.textContent.indexOf(expr));
+		if(this.textContent.indexOf(expr) == -1){
+			this.hide();
+		} else {
+			this.show();
+		}
 	});
 }
 	
