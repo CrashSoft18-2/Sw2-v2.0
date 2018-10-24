@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 db = SQLAlchemy(app)
 
-from alumno.views import *
+from alumno.views import select, inicio
 from profesor.views import *
 
 import config
