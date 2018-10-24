@@ -11,14 +11,13 @@ def profesorInicio():
 		if session['AUTH'] == 'Profesor':
 			return loginProfesor()
 		elif session['AUTH'] == 'Alumno':
-			return redirect("/alumno"/)
+			return redirect('/alumno')
 		else:
 			session['AUTH'] = 'Vacio'
-			return render_template('alumno/login.html', val = False)
+			return render_template('profesor/login.html', val = False)
 	else:
 		session['AUTH'] = 'Vacio'
-		return render_template('alumno/login.html', val = False)
-	return render_template('profesor/login.html')
+		return render_template('profesor/login.html', val = False)
 
 @app.route("/profesor/login", methods=['POST'])
 def loginProfesor():
