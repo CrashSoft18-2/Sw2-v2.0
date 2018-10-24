@@ -5,9 +5,9 @@ from flask import session, request, render_template, url_for, redirect
 import datetime
 
 @app.route("/profesor")
-def profesorLogin():
+def profesorInicio():
 	return render_template('profesor/login.html')
 
-@app.route("/profesor")
-def profesorUC():
+@app.route("/profesor/login", methods=['POST'])
+def login():
 	return render_template('temp/temp.html')
