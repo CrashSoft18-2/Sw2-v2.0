@@ -1,5 +1,5 @@
 from utils import *
-from models import *
+from .models import *
 from flask import session, request, render_template, url_for, redirect
 import datetime
 
