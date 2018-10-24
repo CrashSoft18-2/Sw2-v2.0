@@ -26,7 +26,7 @@ function filter(){
 	expr = document.getElementById("searchChat").value;
 	
 	$('.user_item').each(function(){
-		console.log(thix.textContent);
+		console.log(thix.textContent.indexOf(expr));
 	});
 }
 	
