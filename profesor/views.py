@@ -6,7 +6,7 @@ from flask import session, request, render_template, url_for, redirect
 import datetime
 
 @app.route("/profesor")
-def profesorInicio():
+def inicioProfesor():
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
 			return loginProfesor()
@@ -38,7 +38,7 @@ def loginProfesor():
 
 	
 @app.route("/profesor/displayProximasAsesorias")
-def index():
+def indexProfesor():
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
 			profesor = Profesor.query.filter_by(usuarioProfesor=session['username']).first()
