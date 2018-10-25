@@ -27,8 +27,8 @@ def inicio():
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Alumno':
 			return index()
-		elif session['AUTH'] == 'Alumno':
-			return redirect('/alumno')
+		elif session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
 		elif session['AUTH'] == 'Administrador':
 			return redirect('/administrador')
 		else:
@@ -60,8 +60,8 @@ def index():
 			profesores = Profesor.query.all()
 			username = session['username']
 			return render_template('alumno/index.html', profesores = profesores, usuario = username)
-		elif session['AUTH'] == 'Alumno':
-			return redirect('/alumno')
+		elif session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
 		elif session['AUTH'] == 'Administrador':
 			return redirect('/administrador')
 		else:
@@ -82,8 +82,8 @@ def profesor(id):
 			fecha = datetime.date.today()
 			username = session['username']
 			return render_template('alumno/detalleProfesor.html', profesor=profesor, fecha=fecha, usuario=username)
-		elif session['AUTH'] == 'Alumno':
-			return redirect('/alumno')
+		elif session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
 		elif session['AUTH'] == 'Administrador':
 			return redirect('/administrador')
 		else:
@@ -101,8 +101,8 @@ def reservarCita(idAs):
 			asesoria = Asesoria.query.filter_by(idAsesoria=idAs).first()
 			username = session['username']
 			return render_template('alumno/reservarCita.html', asesoria=asesoria, usuario=username)
-		elif session['AUTH'] == 'Alumno':
-			return redirect('/alumno')
+		elif session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
 		elif session['AUTH'] == 'Administrador':
 			return redirect('/administrador')
 		else:
@@ -124,8 +124,8 @@ def generarReserva():
 			username = session['username']
 			asesoria = Asesoria.query.filter_by(idAsesoria=session['idAs']).first()
 			return render_template('alumno/reservarCita.html', asesoria=asesoria, usuario=username)
-		elif session['AUTH'] == 'Alumno':
-			return redirect('/alumno')
+		elif session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
 		elif session['AUTH'] == 'Administrador':
 			return redirect('/administrador')
 		else:
@@ -143,8 +143,8 @@ def historial():
 			profesores = Profesor.query.all()
 			username = session['username']
 			return render_template('alumno/historial.html', profesores=profesores, usuario=username)
-		elif session['AUTH'] == 'Alumno':
-			return redirect('/alumno')
+		elif session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
 		elif session['AUTH'] == 'Administrador':
 			return redirect('/administrador')
 		else:
@@ -163,8 +163,8 @@ def detalleHistorial(id):
 			fecha = datetime.date.today()
 			username = session['username']
 			return render_template('alumno/detalleHistorial.html', profesor=profesor, fecha=fecha, usuario=username)
-		elif session['AUTH'] == 'Alumno':
-			return redirect('/alumno')
+		elif session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
 		elif session['AUTH'] == 'Administrador':
 			return redirect('/administrador')
 		else:
@@ -182,8 +182,8 @@ def temasHistorial(id):
 			asesoria = Asesoria.query.filter_by(idAsesoria=int(id)).first()
 			username = session['username']
 			return render_template('alumno/temasHistorial.html', asesoria=asesoria, usuario=username)
-		elif session['AUTH'] == 'Alumno':
-			return redirect('/alumno')
+		elif session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
 		elif session['AUTH'] == 'Administrador':
 			return redirect('/administrador')
 		else:
@@ -202,8 +202,8 @@ def citas():
 			citas = Cita.query.filter_by(idAlumno=alumnoid)
 			username = session['username']
 			return render_template('alumno/misCitas.html', citas=citas, usuario=username)
-		elif session['AUTH'] == 'Alumno':
-			return redirect('/alumno')
+		elif session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
 		elif session['AUTH'] == 'Administrador':
 			return redirect('/administrador')
 		else:
@@ -222,8 +222,8 @@ def cancelarReserva(id):
 			db.session.delete(cita)
 			db.session.commit()
 			return redirect('/alumno/displayMisCitas')
-		elif session['AUTH'] == 'Alumno':
-			return redirect('/alumno')
+		elif session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
 		elif session['AUTH'] == 'Administrador':
 			return redirect('/administrador')
 		else:
@@ -241,8 +241,8 @@ def seminarios():
 			seminarios = Seminario.query.order_by(Seminario.fecha, Seminario.hora).all()
 			username = session['username']
 			return render_template('alumno/seminarios.html', seminarios=seminarios, usuario=username)
-		elif session['AUTH'] == 'Alumno':
-			return redirect('/alumno')
+		elif session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
 		elif session['AUTH'] == 'Administrador':
 			return redirect('/administrador')
 		else:
@@ -260,8 +260,8 @@ def inscripcion(id):
 			db.session.add(registro)
 			db.session.commit()
 			return redirect("/alumno/displaySeminarios")
-		elif session['AUTH'] == 'Alumno':
-			return redirect('/alumno')
+		elif session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
 		elif session['AUTH'] == 'Administrador':
 			return redirect('/administrador')
 		else:
@@ -278,8 +278,8 @@ def registroSeminarios():
 			seminarios = registroSeminario.query.filter_by(idAlumno=session['id']).join(Seminario).order_by(Seminario.fecha, Seminario.hora).all()
 			username = session['username']
 			return render_template('alumno/misSeminarios.html', registros=seminarios, usuario=username)
-		elif session['AUTH'] == 'Alumno':
-			return redirect('/alumno')
+		elif session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
 		elif session['AUTH'] == 'Administrador':
 			return redirect('/administrador')
 		else:
@@ -297,8 +297,8 @@ def cancelarSeminario(id):
 			db.session.delete(registro)
 			db.session.commit()
 			return registroSeminarios()
-		elif session['AUTH'] == 'Alumno':
-			return redirect('/alumno')
+		elif session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
 		elif session['AUTH'] == 'Administrador':
 			return redirect('/administrador')
 		else:
