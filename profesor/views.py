@@ -37,7 +37,7 @@ def loginProfesor():
 		return render_template('profesor/login.html', val = True)
 
 	
-@app.route("profesor/displayProximasAsesorias")
+@app.route("/profesor/displayProximasAsesorias")
 def index():
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
