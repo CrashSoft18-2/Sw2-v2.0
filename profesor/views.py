@@ -27,7 +27,7 @@ def inicioProfesor():
 def loginProfesor():
 	pw = encode(request.form['uname'], request.form['psw'])
 	profesor = Profesor.query.filter_by(usuarioProfesor=request.form['uname'], contrasena=pw).first()
-	if alumno:
+	if profesor:
 		session['AUTH'] = 'Profesor'
 		session['id'] = profesor.idProfesor
 		session['username'] = profesor.usuarioProfesor
