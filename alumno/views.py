@@ -311,4 +311,7 @@ def cancelarSeminario(id):
 @app.route("/alumno/cerrarSesion")
 def cerrarSesion():
 	session['AUTH'] = 'Vacio'
+	session['id'] = None
+	session['username'] = None
+	session['nombre'] = None
 	return redirect("/alumno")
