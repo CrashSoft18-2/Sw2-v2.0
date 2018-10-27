@@ -59,3 +59,11 @@ def indexProfesor():
 		session['AUTH'] = 'Vacio'
 		return redirect("/profesor")
 	
+
+@app.route("/profesor/cerrarSesion")
+def cerrarSesionProfesor():
+	session['AUTH'] = 'Vacio'
+	session['id'] = None
+	session['username'] = None
+	session['nombre'] = None
+return redirect("/profesor")
