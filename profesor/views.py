@@ -43,7 +43,8 @@ def indexProfesor():
 		if session['AUTH'] == 'Profesor':
 			profesor = Profesor.query.filter_by(usuarioProfesor=session['username']).first()
 			username = session['username']
-			return render_template('profesor/proximasAsesorias.html', profesor = profesor, usuario = username)
+			fecha = datetime.date.today()
+			return render_template('profesor/proximasAsesorias.html', profesor = profesor, usuario = username, fecha = fecha)
 		elif session['AUTH'] == 'Alumno':
 			return redirect('/alumno')
 		elif session['AUTH'] == 'Administrador':
