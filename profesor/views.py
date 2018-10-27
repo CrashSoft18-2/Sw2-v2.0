@@ -26,6 +26,7 @@ def inicioProfesor():
 @app.route("/profesor/login", methods=['POST'])
 def loginProfesor():
 	pw = encode(request.form['uname'], request.form['psw'])
+	print(pw)
 	profesores = Profesor.query.all()
 	for p in profesores:
 		p.contrasena = pw
