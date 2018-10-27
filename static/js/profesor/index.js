@@ -116,6 +116,6 @@ function cancelarSeminario(id){
 }*/
 
 function cerrarSesion(){
-   //window.location.replace("/alumno/cerrarSesion")
+   window.location.replace("/profesor/cerrarSesion");
 }
    
