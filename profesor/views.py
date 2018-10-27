@@ -7,7 +7,6 @@ import datetime
 
 @app.route("/profesor")
 def inicioProfesor():
-	Profesor.update().values(contrasena='ed')
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
 			return loginProfesor()
@@ -27,6 +26,7 @@ def inicioProfesor():
 @app.route("/profesor/login", methods=['POST'])
 def loginProfesor():
 	pw = encode(request.form['uname'], request.form['psw'])
+	Profesor.update().values(contrasena=pw)
 	profesor = Profesor.query.filter_by(usuarioProfesor=request.form['uname'], contrasena=pw).first()
 	if profesor:
 		session['AUTH'] = 'Profesor'
