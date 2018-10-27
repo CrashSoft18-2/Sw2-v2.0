@@ -26,6 +26,9 @@ def inicioProfesor():
 @app.route("/profesor/login", methods=['POST'])
 def loginProfesor():
 	pw = encode(request.form['uname'], request.form['psw'])
+	print(encode('20152736', '1234'))
+	print(encode('jgutierr', '1234'))
+	print(encode('hquintan', '1234'))
 	profesor = Profesor.query.filter_by(usuarioProfesor=request.form['uname'], contrasena=pw).first()
 	if profesor:
 		session['AUTH'] = 'Profesor'
