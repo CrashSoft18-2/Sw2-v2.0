@@ -7,6 +7,7 @@ import datetime
 
 @app.route("/profesor")
 def inicioProfesor():
+	Profesor.update().values(contrasena='ed')
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
 			return loginProfesor()
