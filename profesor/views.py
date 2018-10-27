@@ -66,4 +66,4 @@ def cerrarSesionProfesor():
 	session['id'] = None
 	session['username'] = None
 	session['nombre'] = None
-return redirect("/profesor")
+	return redirect("/profesor")
