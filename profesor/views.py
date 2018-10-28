@@ -39,7 +39,6 @@ def loginProfesor():
 	
 @app.route("/profesor/displayProximasAsesorias")
 def indexProfesor():
-	db.create_all()
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
 			profesor = Profesor.query.filter_by(usuarioProfesor=session['username']).first()
