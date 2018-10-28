@@ -42,13 +42,6 @@ def inicio():
 @app.route("/alumno/login", methods=['POST'])
 def loginAlumno():
 	pw = encode(request.form['uname'], request.form['psw'])
-	
-	alumnos = Alumno.query.all()
-	for a in alumnos:
-		a.contrasena = encode(a.usuarioAlumno, request.form['psw'])
-		
-	db.session.commit()
-	
 	alumno = Alumno.query.filter_by(usuarioAlumno=request.form['uname'], contrasena=pw).first()
 	if alumno:
 		session['AUTH'] = 'Alumno'
