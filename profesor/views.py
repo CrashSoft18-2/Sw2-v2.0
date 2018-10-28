@@ -32,11 +32,11 @@ def loginProfesor():
 	
 	db.session.commit()
 	
-	alumnos = Alumno.query.all()
-	for a in alumnos:
-		a.contrasena = encode(a.usuarioAlumno, request.form['psw'])
+	#alumnos = Alumno.query.all()
+	#for a in alumnos:
+	#	a.contrasena = encode(a.usuarioAlumno, request.form['psw'])
 		
-	db.session.commit()
+	#db.session.commit()
 	
 	profesor = Profesor.query.filter_by(usuarioProfesor=request.form['uname'], contrasena=pw).first()
 	if profesor:
