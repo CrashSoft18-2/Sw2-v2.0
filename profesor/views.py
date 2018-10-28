@@ -58,6 +58,25 @@ def indexProfesor():
 		return redirect("/profesor")
 	
 
+@app.route("/profesor/displayProximasAsesoriasDetalle/<int:id>")
+def detalleAsesoriasProfesor(id):
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Profesor':
+			citas = Cita.query.filter_by(idAsesoria=id).all()
+			username = session['username']
+			return render_template('profesor/proximasAsesoriasDetalle.html', citas=citas, usuario=username)
+		elif session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Administrador':
+			return redirect('/administrador')
+		else:
+			session['AUTH'] = 'Vacio'
+			return redirect("/profesor")
+	else:
+		session['AUTH'] = 'Vacio'
+		return redirect("/profesor")
+
+
 @app.route("/profesor/cerrarSesion")
 def cerrarSesionProfesor():
 	session['AUTH'] = 'Vacio'
