@@ -6,6 +6,7 @@ class Profesor(db.Model):
     contrasena = db.Column(db.String, nullable=False)
     nombre = db.Column(db.String, nullable=False)
     carrera = db.Column(db.String, nullable=False)
+    foto = db.Column(db.String, nullable=False)
 
     def __repr__(self):
         return '<Profesor %r>' % self.usuarioProfesor
