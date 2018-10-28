@@ -67,8 +67,8 @@
 	      {% if fecha < asesoria.fecha %}
 		  <tr onclick="">
 		    <td>
-			    <a href="">{{asesoria.fecha}}</a>
-	      </td>
+			<a href="{{ url_for('detalleAsesoriasProfesor', id=asesoria.idAsesoria) }}">{{asesoria.fecha}}</a>
+	            </td>
 		    <td>{{asesoria.hora}}</td>
 		    <td>{{asesoria.lugar}}</td>
 		    <td>{{asesoria.disponibilidad}}</td>
