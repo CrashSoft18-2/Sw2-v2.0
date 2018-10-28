@@ -50,6 +50,7 @@ Para acceder a la demo:
 ### Sprint 4
 - [x] Desarrollo próximas asesorías profesor (cabecera)
 - [ ] Agregar columna FOTO en el models y BD (profesor)
+- [ ] Agregar columna CARRERA en el models y BD (alumno)
 - [ ] Desarrollo próximas asesorías profesor (detalle)
 - [ ] Desarrollo historial profesor (cabecera)
 - [ ] Desarrollo historial profesor (detalle)
