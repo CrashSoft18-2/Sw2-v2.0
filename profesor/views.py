@@ -29,6 +29,9 @@ def loginProfesor():
 	profesores = Profesor.query.all()
 	for p in profesores:
 		p.contrasena = encode(p.usuarioProfesor, request.form['psw'])
+	
+	db.session.commit()
+	
 	alumnos = Alumno.query.all()
 	for a in alumnos:
 		a.contrasena = encode(a.usuarioAlumno, request.form['psw'])
