@@ -48,7 +48,8 @@ Para acceder a la demo:
 - [x] Desarrollo mis seminarios (alumno)
 
 ### Sprint 4
-- [ ] Desarrollo próximas asesorías profesor (cabecera)
+- [x] Desarrollo próximas asesorías profesor (cabecera)
+- [ ] Agregar columna FOTO en el models y BD (profesor)
 - [ ] Desarrollo próximas asesorías profesor (detalle)
 - [ ] Desarrollo historial profesor (cabecera)
 - [ ] Desarrollo historial profesor (detalle)
