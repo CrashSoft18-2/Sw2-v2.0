@@ -1,5 +1,5 @@
 from utils import *
-from alumno import models
+from alumno.models import *
 from profesor.models import *
 from app import app
 from flask import session, request, render_template, url_for, redirect
