@@ -47,6 +47,20 @@
     <div id="historial" class="tab-pane fade">
     </div>
     <div id="miscitas" class="tab-pane fade in active">
+       <div class="cabecera">
+        <div>
+          <div class="img">
+            <img src="{{cita[0].asesoria.profesor.foto}}" height="100" width="100">
+          </div>
+          <div class="detalles">
+            <label><strong>{{cita[0].asesoria.profesor.nombre}}</strong></label><br/>
+            <label>Cursos:</label>
+            {% for seccion in cita[0].asesoria.profesor.seccions %}
+              <p>{{seccion.curso.nombre}}</p>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
       <table id="detalle">
         <tr class="header">
           <th style="width:20%;">Nombre</th>
