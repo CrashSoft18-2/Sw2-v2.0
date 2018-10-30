@@ -83,7 +83,7 @@ def historialProfesor():
 			profesor = Profesor.query.filter_by(usuarioProfesor=session['username']).first()
 			username = session['username']
 			fecha = datetime.date.today()
-			return render_template('profesor/historialDetalle.html', profesor=profesor, fecha=fecha, usuario=username)
+			return render_template('profesor/historialProfesor.html', profesor=profesor, fecha=fecha, usuario=username)
 		elif session['AUTH'] == 'Alumno':
 			return redirect('/alumno')
 		elif session['AUTH'] == 'Administrador':
