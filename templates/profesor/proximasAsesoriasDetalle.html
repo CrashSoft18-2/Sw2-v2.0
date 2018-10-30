@@ -48,17 +48,13 @@
     </div>
     <div id="miscitas" class="tab-pane fade in active">
        <div class="cabecera">
-        <div>
-          <div class="img">
-            <img src="{{cita[0].asesoria.profesor.foto}}" height="100" width="100">
-          </div>
-          <div class="detalles">
-            <label><strong>{{cita[0].asesoria.profesor.nombre}}</strong></label><br/>
-            <label>Cursos:</label>
-            {% for seccion in cita[0].asesoria.profesor.seccions %}
-              <p>{{seccion.curso.nombre}}</p>
-            {% endfor %}
-          </div>
+        <div class="img">
+          <img src="{{ cita[0].asesoria.profesor.foto }}" height="100" width="100">
+        </div>
+        <div class="detalles">
+          <label>Profesor: {{ cita[0].asesoria.profesor.nombre }}</label><br/>
+          <label>Fecha: {{ cita[0].asesoria.fecha }}</label><br/>
+          <label>Hora: {{ cita[0].asesoria.hora }}</label><br/>
         </div>
       </div>
       <table id="detalle">
