@@ -1,6 +1,6 @@
 from utils import *
-from alumno.models_alumno import *
-from profesor.models_profesor import *
+from alumno.models import *
+from profesor.models import *
 from app import app
 from flask import session, request, render_template, url_for, redirect
 import datetime
