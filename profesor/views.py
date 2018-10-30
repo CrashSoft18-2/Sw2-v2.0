@@ -76,6 +76,43 @@ def detalleAsesoriasProfesor(id):
 		session['AUTH'] = 'Vacio'
 		return redirect("/profesor")
 
+@app.route("/profesor/displayHistorial")
+def historialProfesor():
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Profesor':
+			profesor = Profesor.query.filter_by(usuarioProfesor=session['username']).first()
+			username = session['username']
+			fecha = datetime.date.today()
+			return render_template('profesor/proximasAsesoriasDetalle.html', profesor=profesor, fecha=fecha, usuario=username)
+		elif session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Administrador':
+			return redirect('/administrador')
+		else:
+			session['AUTH'] = 'Vacio'
+			return redirect("/profesor")
+	else:
+		session['AUTH'] = 'Vacio'
+		return redirect("/profesor")
+	
+@app.route("/profesor/displayHistorialDetalle/<int:id>")
+def detalleHistorialProfesor(id):
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Profesor':
+			#citas = Cita.query.filter_by(idAsesoria=id).all()
+			#username = session['username']
+			#return render_template('profesor/proximasAsesoriasDetalle.html', citas=citas, usuario=username)
+			return redirect('/profesor')
+		elif session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Administrador':
+			return redirect('/administrador')
+		else:
+			session['AUTH'] = 'Vacio'
+			return redirect("/profesor")
+	else:
+		session['AUTH'] = 'Vacio'
+		return redirect("/profesor")
 
 @app.route("/profesor/cerrarSesion")
 def cerrarSesionProfesor():
