@@ -69,7 +69,7 @@
 	      {% if fecha > asesoria.fecha %}
 		  <tr onclick="">
 		    <td>
-			<a href="{{ url_for('detalleHistorial', id=asesoria.idAsesoria) }}">{{asesoria.fecha}}</a>
+			<a href="{{ url_for('detalleHistorialProfesor', id=asesoria.idAsesoria) }}">{{asesoria.fecha}}</a>
 	            </td>
 		    <td>{{asesoria.hora}}</td>
 		    <td>{{asesoria.lugar}}</td>
