@@ -92,7 +92,7 @@ function displayProximasAsesorias(){
 }
 
 function displayHistorial(){
-  //window.location.replace("/alumno/displayHistorial")
+  window.location.replace("/profesor/displayHistorial")
 }
 
 function displaySeminarios(){
