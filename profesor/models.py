@@ -41,6 +41,18 @@ class Asesoria(db.Model):
     def __repr__(self):
         return '<Asesoria %r>' % self.idAsesoria
 
+class Cita(db.Model):
+    idCita = db.Column(db.Integer, primary_key=True)
+    idAlumno = db.Column(db.Integer, db.ForeignKey('alumno.idAlumno'), nullable=False)
+    alumno = db.relationship('Alumno', backref=db.backref('citas', lazy=True))
+    idAsesoria = db.Column(db.Integer, db.ForeignKey('asesoria.idAsesoria'), nullable=False)
+    asesoria = db.relationship('Asesoria', backref=db.backref('citas', lazy=True))
+    fecha = db.Column(db.Date, nullable=False) #fecha??
+    pregunta = db.Column(db.String, nullable=False)
+
+    def __repr__(self):
+        return '<Cita %r>' % self.idCita
+
 class Seminario(db.Model):
     idSeminario = db.Column(db.Integer, primary_key=True)
     idProfesor = db.Column(db.Integer, db.ForeignKey('profesor.idProfesor'), nullable=False)
