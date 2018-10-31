@@ -55,6 +55,7 @@ Para acceder a la demo:
 - [x] Desarrollo historial profesor (cabecera)
 - [x] Desarrollo historial profesor (detalle)
 - [ ] Desarrollo seminarios (profesor)
+- [ ] Desarrollo seminarios (profesor - detalle)
 
 ### Sprint 5
 - [ ] Desarrollo App Administrador
