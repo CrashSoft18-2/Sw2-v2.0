@@ -119,6 +119,7 @@ function addLine(){
    
    cancel.setAttribute("class", "cancel");
    cancel.setAttribute("src", "https://techflourish.com/images/cross-with-sunset-clipart-16.png");
+   cancel.setAttribute("onclick", "cancel()");
    
    nodeTema.setAttribute("class", "row");
    nodeConc.setAttribute("class", "row");
