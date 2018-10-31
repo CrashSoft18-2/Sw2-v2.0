@@ -32,7 +32,7 @@ class Seccion(db.Model):
 class Asesoria(db.Model):
     idAsesoria = db.Column(db.Integer, primary_key=True)
     idProfesor = db.Column(db.Integer, db.ForeignKey('profesor.idProfesor'), nullable=False)
-    profesor = db.relationship('Profesor', backref=db.backref('asesorias', lazy=True))
+    profesor = db.relationship('Profesor', order_by='Asesoria.fecha.asc()', backref=db.backref('asesorias', lazy=True))
     fecha = db.Column(db.Date, nullable=False)
     hora = db.Column(db.String, nullable=False)
     lugar = db.Column(db.String, nullable=False)
