@@ -145,7 +145,7 @@ function addLine(){
 
 function cancel(){
    document.getElementById("add").style.display = "inline";
-   document.getElementsByTagName("tr").pop();
+   $("#conclusion").parent().parent().remove()
 }
 
 /*function displayMisSeminarios(){
