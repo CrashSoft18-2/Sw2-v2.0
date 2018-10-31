@@ -7,6 +7,7 @@ class Profesor(db.Model):
     nombre = db.Column(db.String, nullable=False)
     carrera = db.Column(db.String, nullable=False)
     foto = db.Column(db.String, nullable=False)
+    asesorias = relationship('Asesoria', order_by='Asesoria.fecha.asc()')
 
     def __repr__(self):
         return '<Profesor %r>' % self.usuarioProfesor
@@ -21,9 +22,9 @@ class Curso(db.Model):
 class Seccion(db.Model):
     idSeccion = db.Column(db.Integer, primary_key=True)
     idCurso = db.Column(db.Integer, db.ForeignKey('curso.idCurso'), nullable=False)
-    curso = db.relationship('Curso', backref=db.backref('seccions', lazy=True))
+    curso = db.relationship('Curso', backref=db.backref('secciones', lazy=True))
     idProfesor = db.Column(db.Integer, db.ForeignKey('profesor.idProfesor'), nullable=False)
-    profesor = db.relationship('Profesor', backref=db.backref('seccions', lazy=True))
+    profesor = db.relationship('Profesor', backref=db.backref('secciones', lazy=True))
     numeroSeccion = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
@@ -32,7 +33,7 @@ class Seccion(db.Model):
 class Asesoria(db.Model):
     idAsesoria = db.Column(db.Integer, primary_key=True)
     idProfesor = db.Column(db.Integer, db.ForeignKey('profesor.idProfesor'), nullable=False)
-    profesor = db.relationship('Profesor', order_by='Asesoria.fecha.asc()', backref=db.backref('asesorias', lazy=True))
+    profesor = db.relationship('Profesor')
     fecha = db.Column(db.Date, nullable=False)
     hora = db.Column(db.String, nullable=False)
     lugar = db.Column(db.String, nullable=False)
