@@ -63,11 +63,14 @@ def editarDisponibilidadProfesor(id):
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
 			asesoria = Asesoria.query.filter_by(idAsesoria=id).first()
+			print("ASfsf 11111", asesoria.disponibilidad)
 			if asesoria.disponibilidad == "No Disponible":
 				asesoria.disponibilidad == "Disponible"
 			else:
 				asesoria.disponibilidad == "No Disponible"
 			db.session.commit()
+			asesoria = Asesoria.query.filter_by(idAsesoria=id).first()
+			print("sdfghh 222222", asesoria.disponibilidad)
 			return redirect('/profesor/displayProximasAsesorias')
 		elif session['AUTH'] == 'Alumno':
 			return redirect('/alumno')
