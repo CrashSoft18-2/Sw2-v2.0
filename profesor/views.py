@@ -101,8 +101,7 @@ def detalleHistorialProfesor(id):
 		if session['AUTH'] == 'Profesor':
 			asesoria = Asesoria.query.filter_by(idAsesoria=id).first()
 			username = session['username']
-			return render_template('profesor/proximasAsesoriasDetalle.html', asesoria=asesoria, usuario=username)
-			return redirect('/profesor')
+			return render_template('profesor/historialDetalleProfesor.html', asesoria=asesoria, usuario=username)
 		elif session['AUTH'] == 'Alumno':
 			return redirect('/alumno')
 		elif session['AUTH'] == 'Administrador':
