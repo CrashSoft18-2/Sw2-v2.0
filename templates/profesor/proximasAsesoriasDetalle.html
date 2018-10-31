@@ -49,12 +49,12 @@
     <div id="miscitas" class="tab-pane fade in active">
        <div class="cabecera">
         <div class="img">
-          <img src="{{ citas[0].asesoria.profesor.foto }}" height="100" width="100">
+          <img src="{{ asesoria.profesor.foto }}" height="100" width="100">
         </div>
         <div class="detalles">
-          <label>Profesor: {{ citas[0].asesoria.profesor.nombre }}</label><br/>
-          <label>Fecha: {{ citas[0].asesoria.fecha }}</label><br/>
-          <label>Hora: {{ citas[0].asesoria.hora }}</label><br/>
+          <label>Profesor: {{ asesoria.profesor.nombre }}</label><br/>
+          <label>Fecha: {{ asesoria.fecha }}</label><br/>
+          <label>Hora: {{ asesoria.hora }}</label><br/>
         </div>
       </div>
       <table id="detalle">
@@ -65,7 +65,7 @@
           <th style="width:20%;">Fecha</th>
           <th style="width:20%;">Consulta</th>
         </tr>
-        {% for cita in citas %}
+        {% for cita in asesoria.citas %}
           <tr>
             <td>{{cita.alumno.nombre}}</td>
             <td>{{cita.alumno.usuarioAlumno}}</td>
