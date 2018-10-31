@@ -71,7 +71,7 @@
 	            </td>
 		    <td>{{asesoria.hora}}</td>
 		    <td>{{asesoria.lugar}}</td>
-		    <td onclick="cambiarDisponibilidad(asesoria.idAsesoria)">{{asesoria.disponibilidad}}</td>
+		    <td onclick="cambiarDisponibilidad({{asesoria.idAsesoria}})">{{asesoria.disponibilidad}}</td>
 		  </tr>
 	      {% endif %}
         {% endfor %}
