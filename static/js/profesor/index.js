@@ -104,6 +104,8 @@ function displaySeminarios(){
 }
 
 function addLine(){
+   document.getElementById("add").style.display = "none";
+   
    var tbody = document.getElementById("detalle").firstChild.nextSibling;
    
    var nodeTema = document.createElement("input");
@@ -138,6 +140,11 @@ function addLine(){
    row.appendChild(cell2);
    row.appendChild(cell3);
    tbody.appendChild(row);
+}
+
+function cancel(){
+   document.getElementById("add").style.display = "inline";
+   document.getElementsByTagName("tr").pop();
 }
 
 /*function displayMisSeminarios(){
