@@ -7,7 +7,7 @@ class Profesor(db.Model):
     nombre = db.Column(db.String, nullable=False)
     carrera = db.Column(db.String, nullable=False)
     foto = db.Column(db.String, nullable=False)
-    asesorias = relationship('Asesoria', order_by='Asesoria.fecha.asc()')
+    asesorias = db.relationship('Asesoria', order_by='Asesoria.fecha.asc()')
 
     def __repr__(self):
         return '<Profesor %r>' % self.usuarioProfesor
