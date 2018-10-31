@@ -16,7 +16,7 @@ def inicioProfesor():
 		elif session['AUTH'] == 'Administrador':
 			return redirect('/administrador')
 		else:
-			session['AUTH'] = 'Vacio'
+			session['AUTH'] = None
 			return render_template('profesor/login.html', val = False)
 	else:
 		session['AUTH'] = 'Vacio'
@@ -51,13 +51,36 @@ def indexProfesor():
 		elif session['AUTH'] == 'Administrador':
 			return redirect('/administrador')
 		else:
-			session['AUTH'] = 'Vacio'
+			session['AUTH'] = None
 			return redirect("/profesor")
 	else:
-		session['AUTH'] = 'Vacio'
+		session['AUTH'] = None
 		return redirect("/profesor")
 	
-
+	
+@app.route("/profesor/editarDisponibilidad/<int:id>")	
+def editarDisponibilidadProfesor(id):
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Profesor':
+			asesoria = Asesoria.query.filter_by(idAsesoria=id).first()
+			if asesoria.disponibilidad == "No Disponible":
+				asesoria.disponibilidad == "Disponible"
+			else:
+				asesoria.disponibilidad == "No Disponible"
+			db.session.commit()
+			return redirect('/profesor/displayProximasAsesorias')
+		elif session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Administrador':
+			return redirect('/administrador')
+		else:
+			session['AUTH'] = None
+			return redirect("/profesor")
+	else:
+		session['AUTH'] = None
+		return redirect("/profesor")
+	
+	
 @app.route("/profesor/displayProximasAsesoriasDetalle/<int:id>")
 def detalleAsesoriasProfesor(id):
 	if session.get('AUTH') != None:
@@ -70,10 +93,10 @@ def detalleAsesoriasProfesor(id):
 		elif session['AUTH'] == 'Administrador':
 			return redirect('/administrador')
 		else:
-			session['AUTH'] = 'Vacio'
+			session['AUTH'] = None
 			return redirect("/profesor")
 	else:
-		session['AUTH'] = 'Vacio'
+		session['AUTH'] = None
 		return redirect("/profesor")
 
 @app.route("/profesor/displayHistorial")
@@ -89,10 +112,10 @@ def historialProfesor():
 		elif session['AUTH'] == 'Administrador':
 			return redirect('/administrador')
 		else:
-			session['AUTH'] = 'Vacio'
+			session['AUTH'] = None
 			return redirect("/profesor")
 	else:
-		session['AUTH'] = 'Vacio'
+		session['AUTH'] = None
 		return redirect("/profesor")
 	
 @app.route("/profesor/displayHistorialDetalle/<int:id>")
@@ -107,11 +130,12 @@ def detalleHistorialProfesor(id):
 		elif session['AUTH'] == 'Administrador':
 			return redirect('/administrador')
 		else:
-			session['AUTH'] = 'Vacio'
+			session['AUTH'] = None
 			return redirect("/profesor")
 	else:
-		session['AUTH'] = 'Vacio'
+		session['AUTH'] = None
 		return redirect("/profesor")
+
 
 @app.route("/profesor/cerrarSesion")
 def cerrarSesionProfesor():
