@@ -63,7 +63,7 @@
           <th style="width:25%;">Lugar</th>
           <th style="width:25%;">Disponibilidad</th>
         </tr>
-        {% for asesoria in profesor.asesorias %}
+        {% for asesoria in profesor.asesorias.order_by(fecha) %}
 	      {% if fecha < asesoria.fecha %}
 		  <tr onclick="">
 		    <td>
