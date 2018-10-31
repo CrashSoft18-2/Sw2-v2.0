@@ -191,5 +191,16 @@ button{
 
 .row{
 	margin-left: 1% !important;
-	width: 100% !important;
+	width: 90% !important;
+}
+
+.cancel{
+	margin-left: 7px !important;
+	height: 20px !important;
+	width: 20px !important;
+}
+
+.save{
+	height: 20px !important;
+	width: 20px !important;
 }
