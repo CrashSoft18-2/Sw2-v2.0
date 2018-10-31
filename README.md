@@ -52,12 +52,14 @@ Para acceder a la demo:
 - [x] Agregar columna FOTO en el models y BD (profesor)
 - [x] Agregar columna CARRERA en el models y BD (alumno)
 - [x] Desarrollo próximas asesorías profesor (detalle)
+- [ ] Funcionalidad Editar Disponibilidad
 - [x] Desarrollo historial profesor (cabecera)
 - [x] Desarrollo historial profesor (detalle)
 - [ ] Funcionalidad Agregar Tema Tratado
 - [ ] Funcionalidad Editar Tema Tratado
 - [ ] Funcionalidad Eliminar Tema Tratado
 - [ ] Desarrollo seminarios (profesor)
+- [ ] Funcionalidad Agregar Seminario
 - [ ] Desarrollo seminarios (profesor - detalle)
 
 ### Sprint 5
