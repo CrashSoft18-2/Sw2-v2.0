@@ -79,12 +79,12 @@
             <td><a href="{{url_for('detalleHistorial', id=profesor.idProfesor) }}">{{profesor.nombre}}</a></td>
             <td>{{profesor.carrera}}</td>
             <td>
-              {% for seccion in profesor.seccions %}
+              {% for seccion in profesor.secciones %}
                 <p>{{seccion.curso.nombre}}</p>
               {% endfor %}
             </td>
             <td>
-              {% for seccion in profesor.seccions %}
+              {% for seccion in profesor.secciones %}
                 <p>{{seccion.numeroSeccion}}</p>
               {% endfor %}
             </td>
