@@ -99,9 +99,9 @@ def historialProfesor():
 def detalleHistorialProfesor(id):
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
-			#citas = Cita.query.filter_by(idAsesoria=id).all()
-			#username = session['username']
-			#return render_template('profesor/proximasAsesoriasDetalle.html', citas=citas, usuario=username)
+			asesoria = Asesoria.query.filter_by(idAsesoria=id).first()
+			username = session['username']
+			return render_template('profesor/proximasAsesoriasDetalle.html', asesoria=asesoria, usuario=username)
 			return redirect('/profesor')
 		elif session['AUTH'] == 'Alumno':
 			return redirect('/alumno')
