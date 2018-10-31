@@ -103,6 +103,31 @@ function displaySeminarios(){
   //window.location.replace("/alumno/displaySeminarios")
 }
 
+function addLine(){
+   var tbody = document.getElementById("detalle").firstChild.nextSibling;
+   
+   var nodeTema = document.createElement("input");
+   var nodeConc = document.createElement("input");
+   
+   nodeTema.setAttribute("class", "row");
+   nodeTema.setAttribute("class", "row");
+   
+   nodeConc.setAttribute("id", "temaTratado");
+   nodeConc.setAttribute("id", "conclusion");
+   
+   var cell1 = document.createElement("td");
+   var cell2 = document.createElement("td");
+   
+   cell1.appendChild(nodeTema);
+   cell2.appendChild(nodeConc);
+   
+   var row = document.createElement("tr");
+   row.appendChild(cell1);
+   row.appendChild(cell2);
+   
+   tbody.appendChild(row);
+}
+
 /*function displayMisSeminarios(){
   window.location.replace("/alumno/displayMisSeminarios")
 }
