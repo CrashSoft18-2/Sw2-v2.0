@@ -171,3 +171,20 @@ button{
 	font-size: 13px !important;
 	border-radius: 5px;
 }
+
+#add{
+	height: 30px !important;
+	width: 30px !important;
+	float: right;
+	margin: 2%;
+}
+
+.edit{
+	height: 20px !important;
+	width: 20px !important;
+}
+
+.delete{
+	height: 20px !important;
+	width: 20px !important;
+}
