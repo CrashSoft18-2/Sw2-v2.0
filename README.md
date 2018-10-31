@@ -54,6 +54,9 @@ Para acceder a la demo:
 - [x] Desarrollo próximas asesorías profesor (detalle)
 - [x] Desarrollo historial profesor (cabecera)
 - [x] Desarrollo historial profesor (detalle)
+- [ ] Funcionalidad Agregar Tema Tratado
+- [ ] Funcionalidad Editar Tema Tratado
+- [ ] Funcionalidad Eliminar Tema Tratado
 - [ ] Desarrollo seminarios (profesor)
 - [ ] Desarrollo seminarios (profesor - detalle)
 
