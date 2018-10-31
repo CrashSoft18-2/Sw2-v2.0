@@ -91,6 +91,10 @@ function displayProximasAsesorias(){
   window.location.replace("/profesor/displayProximasAsesorias")
 }
 
+function cambiarDisponibilidad(id){
+   window.location.replace("/profesor/editarDisponibilidad/" + id)
+}
+
 function displayHistorial(){
   window.location.replace("/profesor/displayHistorial")
 }
