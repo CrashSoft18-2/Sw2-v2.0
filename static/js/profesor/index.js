@@ -110,9 +110,9 @@ function addLine(){
    var nodeConc = document.createElement("input");
    
    nodeTema.setAttribute("class", "row");
-   nodeTema.setAttribute("class", "row");
+   nodeConc.setAttribute("class", "row");
    
-   nodeConc.setAttribute("id", "temaTratado");
+   nodeTema.setAttribute("id", "temaTratado");
    nodeConc.setAttribute("id", "conclusion");
    
    var cell1 = document.createElement("td");
