@@ -52,7 +52,7 @@ Para acceder a la demo:
 - [x] Agregar columna FOTO en el models y BD (profesor)
 - [x] Agregar columna CARRERA en el models y BD (alumno)
 - [x] Desarrollo próximas asesorías profesor (detalle)
-- [ ] Funcionalidad Editar Disponibilidad
+- [x] Funcionalidad Editar Disponibilidad
 - [x] Desarrollo historial profesor (cabecera)
 - [x] Desarrollo historial profesor (detalle)
 - [ ] Funcionalidad Agregar Tema Tratado
