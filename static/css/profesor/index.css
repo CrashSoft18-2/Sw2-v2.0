@@ -188,3 +188,8 @@ button{
 	height: 20px !important;
 	width: 20px !important;
 }
+
+.row{
+	margin-left: 1% !important;
+	width: 100% !important;
+}
