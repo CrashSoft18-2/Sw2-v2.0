@@ -57,7 +57,7 @@ class Cita(db.Model):
 class Seminario(db.Model):
     idSeminario = db.Column(db.Integer, primary_key=True)
     idProfesor = db.Column(db.Integer, db.ForeignKey('profesor.idProfesor'), nullable=False)
-    profesor = db.relationship('Profesor', backref=db.backref('profesor', lazy=True))
+    profesor = db.relationship('Profesor', backref=db.backref('seminarios', lazy=True))
     topic = db.Column(db.String, nullable=False)
     fecha = db.Column(db.Date, nullable=False)
     hora = db.Column(db.String, nullable=False)
@@ -79,7 +79,7 @@ class Registro(db.Model):
 class registroSeminario(db.Model):
     idRegistroSeminario = db.Column(db.Integer, primary_key=True)
     idSeminario = db.Column(db.Integer, db.ForeignKey('seminario.idSeminario'), nullable=False)
-    seminario = db.relationship('Seminario', backref=db.backref('seminarios', lazy=True))
+    seminario = db.relationship('Seminario', backref=db.backref('rseminarios', lazy=True))
     idAlumno = db.Column(db.Integer, db.ForeignKey('alumno.idAlumno'), nullable=False)
     alumno = db.relationship('Seminario', backref=db.backref('alumnos', lazy=True))
 
