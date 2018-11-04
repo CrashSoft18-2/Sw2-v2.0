@@ -284,6 +284,24 @@ def eliminarSeminarioProfesor(id):
 		session['AUTH'] = None
 		return redirect("/profesor")	
 
+@app.route("/profesor/displaySeminariosDetalle/<id>")
+def seminariosDetalleProfesor(id):
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Profesor':
+			seminario = Seminario.query.filter_by(idSeminario=id).first()
+			username = session['username']
+			return render_template('profesor/seminariosProfesor.html', seminario=seminario, usuario=username)
+		elif session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Administrador':
+			return redirect('/administrador')
+		else:
+			session['AUTH'] = None
+			return redirect("/profesor")
+	else:
+		session['AUTH'] = None
+		return redirect("/profesor")
+	
 @app.route("/profesor/cerrarSesion")
 def cerrarSesionProfesor():
 	session['AUTH'] = 'Vacio'
