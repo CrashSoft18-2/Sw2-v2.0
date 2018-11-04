@@ -177,8 +177,8 @@ def editarTemaProfesor(id):
 		session['AUTH'] = None
 		return redirect("/profesor")
 	
-@app.route("/profesor/editarTemaTratado/<int:id>")
-def editarTemaProfesor(id):
+@app.route("/profesor/eliminarTemaTratado/<int:id>")
+def eliminarTemaProfesor(id):
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
 			tema = Registro.query.filter_by(idRegistro=id).first()
