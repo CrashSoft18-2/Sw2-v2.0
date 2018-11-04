@@ -100,7 +100,7 @@ function displayHistorial(){
 }
 
 function displaySeminarios(){
-  //window.location.replace("/alumno/displaySeminarios")
+  window.location.replace("/profesor/displaySeminarios")
 }
 
 function addLine(){
@@ -148,9 +148,6 @@ function cancel(){
    $("#conclusion").parent().parent().remove()
 }
 
-function displayMisSeminarios(){
-  window.location.replace("/profesor/displaySeminarios")
-}
 /*
 function cancelarCita(id){
    window.location.replace("/alumno/cancelarReserva/" + id)
