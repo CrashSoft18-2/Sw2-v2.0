@@ -290,7 +290,7 @@ def seminariosDetalleProfesor(id):
 		if session['AUTH'] == 'Profesor':
 			seminario = Seminario.query.filter_by(idSeminario=id).first()
 			username = session['username']
-			return render_template('profesor/seminariosProfesor.html', seminario=seminario, usuario=username)
+			return render_template('profesor/seminariosDetalleProfesor.html', seminario=seminario, usuario=username)
 		elif session['AUTH'] == 'Alumno':
 			return redirect('/alumno')
 		elif session['AUTH'] == 'Administrador':
