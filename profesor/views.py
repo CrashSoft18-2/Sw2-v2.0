@@ -136,10 +136,54 @@ def detalleHistorialProfesor(id):
 		session['AUTH'] = None
 		return redirect("/profesor")
 
-@app.route("/profesor/displayHistorialDetalle/<int:id>")
-def detalleHistorialProfesor(id):
+@app.route("/profesor/agregarTemaTratado/<int:id>")
+def agregarTemaProfesor(id):
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
+			registro = Registro(idAsesoria=id,temaTratado=request.form['tema'],conclusion=request.form['conclusion'])
+			asesoria = Asesoria.query.filter_by(idAsesoria=id).first()
+			username = session['username']
+			return render_template('profesor/historialDetalleProfesor.html', asesoria=asesoria, usuario=username)
+		elif session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Administrador':
+			return redirect('/administrador')
+		else:
+			session['AUTH'] = None
+			return redirect("/profesor")
+	else:
+		session['AUTH'] = None
+		return redirect("/profesor")
+	
+@app.route("/profesor/editarTemaTratado/<int:id>")
+def editarTemaProfesor(id):
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Profesor':
+			tema = Registro.query.filter_by(idRegistro=id).first()
+			tema.temaTratado = request.form['tema']
+			tema.conclusion = request.form['conclusion']
+			db.session.commit()
+			asesoria = Asesoria.query.filter_by(idAsesoria=id).first()
+			username = session['username']
+			return render_template('profesor/historialDetalleProfesor.html', asesoria=asesoria, usuario=username)
+		elif session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Administrador':
+			return redirect('/administrador')
+		else:
+			session['AUTH'] = None
+			return redirect("/profesor")
+	else:
+		session['AUTH'] = None
+		return redirect("/profesor")
+	
+@app.route("/profesor/editarTemaTratado/<int:id>")
+def editarTemaProfesor(id):
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Profesor':
+			tema = Registro.query.filter_by(idRegistro=id).first()
+			db.session.delete(cita)
+			db.session.commit()
 			asesoria = Asesoria.query.filter_by(idAsesoria=id).first()
 			username = session['username']
 			return render_template('profesor/historialDetalleProfesor.html', asesoria=asesoria, usuario=username)
