@@ -103,6 +103,10 @@ function displaySeminarios(){
   window.location.replace("/profesor/displaySeminarios")
 }
 
+function displaySeminarioDetalle(id){
+  window.location.replace("/profesor/displaySeminariosDetalle/" + id)
+}
+
 function addLine(){
    document.getElementById("add").style.display = "none";
    
