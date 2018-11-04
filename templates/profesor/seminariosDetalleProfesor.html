@@ -51,15 +51,13 @@
 	        <th style="width:25%;"></th>
         </tr>
         {% for registro in seminario.rseminarios %}
-		  <tr onclick="">		  
-		    {% print('SFGDFGFGGGGH') %}
-		    {% print(registro.alumno) %}
+		  <tr onclick="">		 
 		    <td>{{registro.alumno.nombre}}</td>
 		    <td>{{registro.alumno.usuarioAlumno}}</td>
-        <td>{{registro.alumno.carrera}}</td>
+                    <td>{{registro.alumno.carrera}}</td>
 		    <td>
-			    <img class="edit" src="https://cdn3.iconfinder.com/data/icons/black-easy/512/538375-pen_512x512.png" height="50" width="50">
-			    <img class="delete" src="https://techflourish.com/images/cross-with-sunset-clipart-16.png" height="50" width="50">
+		    <img class="edit" src="https://cdn3.iconfinder.com/data/icons/black-easy/512/538375-pen_512x512.png" height="50" width="50">
+		    <img class="delete" src="https://techflourish.com/images/cross-with-sunset-clipart-16.png" height="50" width="50">
 		    </td>
 		  </tr>
         {% endfor %}
