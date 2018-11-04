@@ -10,7 +10,7 @@ from profesor.models import *
 def inicioProfesor():
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
-			return loginProfesor()
+			return redirect('/profesor/displayProximasAsesorias')
 		elif session['AUTH'] == 'Alumno':
 			return redirect('/alumno')
 		elif session['AUTH'] == 'Administrador':
@@ -19,7 +19,7 @@ def inicioProfesor():
 			session['AUTH'] = None
 			return render_template('profesor/login.html', val = False)
 	else:
-		session['AUTH'] = 'Vacio'
+		session['AUTH'] = None
 		return render_template('profesor/login.html', val = False)
 	
 
@@ -136,6 +136,23 @@ def detalleHistorialProfesor(id):
 		session['AUTH'] = None
 		return redirect("/profesor")
 
+@app.route("/profesor/displayHistorialDetalle/<int:id>")
+def detalleHistorialProfesor(id):
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Profesor':
+			asesoria = Asesoria.query.filter_by(idAsesoria=id).first()
+			username = session['username']
+			return render_template('profesor/historialDetalleProfesor.html', asesoria=asesoria, usuario=username)
+		elif session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Administrador':
+			return redirect('/administrador')
+		else:
+			session['AUTH'] = None
+			return redirect("/profesor")
+	else:
+		session['AUTH'] = None
+		return redirect("/profesor")
 
 @app.route("/profesor/cerrarSesion")
 def cerrarSesionProfesor():
