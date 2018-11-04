@@ -148,10 +148,10 @@ function cancel(){
    $("#conclusion").parent().parent().remove()
 }
 
-/*function displayMisSeminarios(){
-  window.location.replace("/alumno/displayMisSeminarios")
+function displayMisSeminarios(){
+  window.location.replace("/profesor/displaySeminarios")
 }
-
+/*
 function cancelarCita(id){
    window.location.replace("/alumno/cancelarReserva/" + id)
 }
