@@ -52,6 +52,7 @@
         </tr>
         {% for registro in seminario.rseminarios %}
 		  <tr onclick="">
+		    {% print(registro.alumno) %}
 		    <td>{{registro.alumno.nombre}}</td>
 		    <td>{{registro.alumno.usuarioAlumno}}</td>
         <td>{{registro.alumno.carrera}}</td>
