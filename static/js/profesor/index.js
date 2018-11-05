@@ -154,10 +154,16 @@ function cancel(){
    $("#conclusion").parent().parent().remove()
 }
 
+function deleteRow(){
+   document.task == "delete";
+   submitHistorial();
+}
+
 function submitHistorial(){ 
    if (document.task == "add"){
       document.formHistorial.action = "/profesor/agregarTemaTratado/" + document.getElementById("asesoria").value;
    } else if (document.task == "edit"){
+      document.formHistorial.action = "/profesor/eliminarTemaTratado/" + document.getElementById("idRegistro").value;
    } else if (document.task == "delete"){
    }
    document.formHistorial.submit()
