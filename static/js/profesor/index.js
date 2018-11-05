@@ -124,7 +124,7 @@ function addLineHistorial(){
    save.setAttribute("onclick", "submitHistorial()");
    cancel.setAttribute("class", "cancel");
    cancel.setAttribute("src", "https://techflourish.com/images/cross-with-sunset-clipart-16.png");
-   cancel.setAttribute("onclick", "cancel()");
+   cancel.setAttribute("onclick", "cancelHistorial()");
    
    nodeTema.setAttribute("class", "row");
    nodeTema.setAttribute("name", "tema");
