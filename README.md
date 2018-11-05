@@ -55,9 +55,9 @@ Para acceder a la demo:
 - [x] Funcionalidad Editar Disponibilidad
 - [x] Desarrollo historial profesor (cabecera)
 - [x] Desarrollo historial profesor (detalle)
-- [ ] Funcionalidad Agregar Tema Tratado
+- [x] Funcionalidad Agregar Tema Tratado
 - [ ] Funcionalidad Editar Tema Tratado
-- [ ] Funcionalidad Eliminar Tema Tratado
+- [x] Funcionalidad Eliminar Tema Tratado
 - [x] Desarrollo seminarios (profesor)
 - [ ] Funcionalidad Agregar Seminario
 - [ ] Funcionalidad Editar Seminario
