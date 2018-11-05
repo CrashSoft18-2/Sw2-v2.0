@@ -136,7 +136,7 @@ def detalleHistorialProfesor(id):
 		session['AUTH'] = None
 		return redirect("/profesor")
 
-@app.route("/profesor/agregarTemaTratado/<int:id>")
+@app.route("/profesor/agregarTemaTratado/<int:id>", methods=['POST'])
 def agregarTemaProfesor(id):
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
@@ -159,7 +159,7 @@ def agregarTemaProfesor(id):
 		session['AUTH'] = None
 		return redirect("/profesor")
 	
-@app.route("/profesor/editarTemaTratado/<int:id>")
+@app.route("/profesor/editarTemaTratado/<int:id>", methods=['POST'])
 def editarTemaProfesor(id):
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
@@ -181,7 +181,7 @@ def editarTemaProfesor(id):
 		session['AUTH'] = None
 		return redirect("/profesor")
 	
-@app.route("/profesor/eliminarTemaTratado/<int:id>")
+@app.route("/profesor/eliminarTemaTratado/<int:id>", methods=['POST'])
 def eliminarTemaProfesor(id):
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
@@ -220,7 +220,7 @@ def seminariosProfesor():
 		session['AUTH'] = None
 		return redirect("/profesor")
 	
-@app.route("/profesor/agregarSeminario")
+@app.route("/profesor/agregarSeminario", methods=['POST'])
 def agregarSeminarioProfesor(id):
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
@@ -241,7 +241,7 @@ def agregarSeminarioProfesor(id):
 		session['AUTH'] = None
 		return redirect("/profesor")
 	
-@app.route("/profesor/editarSeminario")
+@app.route("/profesor/editarSeminario", methods=['POST'])
 def editarSeminarioProfesor(id):
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
@@ -265,7 +265,7 @@ def editarSeminarioProfesor(id):
 		session['AUTH'] = None
 		return redirect("/profesor")
 
-@app.route("/profesor/eliminarSeminario/<int:id>")
+@app.route("/profesor/eliminarSeminario/<int:id>", methods=['POST'])
 def eliminarSeminarioProfesor(id):
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
