@@ -1,2 +1,2 @@
-#from models import *
-#from views import *
+from ..alumno.models import *
+from ..alumno.views import *
