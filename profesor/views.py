@@ -3,7 +3,7 @@ from app import app
 from flask import session, request, render_template, url_for, redirect
 import datetime
 
-from ..alumno.models import *
+from alumno.models import *
 from profesor.models import *
 
 @app.route("/profesor")
