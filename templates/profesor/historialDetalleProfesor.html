@@ -72,15 +72,15 @@
 		    <td>{{registro.temaTratado }}</td>
 		    <td>{{registro.conclusion}}</td>
 		    <td>
-			    <img onclick="submitHistorial()" class="edit" src="https://cdn3.iconfinder.com/data/icons/black-easy/512/538375-pen_512x512.png" height="50" width="50">
-			    <img onclick="submitHistorial()" class="delete" src="https://techflourish.com/images/cross-with-sunset-clipart-16.png" height="50" width="50">
+			    <img onclick="editRowHistorial()" class="edit" src="https://cdn3.iconfinder.com/data/icons/black-easy/512/538375-pen_512x512.png" height="50" width="50">
+			    <img onclick="deleteRowHistorial()" class="delete" src="https://techflourish.com/images/cross-with-sunset-clipart-16.png" height="50" width="50">
 		    </td>
 		  </tr>
         {% endfor %}
       </table>
 </form>
       <div>
-        <img onclick="addLine()" id="add" src="https://png.pngtree.com/svg/20170919/plus_3__840571.png" height="50" width="50">
+        <img onclick="addLineHistorial()" id="add" src="https://png.pngtree.com/svg/20170919/plus_3__840571.png" height="50" width="50">
       </div>
     </div>
   </div>
