@@ -163,8 +163,9 @@ function submitHistorial(){
    if (document.task == "add"){
       document.formHistorial.action = "/profesor/agregarTemaTratado/" + document.getElementById("asesoria").value;
    } else if (document.task == "edit"){
-      document.formHistorial.action = "/profesor/eliminarTemaTratado/" + document.getElementById("idRegistro").value;
+      
    } else if (document.task == "delete"){
+      document.formHistorial.action = "/profesor/eliminarTemaTratado/" + document.getElementById("idRegistro").value;
    }
    document.formHistorial.submit()
 }
