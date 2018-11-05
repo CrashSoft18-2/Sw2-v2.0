@@ -108,7 +108,7 @@ function displaySeminarioDetalle(id){
 }
 
 function addLineHistorial(){
-   document.task.value = "add";
+   document.taskAsesoria.value = "add";
    document.getElementById("add").style.display = "none";
    
    var tbody = document.getElementById("detalle").firstChild.nextSibling;
@@ -155,16 +155,16 @@ function cancelHistorial(){
 }
 
 function deleteRowHistorial(){
-   document.task.value == "delete";
+   document.taskAsesoria.value == "delete";
    submitHistorial();
 }
 
 function submitHistorial(){ 
-   if (document.task.value == "add"){
+   if (document.taskAsesoria.value == "add"){
       document.formHistorial.action = "/profesor/agregarTemaTratado/" + document.getElementById("asesoria").value;
-   } else if (document.task.value == "edit"){
+   } else if (document.taskAsesoria.value == "edit"){
       
-   } else if (document.task.value == "delete"){
+   } else if (document.taskAsesoria.value == "delete"){
       document.formHistorial.action = "/profesor/eliminarTemaTratado/" + document.getElementById("idRegistro").value;
    }
    document.formHistorial.submit()
