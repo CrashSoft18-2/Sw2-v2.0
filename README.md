@@ -58,9 +58,11 @@ Para acceder a la demo:
 - [ ] Funcionalidad Agregar Tema Tratado
 - [ ] Funcionalidad Editar Tema Tratado
 - [ ] Funcionalidad Eliminar Tema Tratado
-- [ ] Desarrollo seminarios (profesor)
+- [x] Desarrollo seminarios (profesor)
 - [ ] Funcionalidad Agregar Seminario
-- [ ] Desarrollo seminarios (profesor - detalle)
+- [ ] Funcionalidad Editar Seminario
+- [ ] Funcionalidad Eliminar Seminario
+- [x] Desarrollo seminarios (profesor - detalle)
 
 ### Sprint 5
 - [ ] Desarrollo App Administrador
