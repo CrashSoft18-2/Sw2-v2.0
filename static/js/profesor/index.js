@@ -107,7 +107,7 @@ function displaySeminarioDetalle(id){
   window.location.replace("/profesor/displaySeminariosDetalle/" + id)
 }
 
-function addLine(){
+function addLineHistorial(){
    document.task = "add";
    document.getElementById("add").style.display = "none";
    
@@ -149,12 +149,12 @@ function addLine(){
    tbody.appendChild(row);
 }
 
-function cancel(){
+function cancelHistorial(){
    document.getElementById("add").style.display = "inline";
    $("#conclusion").parent().parent().remove()
 }
 
-function deleteRow(){
+function deleteRowHistorial(){
    document.task == "delete";
    submitHistorial();
 }
