@@ -186,7 +186,7 @@ def eliminarTemaProfesor(id):
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
 			tema = Registro.query.filter_by(idRegistro=id).first()
-			db.session.delete(cita)
+			db.session.delete(tema)
 			db.session.commit()
 			asesoria = Asesoria.query.filter_by(idAsesoria=id).first()
 			username = session['username']
