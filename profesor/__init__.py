@@ -1,2 +1,2 @@
-from ..profesor.models import *
-from ..profesor.views import *
+#from ..profesor.models import *
+#from ..profesor.views import *
