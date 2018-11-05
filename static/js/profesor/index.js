@@ -165,7 +165,7 @@ function submitHistorial(){
    } else if (document.getElementById("taskAsesoria").value == "edit"){
       
    } else if (document.getElementById("taskAsesoria").value == "delete"){
-      document.formHistorial.action = "/profesor/eliminarTemaTratado/" + document.getElementById("idRegistro").value;
+      document.formHistorial.action = "/profesor/eliminarTemaTratado/" + document.getElementById("asesoria").value + "/" + document.getElementById("idRegistro").value;
    }
    document.formHistorial.submit()
 }
