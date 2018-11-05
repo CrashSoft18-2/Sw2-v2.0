@@ -181,14 +181,14 @@ def editarTemaProfesor(id):
 		session['AUTH'] = None
 		return redirect("/profesor")
 	
-@app.route("/profesor/eliminarTemaTratado/<int:id>", methods=['POST'])
-def eliminarTemaProfesor(id):
+@app.route("/profesor/eliminarTemaTratado/<int:idAs>/<int:id>", methods=['POST'])
+def eliminarTemaProfesor(idAs, id):
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
 			tema = Registro.query.filter_by(idRegistro=id).first()
 			db.session.delete(tema)
 			db.session.commit()
-			asesoria = Asesoria.query.filter_by(idAsesoria=id).first()
+			asesoria = Asesoria.query.filter_by(idAsesoria=idAs).first()
 			username = session['username']
 			return render_template('profesor/historialDetalleProfesor.html', asesoria=asesoria, usuario=username)
 		elif session['AUTH'] == 'Alumno':
