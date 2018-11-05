@@ -156,7 +156,7 @@ function cancel(){
 
 function submitHistorial(){ 
    if (document.task == "add"){
-      document.formHistorial.action = "/profesor/agregarTemaTratado/" + document.profesor.value;
+      document.formHistorial.action = "/profesor/agregarTemaTratado/" + document..getElementById("asesoria").value;
    } else if (document.task == "edit"){
    } else if (document.task == "delete"){
    }
