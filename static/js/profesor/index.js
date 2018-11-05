@@ -155,7 +155,7 @@ function cancelHistorial(){
 }
 
 function deleteRowHistorial(){
-  document.getElementById("taskAsesoria").value == "delete";
+  document.getElementById("taskAsesoria").value = "delete";
    submitHistorial();
 }
 
