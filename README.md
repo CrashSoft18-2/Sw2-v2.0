@@ -48,11 +48,21 @@ Para acceder a la demo:
 - [x] Desarrollo mis seminarios (alumno)
 
 ### Sprint 4
-- [ ] Desarrollo próximas asesorías profesor (cabecera)
-- [ ] Desarrollo próximas asesorías profesor (detalle)
-- [ ] Desarrollo historial profesor (cabecera)
-- [ ] Desarrollo historial profesor (detalle)
-- [ ] Desarrollo seminarios (profesor)
+- [x] Desarrollo próximas asesorías profesor (cabecera)
+- [x] Agregar columna FOTO en el models y BD (profesor)
+- [x] Agregar columna CARRERA en el models y BD (alumno)
+- [x] Desarrollo próximas asesorías profesor (detalle)
+- [x] Funcionalidad Editar Disponibilidad
+- [x] Desarrollo historial profesor (cabecera)
+- [x] Desarrollo historial profesor (detalle)
+- [x] Funcionalidad Agregar Tema Tratado
+- [ ] Funcionalidad Editar Tema Tratado
+- [x] Funcionalidad Eliminar Tema Tratado
+- [x] Desarrollo seminarios (profesor)
+- [ ] Funcionalidad Agregar Seminario
+- [ ] Funcionalidad Editar Seminario
+- [ ] Funcionalidad Eliminar Seminario
+- [x] Desarrollo seminarios (profesor - detalle)
 
 ### Sprint 5
 - [ ] Desarrollo App Administrador

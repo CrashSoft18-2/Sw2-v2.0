@@ -77,12 +77,12 @@
             <td><a href="{{url_for('profesor', id=profesor.idProfesor) }}">{{profesor.nombre}}</a></td>
             <td>{{profesor.carrera}}</td>
             <td>
-              {% for seccion in profesor.seccions %}
+              {% for seccion in profesor.secciones %}
                 <p>{{seccion.curso.nombre}}</p>
               {% endfor %}
             </td>
             <td>
-              {% for seccion in profesor.seccions %}
+              {% for seccion in profesor.secciones %}
                 <p>{{seccion.numeroSeccion}}</p>
               {% endfor %}
             </td>
@@ -113,7 +113,7 @@
 </div>
 	
 <script type="text/javascript">
-	sessionStorage.setItem('user', String({{usuario}}));
+	sessionStorage.setItem('user', "{{usuario}}");
 </script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/chat/chat.js') }}"></script>
 

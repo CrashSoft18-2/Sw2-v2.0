@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Asesorías UL - Próximas Asesorías</title>
+	<title>Asesorías UL - Historial</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/profesor/index.css') }}">
@@ -35,13 +35,15 @@
 <div class="container">
 
   <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" onclick="displayProximasAsesorias()">Próximas Asesorías</a></li>
-    <li><a data-toggle="tab" onclick="displayHistorial()">Historial</a></li>
+    <li><a data-toggle="tab" onclick="displayProximasAsesorias()">Próximas Asesorías</a></li>
+    <li class="active"><a data-toggle="tab" onclick="displayHistorial()">Historial</a></li>
     <li><a data-toggle="tab" onclick="displaySeminarios()">Seminarios</a></li>
   </ul>
 
   <div class="tab-content">
-    <div id="asesorias" class="tab-pane fade in active">
+    <div id="asesorias" class="tab-pane fade">
+    </div>
+    <div id="historial" class="tab-pane fade in active">
       <div class="cabecera">
         <div>
           <div class="img">
@@ -64,21 +66,18 @@
           <th style="width:25%;">Disponibilidad</th>
         </tr>
         {% for asesoria in profesor.asesorias %}
-	      {% if fecha < asesoria.fecha %}
+	      {% if fecha > asesoria.fecha %}
 		  <tr onclick="">
 		    <td>
-			<a href="{{ url_for('detalleAsesoriasProfesor', id=asesoria.idAsesoria) }}">{{asesoria.fecha}}</a>
+			<a href="{{ url_for('detalleHistorialProfesor', id=asesoria.idAsesoria) }}">{{asesoria.fecha}}</a>
 	            </td>
 		    <td>{{asesoria.hora}}</td>
 		    <td>{{asesoria.lugar}}</td>
-		    <td onclick="cambiarDisponibilidad({{asesoria.idAsesoria}})">{{asesoria.disponibilidad}}</td>
+		    <td>{{asesoria.disponibilidad}}</td>
 		  </tr>
 	      {% endif %}
         {% endfor %}
       </table>
-      
-    </div>
-    <div id="historial" class="tab-pane fade">
     </div>
     <div id="seminarios" class="tab-pane fade">
     </div>

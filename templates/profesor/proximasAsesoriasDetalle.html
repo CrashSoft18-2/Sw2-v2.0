@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Asesorías UL - Historial</title>
+  <title>Asesorías UL - Mis Citas</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/alumno/index.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/profesor/index.css') }}">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/0/0e/ULIMA_logo.png">
-  <script src="{{ url_for('static', filename='js/alumno/index.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/profesor/index.js') }}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/chat/jquery-ui.css') }}" type="text/css" media="screen" />
@@ -16,17 +16,17 @@
   <script type="text/javascript" src="{{ url_for('static', filename='js/chat/jquery-ui.min.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='js/chat/jquery.ui.chatbox.js') }}"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
-	<script>
-	  // Initialize Firebase
-	  var config = {
-	    apiKey: "AIzaSyARVPJ_1sfCGCAQcmeWqZaG_nkNMMp845k",
-	    authDomain: "crashsoft-e0a3e.firebaseapp.com",
-	    databaseURL: "https://crashsoft-e0a3e.firebaseio.com",
-	    projectId: "crashsoft-e0a3e",
-	    storageBucket: "crashsoft-e0a3e.appspot.com",
-	    messagingSenderId: "305605246942"
-	  };
-	  firebase.initializeApp(config);
+  <script>
+	// Initialize Firebase
+	var config = {
+	  apiKey: "AIzaSyARVPJ_1sfCGCAQcmeWqZaG_nkNMMp845k",
+          authDomain: "crashsoft-e0a3e.firebaseapp.com",
+          databaseURL: "https://crashsoft-e0a3e.firebaseio.com",
+	  projectId: "crashsoft-e0a3e",
+	  storageBucket: "crashsoft-e0a3e.appspot.com",
+	  messagingSenderId: "305605246942"
+	};
+	firebase.initializeApp(config);
   </script>
 </head>
 <body>
@@ -36,51 +36,45 @@
 <div class="container">
 
   <ul class="nav nav-tabs">
-    <li><a data-toggle="tab" onclick="displayAsesorias()">Asesorías</a></li>
-    <li class="active"><a data-toggle="tab" onclick="displayHistorial()">Historial</a></li>
-    <li><a data-toggle="tab" onclick="displayMisCitas()">Mis Citas</a></li>
+    <li class="active"><a data-toggle="tab" onclick="displayProximasAsesorias()">Próximas Asesorías</a></li>
+    <li><a data-toggle="tab" onclick="displayHistorial()">Historial</a></li>
     <li><a data-toggle="tab" onclick="displaySeminarios()">Seminarios</a></li>
-    <li><a data-toggle="tab" onclick="displayMisSeminarios()">Mis Seminarios</a></li>
   </ul>
 
   <div class="tab-content">
-    <div id="asesorias" class="tab-pane fade in active">
-      <div class="cabecera">
-        <div>
-          <div class="img">
-            <img src="{{profesor.foto}}" height="100" width="100">
-          </div>
-          <div class="detalles">
-            <label><strong>{{profesor.nombre}}</strong></label><br/>
-            <label>Cursos:</label>
-            {% for seccion in profesor.secciones %}
-              <p>{{seccion.curso.nombre}}</p>
-            {% endfor %}
-          </div>
+    <div id="asesorias" class="tab-pane fade">
+    </div>
+    <div id="historial" class="tab-pane fade">
+    </div>
+    <div id="miscitas" class="tab-pane fade in active">
+       <div class="cabecera">
+        <div class="img">
+          <img src="{{ asesoria.profesor.foto }}" height="100" width="100">
+        </div>
+        <div class="detalles">
+          <label>Profesor: {{ asesoria.profesor.nombre }}</label><br/>
+          <label>Fecha: {{ asesoria.fecha }}</label><br/>
+          <label>Hora: {{ asesoria.hora }}</label><br/>
         </div>
       </div>
       <table id="detalle">
         <tr class="header">
-          <th style="width:25%;">Fecha</th>
-          <th style="width:25%;">Hora</th>
-          <th style="width:25%;">Lugar</th>
-          <th style="width:25%;">Disponibilidad</th>
+          <th style="width:20%;">Nombre</th>
+          <th style="width:20%;">Código</th>
+          <th style="width:20%;">Carrera</th>
+          <th style="width:20%;">Fecha</th>
+          <th style="width:20%;">Consulta</th>
         </tr>
-        {% for asesoria in profesor.asesorias %}
-	      {% if fecha > asesoria.fecha %}
-		  <tr onclick="">
-		    <td><a href="{{url_for('temasHistorial', id=asesoria.idAsesoria) }}">{{asesoria.fecha}}</a></td>
-		    <td>{{asesoria.hora}}</td>
-		    <td>{{asesoria.lugar}}</td>
-		    <td>{{asesoria.disponibilidad}}</td>
-		  </tr>
-	      {% endif %}
+        {% for cita in asesoria.citas %}
+          <tr>
+            <td>{{cita.alumno.nombre}}</td>
+            <td>{{cita.alumno.usuarioAlumno}}</td>
+            <td>{{cita.alumno.carrera}}</td>
+            <td>{{cita.fecha}}</td>
+            <td>{{cita.pregunta}}</td>
+          </tr>
         {% endfor %}
       </table>
-    </div>
-    <div id="historial" class="tab-pane fade">
-    </div>
-    <div id="miscitas" class="tab-pane fade">
     </div>
     <div id="seminarios" class="tab-pane fade">
     </div>
@@ -98,7 +92,6 @@
 				</ul>
 			</div>
 </div>
-
 <script type="text/javascript">
 	sessionStorage.setItem('user', "{{usuario}}");
 </script>

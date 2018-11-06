@@ -81,7 +81,7 @@ li.active a, li.active a:hover {
 }
 
 .detalles{
-	  height: 100px;
+	  height: 100%;
 	  margin: 1%;
 }
 
@@ -170,4 +170,37 @@ button{
 	display: inline-block;
 	font-size: 13px !important;
 	border-radius: 5px;
+}
+
+#add{
+	height: 30px !important;
+	width: 30px !important;
+	float: right;
+	margin: 2%;
+}
+
+.edit{
+	height: 20px !important;
+	width: 20px !important;
+}
+
+.delete{
+	height: 20px !important;
+	width: 20px !important;
+}
+
+.row{
+	margin-left: 1% !important;
+	width: 90% !important;
+}
+
+.cancel{
+	margin-left: 7px !important;
+	height: 20px !important;
+	width: 20px !important;
+}
+
+.save{
+	height: 20px !important;
+	width: 20px !important;
 }
