@@ -145,9 +145,8 @@ def agregarTemaProfesor(id):
 			print(registro)
 			db.session.add(registro)
 			db.session.commit()
-			asesoria = Asesoria.query.filter_by(idAsesoria=id).first()
 			username = session['username']
-			return render_template('profesor/historialDetalleProfesor.html', asesoria=asesoria, usuario=username)
+			return redirect('/profesor/displayHistorialDetalle/' + id)
 		elif session['AUTH'] == 'Alumno':
 			return redirect('/alumno')
 		elif session['AUTH'] == 'Administrador':
@@ -159,17 +158,16 @@ def agregarTemaProfesor(id):
 		session['AUTH'] = None
 		return redirect("/profesor")
 	
-@app.route("/profesor/editarTemaTratado/<int:id>", methods=['POST'])
-def editarTemaProfesor(id):
+@app.route("/profesor/editarTemaTratado/<int:idAs>/<int:id>", methods=['POST'])
+def editarTemaProfesor(idAs, id):
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
 			tema = Registro.query.filter_by(idRegistro=id).first()
 			tema.temaTratado = request.form['tema']
 			tema.conclusion = request.form['conclusion']
 			db.session.commit()
-			asesoria = Asesoria.query.filter_by(idAsesoria=id).first()
 			username = session['username']
-			return render_template('profesor/historialDetalleProfesor.html', asesoria=asesoria, usuario=username)
+			return redirect('/profesor/displayHistorialDetalle/' + idAs)
 		elif session['AUTH'] == 'Alumno':
 			return redirect('/alumno')
 		elif session['AUTH'] == 'Administrador':
@@ -188,9 +186,7 @@ def eliminarTemaProfesor(idAs, id):
 			tema = Registro.query.filter_by(idRegistro=id).first()
 			db.session.delete(tema)
 			db.session.commit()
-			asesoria = Asesoria.query.filter_by(idAsesoria=idAs).first()
-			username = session['username']
-			return render_template('profesor/historialDetalleProfesor.html', asesoria=asesoria, usuario=username)
+			return redirect('/profesor/displayHistorialDetalle/' + idAs)
 		elif session['AUTH'] == 'Alumno':
 			return redirect('/alumno')
 		elif session['AUTH'] == 'Administrador':
@@ -227,9 +223,7 @@ def agregarSeminarioProfesor(id):
 			seminario = Seminario(idProfesor=session['id'],topic=request.form['topic'],fecha=request.form['fecha'],hora=request.form['hora'],lugar=request.form['lugar'])
 			db.session.add(seminario)
 			db.session.commit()
-			profesor = Profesor.query.filter_by(usuarioProfesor=session['username']).first()
-			username = session['username']
-			return render_template('profesor/seminariosProfesor.html', profesor=profesor, usuario=username)
+			return redirect('/profesor/displaySeminarios')
 		elif session['AUTH'] == 'Alumno':
 			return redirect('/alumno')
 		elif session['AUTH'] == 'Administrador':
@@ -251,9 +245,7 @@ def editarSeminarioProfesor(id):
 			seminario.hora = request.form['hora']
 			smeinario.lugar = request.form['lugar']
 			db.session.commit()
-			profesor = Profesor.query.filter_by(usuarioProfesor=session['username']).first()
-			username = session['username']
-			return render_template('profesor/seminariosProfesor.html', profesor=profesor, usuario=username)
+			return redirect('/profesor/displaySeminarios')
 		elif session['AUTH'] == 'Alumno':
 			return redirect('/alumno')
 		elif session['AUTH'] == 'Administrador':
@@ -272,9 +264,7 @@ def eliminarSeminarioProfesor(id):
 			seminario = Seminario.query.filter_by(idSeminario=id).first()
 			db.session.delete(seminario)
 			db.session.commit()
-			profesor = Profesor.query.filter_by(usuarioProfesor=session['username']).first()
-			username = session['username']
-			return render_template('profesor/seminariosProfesor.html', profesor=profesor, usuario=username)
+			return redirect('/profesor/displaySeminarios')
 		elif session['AUTH'] == 'Alumno':
 			return redirect('/alumno')
 		elif session['AUTH'] == 'Administrador':
