@@ -223,7 +223,7 @@ def seminariosProfesor():
 		if session['AUTH'] == 'Profesor':
 			profesor = Profesor.query.filter_by(usuarioProfesor=session['username']).first()
 			username = session['username']
-			return render_template('profesor/seminariosProfesor.html', profesor=profesor, usuario=username)
+			return render_template('profesor/seminariosProfesor.html', profesor=profesor, usuario=username, editar=None)
 		elif session['AUTH'] == 'Alumno':
 			return redirect('/alumno')
 		elif session['AUTH'] == 'Administrador':
@@ -253,8 +253,27 @@ def agregarSeminarioProfesor(id):
 	else:
 		session['AUTH'] = None
 		return redirect("/profesor")
+
+@app.route("/profesor/editarSeminarios/<int:id>")
+def renderSeminariosProfesor(id):
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Profesor':
+			profesor = Profesor.query.filter_by(usuarioProfesor=session['username']).first()
+			username = session['username']
+			editar = id
+			return render_template('profesor/seminariosProfesor.html', profesor=profesor, usuario=username, editar=editar)
+		elif session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Administrador':
+			return redirect('/administrador')
+		else:
+			session['AUTH'] = None
+			return redirect("/profesor")
+	else:
+		session['AUTH'] = None
+		return redirect("/profesor")
 	
-@app.route("/profesor/editarSeminario/<int:id>", methods=['POST'])
+@app.route("/profesor/commitEditarSeminario/<int:id>", methods=['POST'])
 def editarSeminarioProfesor(id):
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
