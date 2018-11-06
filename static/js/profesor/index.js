@@ -222,11 +222,33 @@ function deleteRowSeminario(id){
   submitSeminario(id);
 }
 
+function editRowHistorial(id){
+  window.location.replace("/profesor/editarTemaTratado/" + document.getElementById("asesoria").value + "/" + id)
+}
+
+function editarHistorial(id){
+  document.getElementById("taskAsesoria").value = "edit";
+  submitHistorial(id);
+}
+
+function editRowSeminario(id){
+  window.location.replace("/profesor/editarSeminarios/" + id)
+}
+
+function editarSeminario(id){
+  document.getElementById("taskSeminario").value = "edit";
+  submitSeminario(id);
+}
+
+function cancelEditHistorial(){
+   window.location.replace("/profesor/displaySeminarios")
+}
+
 function submitHistorial(id){ 
    if (document.getElementById("taskAsesoria").value == "add"){
       document.formHistorial.action = "/profesor/agregarTemaTratado/" + document.getElementById("asesoria").value;
    } else if (document.getElementById("taskAsesoria").value == "edit"){
-      
+      document.formHistorial.action = "/profesor/editarTema/" + document.getElementById("asesoria").value + "/" + id
    } else if (document.getElementById("taskAsesoria").value == "delete"){
       document.formHistorial.action = "/profesor/eliminarTemaTratado/" + document.getElementById("asesoria").value + "/" + id;
    }
@@ -237,7 +259,7 @@ function submitSeminario(id){
    if (document.getElementById("taskSeminario").value == "add"){
       document.formSeminario.action = "/profesor/agregarSeminario/" + document.getElementById("profesor").value;
    } else if (document.getElementById("taskSeminario").value == "edit"){
-      
+      document.formSeminario.action = "/profesor/commitEditarSeminario/" + id
    } else if (document.getElementById("taskSeminario").value == "delete"){
       document.formSeminario.action = "/profesor/eliminarSeminario/" + id;
    }

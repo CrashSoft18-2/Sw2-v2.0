@@ -12,17 +12,13 @@ Para acceder a la demo:
 
 [Asesorías App](http://asesoriasapp.herokuapp.com/)
 
-### Usuario
+## Usuarios
 
-```
-20152736
-```
-
-### Contraseña
-
-```
-1234
-```
+Tipo de Usuario | Usuario | Contraseña
+--- | --- | --- 
+Alumno | 20152736 | 1234 
+Profesor | hquintan | 1234 
+Administrador | - | - 
 
 ## To Do
 
@@ -56,7 +52,7 @@ Para acceder a la demo:
 - [x] Desarrollo historial profesor (cabecera)
 - [x] Desarrollo historial profesor (detalle)
 - [x] Funcionalidad Agregar Tema Tratado
-- [ ] Funcionalidad Editar Tema Tratado
+- [x] Funcionalidad Editar Tema Tratado
 - [x] Funcionalidad Eliminar Tema Tratado
 - [x] Desarrollo seminarios (profesor)
 - [x] Funcionalidad Agregar Seminario
