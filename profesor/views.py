@@ -220,7 +220,7 @@ def seminariosProfesor():
 		session['AUTH'] = None
 		return redirect("/profesor")
 	
-@app.route("/profesor/agregarSeminario", methods=['POST'])
+@app.route("/profesor/agregarSeminario/<int:id>", methods=['POST'])
 def agregarSeminarioProfesor(id):
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
@@ -241,7 +241,7 @@ def agregarSeminarioProfesor(id):
 		session['AUTH'] = None
 		return redirect("/profesor")
 	
-@app.route("/profesor/editarSeminario", methods=['POST'])
+@app.route("/profesor/editarSeminario/<int:id>", methods=['POST'])
 def editarSeminarioProfesor(id):
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
