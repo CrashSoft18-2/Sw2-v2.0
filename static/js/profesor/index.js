@@ -232,7 +232,7 @@ function editarHistorial(id){
 }
 
 function editRowSeminario(id){
-  window.location.replace("/profesor/editarSeminarios/" + document.getElementById("profesor").value + "/" + id)
+  window.location.replace("/profesor/editarSeminarios/" + id)
 }
 
 function editarSeminario(id){
