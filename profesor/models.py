@@ -81,7 +81,7 @@ class registroSeminario(db.Model):
     idSeminario = db.Column(db.Integer, db.ForeignKey('seminario.idSeminario'), nullable=False)
     seminario = db.relationship('Seminario', backref=db.backref('rseminarios', lazy=True))
     idAlumno = db.Column(db.Integer, db.ForeignKey('alumno.idAlumno'), nullable=False)
-    alumno = db.relationship('Alumno', backref=db.backref('alumnos', lazy=True))
+    alumno = db.relationship('Alumno', backref=db.backref('alumnos', lazy=True, cascade="all,delete"))
 
     def __repr__(self):
         return '<RegistroSeminario %r>' % self.idRegistroSeminario
