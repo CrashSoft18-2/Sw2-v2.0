@@ -103,10 +103,6 @@ function displaySeminarios(){
   window.location.replace("/profesor/displaySeminarios")
 }
 
-function displaySeminarioDetalle(id){
-  window.location.replace("/profesor/displaySeminariosDetalle/" + id)
-}
-
 function addLineHistorial(){
    document.getElementById("taskAsesoria").value = "add";
    document.getElementById("add").style.display = "none";
