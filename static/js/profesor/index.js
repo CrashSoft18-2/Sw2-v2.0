@@ -238,7 +238,7 @@ function submitHistorial(){
 
 function submitSeminario(){ 
    if (document.getElementById("taskSeminario").value == "add"){
-      document.formHistorial.action = "/profesor/agregarSeminario/" + document.getElementById("asesoria").value;
+      document.formHistorial.action = "/profesor/agregarSeminario/" + document.getElementById("profesor").value;
    } else if (document.getElementById("taskSeminario").value == "edit"){
       
    } else if (document.getElementById("taskSeminario").value == "delete"){
