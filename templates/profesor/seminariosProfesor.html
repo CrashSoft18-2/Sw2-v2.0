@@ -57,6 +57,9 @@
           </div>
         </div>
       </div>
+<form action="/" method="post" name="formSeminario">
+      <input type="hidden" id="taskSeminario" name="taskSeminario" value="add">
+      <input type="hidden" id="profesor" name="profesor" value="{{profesor.idProfesor}}">
       <table id="detalle">
         <tr class="header">
           <th style="width:20%;">Topic</th>
@@ -66,20 +69,21 @@
 	        <th style="width:20%;"></th>
         </tr>
         {% for seminario in profesor.seminarios %}
+	      	  <input type="hidden" id="idSeminario" name="idSeminario" value="{{seminario.idSeminario}}">
 		  <tr onclick="displaySeminarioDetalle('{{seminario.idSeminario}}')">
 		    <td>{{seminario.topic}}</td>
 		    <td>{{seminario.fecha}}</td>
         	    <td>{{seminario.hora }}</td>
 		    <td>{{seminario.lugar}}</td>
 		    <td>
-			    <img class="edit" src="https://cdn3.iconfinder.com/data/icons/black-easy/512/538375-pen_512x512.png" height="50" width="50">
-			    <img class="delete" src="https://techflourish.com/images/cross-with-sunset-clipart-16.png" height="50" width="50">
+			    <img onclick="editRowSeminario()" class="edit" src="https://cdn3.iconfinder.com/data/icons/black-easy/512/538375-pen_512x512.png" height="50" width="50">
+			    <img onclick="deleteRowSeminario()" src="https://techflourish.com/images/cross-with-sunset-clipart-16.png" height="50" width="50">
 		    </td>
 		  </tr>
         {% endfor %}
       </table>
       <div>
-        <img onclick="addLineSeminarios()" id="add" src="https://png.pngtree.com/svg/20170919/plus_3__840571.png" height="50" width="50">
+        <img onclick="addLineSeminario()" id="add" src="https://png.pngtree.com/svg/20170919/plus_3__840571.png" height="50" width="50">
       </div>
     </div>
   </div>
