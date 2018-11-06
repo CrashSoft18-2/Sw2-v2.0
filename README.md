@@ -59,9 +59,9 @@ Para acceder a la demo:
 - [ ] Funcionalidad Editar Tema Tratado
 - [x] Funcionalidad Eliminar Tema Tratado
 - [x] Desarrollo seminarios (profesor)
-- [ ] Funcionalidad Agregar Seminario
+- [x] Funcionalidad Agregar Seminario
 - [ ] Funcionalidad Editar Seminario
-- [ ] Funcionalidad Eliminar Seminario
+- [x] Funcionalidad Eliminar Seminario
 - [x] Desarrollo seminarios (profesor - detalle)
 
 ### Sprint 5
