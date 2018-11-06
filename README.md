@@ -17,9 +17,7 @@ Para acceder a la demo:
 Tipo de Usuario | Usuario | Contraseña
 --- | --- | --- 
 Alumno | 20152736 | 1234 
---- | --- | --- 
 Profesor | hquintan | 1234 
---- | --- | --- 
 Administrador | - | - 
 
 ## To Do
