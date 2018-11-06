@@ -238,11 +238,11 @@ function submitHistorial(){
 
 function submitSeminario(){ 
    if (document.getElementById("taskSeminario").value == "add"){
-      document.formHistorial.action = "/profesor/agregarSeminario/" + document.getElementById("profesor").value;
+      document.formSeminario.action = "/profesor/agregarSeminario/" + document.getElementById("profesor").value;
    } else if (document.getElementById("taskSeminario").value == "edit"){
       
    } else if (document.getElementById("taskSeminario").value == "delete"){
-      document.formHistorial.action = "/profesor/eliminarSeminario/" + document.getElementById("idRegistro").value;
+      document.formSeminario.action = "/profesor/eliminarSeminario/" + document.getElementById("idRegistro").value;
    }
    document.formSeminario.submit()
 }
