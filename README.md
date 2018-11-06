@@ -14,10 +14,13 @@ Para acceder a la demo:
 
 ## Usuarios
 
-Usuario | Contraseña
---- | --- 
-Seconds | 301 
-Seconds | 301 
+Tipo de Usuario | Usuario | Contraseña
+--- | --- | --- 
+Alumno | 20152736 | 1234 
+--- | --- | --- 
+Profesor | hquintan | 1234 
+--- | --- | --- 
+Administrador | - | - 
 
 ## To Do
 
