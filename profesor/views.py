@@ -124,7 +124,7 @@ def detalleHistorialProfesor(id):
 		if session['AUTH'] == 'Profesor':
 			asesoria = Asesoria.query.filter_by(idAsesoria=id).first()
 			username = session['username']
-			return render_template('profesor/historialDetalleProfesor.html', asesoria=asesoria, usuario=username)
+			return render_template('profesor/historialDetalleProfesor.html', asesoria=asesoria, usuario=username, editar=None)
 		elif session['AUTH'] == 'Alumno':
 			return redirect('/alumno')
 		elif session['AUTH'] == 'Administrador':
@@ -158,7 +158,26 @@ def agregarTemaProfesor(id):
 		session['AUTH'] = None
 		return redirect("/profesor")
 	
-@app.route("/profesor/editarTemaTratado/<int:idAs>/<int:id>", methods=['POST'])
+@app.route("/profesor/editarTemaTratado/<int:idAs>/<int:id>")
+def renderEditarTemaProfesor(idAs, id):
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Profesor':
+			asesoria = Asesoria.query.filter_by(idAsesoria=idAs).first()
+			editar = id
+			username = session['username']
+			return render_template('profesor/historialDetalleProfesor.html', asesoria=asesoria, usuario=username, editar=editar)
+		elif session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Administrador':
+			return redirect('/administrador')
+		else:
+			session['AUTH'] = None
+			return redirect("/profesor")
+	else:
+		session['AUTH'] = None
+		return redirect("/profesor")
+	
+@app.route("/profesor/editarTema/<int:idAs>/<int:id>", methods=['POST'])
 def editarTemaProfesor(idAs, id):
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
