@@ -212,7 +212,7 @@ function cancelHistorial(){
 
 function cancelSeminario(){
    document.getElementById("add").style.display = "inline";
-   $("#conclusion").parent().parent().remove()
+   $("#topic").parent().parent().remove()
 }
 
 function deleteRowHistorial(){
