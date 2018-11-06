@@ -70,8 +70,8 @@
         </tr>
         {% for seminario in profesor.seminarios %}
 	      	  <input type="hidden" id="idSeminario" name="idSeminario" value="{{seminario.idSeminario}}">
-		  <tr onclick="displaySeminarioDetalle('{{seminario.idSeminario}}')">
-		    <td>{{seminario.topic}}</td>
+		  <tr>
+		    <td><a href="{{ url_for( seminariosDetalleProfesor, id={{seminario.idSeminario}} )}}">{{seminario.topic}}</a></td>
 		    <td>{{seminario.fecha}}</td>
         	    <td>{{seminario.hora }}</td>
 		    <td>{{seminario.lugar}}</td>
