@@ -241,7 +241,7 @@ function editarSeminario(id){
 }
 
 function cancelEditHistorial(){
-   window.location.replace("/profesor/displaySeminarios)
+   window.location.replace("/profesor/displaySeminarios")
 }
 
 function submitHistorial(id){ 
