@@ -281,7 +281,7 @@ def editarSeminarioProfesor(id):
 			seminario.topic = request.form['topic']
 			seminario.fecha = request.form['fecha']
 			seminario.hora = request.form['hora']
-			smeinario.lugar = request.form['lugar']
+			seminario.lugar = request.form['lugar']
 			db.session.commit()
 			return redirect('/profesor/displaySeminarios')
 		elif session['AUTH'] == 'Alumno':
