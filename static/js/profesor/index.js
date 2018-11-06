@@ -200,6 +200,8 @@ function addLineSeminario(){
    row.appendChild(cell1);
    row.appendChild(cell2);
    row.appendChild(cell3);
+   row.appendChild(cell4);
+   row.appendChild(cell5);
    tbody.appendChild(row);
 }
 
