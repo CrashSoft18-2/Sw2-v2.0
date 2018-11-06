@@ -146,7 +146,7 @@ def agregarTemaProfesor(id):
 			db.session.add(registro)
 			db.session.commit()
 			username = session['username']
-			return redirect('/profesor/displayHistorialDetalle/' + id)
+			return redirect('/profesor/displayHistorialDetalle/' + str(id))
 		elif session['AUTH'] == 'Alumno':
 			return redirect('/alumno')
 		elif session['AUTH'] == 'Administrador':
@@ -167,7 +167,7 @@ def editarTemaProfesor(idAs, id):
 			tema.conclusion = request.form['conclusion']
 			db.session.commit()
 			username = session['username']
-			return redirect('/profesor/displayHistorialDetalle/' + idAs)
+			return redirect('/profesor/displayHistorialDetalle/' + str(idAs))
 		elif session['AUTH'] == 'Alumno':
 			return redirect('/alumno')
 		elif session['AUTH'] == 'Administrador':
@@ -186,7 +186,7 @@ def eliminarTemaProfesor(idAs, id):
 			tema = Registro.query.filter_by(idRegistro=id).first()
 			db.session.delete(tema)
 			db.session.commit()
-			return redirect('/profesor/displayHistorialDetalle/' + idAs)
+			return redirect('/profesor/displayHistorialDetalle/' + str(idAs))
 		elif session['AUTH'] == 'Alumno':
 			return redirect('/alumno')
 		elif session['AUTH'] == 'Administrador':
