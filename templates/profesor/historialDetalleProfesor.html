@@ -67,13 +67,12 @@
 	  <th style="width:20%;"></th>
         </tr>
         {% for registro in asesoria.registros %}
-	      <input type="hidden" id="idRegistro" name="idRegistro" value="{{registro.idRegistro}}">
 		  <tr onclick="">
 		    <td>{{registro.temaTratado }}</td>
 		    <td>{{registro.conclusion}}</td>
 		    <td>
-			    <img onclick="editRowHistorial()" class="edit" src="https://cdn3.iconfinder.com/data/icons/black-easy/512/538375-pen_512x512.png" height="50" width="50">
-			    <img onclick="deleteRowHistorial()" class="delete" src="https://techflourish.com/images/cross-with-sunset-clipart-16.png" height="50" width="50">
+			    <img onclick="editRowHistorial({{registro.idRegistro}})" class="edit" src="https://cdn3.iconfinder.com/data/icons/black-easy/512/538375-pen_512x512.png" height="50" width="50">
+			    <img onclick="deleteRowHistorial({{registro.idRegistro}})" class="delete" src="https://techflourish.com/images/cross-with-sunset-clipart-16.png" height="50" width="50">
 		    </td>
 		  </tr>
         {% endfor %}
