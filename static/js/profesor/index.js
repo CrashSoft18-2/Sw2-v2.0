@@ -174,6 +174,7 @@ function addLineSeminario(){
    nodeTopic.setAttribute("name", "topic");
    nodeFecha.setAttribute("class", "row");
    nodeFecha.setAttribute("name", "fecha");
+   nodeFecha.setAttribute("type", "date");
    nodeHora.setAttribute("class", "row");
    nodeHora.setAttribute("name", "hora");
    nodeLugar.setAttribute("class", "row");
