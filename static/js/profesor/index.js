@@ -222,11 +222,24 @@ function deleteRowSeminario(id){
   submitSeminario(id);
 }
 
+function editRowHistorial(id){
+  window.location.replace("/profesor/editarTemaTratado/" + document.getElementById("asesoria").value + "/" + id)
+}
+
+function editarHistorial(id){
+  document.getElementById("taskAsesoria").value = "edit";
+  submitHistorial(id);
+}
+
+function cancelEditHistorial(){
+   window.location.replace("/profesor/displayHistorialDetalle/" + document.getElementById("asesoria").value)
+}
+
 function submitHistorial(id){ 
    if (document.getElementById("taskAsesoria").value == "add"){
       document.formHistorial.action = "/profesor/agregarTemaTratado/" + document.getElementById("asesoria").value;
    } else if (document.getElementById("taskAsesoria").value == "edit"){
-      
+      document.formHistorial.action = "/profesor/editarTema/" + document.getElementById("asesoria").value + "/" + id
    } else if (document.getElementById("taskAsesoria").value == "delete"){
       document.formHistorial.action = "/profesor/eliminarTemaTratado/" + document.getElementById("asesoria").value + "/" + id;
    }
