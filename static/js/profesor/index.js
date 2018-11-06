@@ -231,8 +231,17 @@ function editarHistorial(id){
   submitHistorial(id);
 }
 
+function editRowSeminario(id){
+  window.location.replace("/profesor/editarSeminarios/" + document.getElementById("profesor").value + "/" + id)
+}
+
+function editarSeminario(id){
+  document.getElementById("taskSeminario").value = "edit";
+  submitSeminario(id);
+}
+
 function cancelEditHistorial(){
-   window.location.replace("/profesor/displayHistorialDetalle/" + document.getElementById("asesoria").value)
+   window.location.replace("/profesor/displaySeminarios)
 }
 
 function submitHistorial(id){ 
@@ -250,7 +259,7 @@ function submitSeminario(id){
    if (document.getElementById("taskSeminario").value == "add"){
       document.formSeminario.action = "/profesor/agregarSeminario/" + document.getElementById("profesor").value;
    } else if (document.getElementById("taskSeminario").value == "edit"){
-      
+      document.formSeminario.action = "/profesor/commitEditarSeminario/" + id
    } else if (document.getElementById("taskSeminario").value == "delete"){
       document.formSeminario.action = "/profesor/eliminarSeminario/" + id;
    }
