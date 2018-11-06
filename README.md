@@ -56,7 +56,7 @@ Administrador | - | -
 - [x] Funcionalidad Eliminar Tema Tratado
 - [x] Desarrollo seminarios (profesor)
 - [x] Funcionalidad Agregar Seminario
-- [ ] Funcionalidad Editar Seminario
+- [x] Funcionalidad Editar Seminario
 - [x] Funcionalidad Eliminar Seminario
 - [x] Desarrollo seminarios (profesor - detalle)
 
