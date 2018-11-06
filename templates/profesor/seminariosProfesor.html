@@ -69,15 +69,14 @@
 	        <th style="width:20%;"></th>
         </tr>
         {% for seminario in profesor.seminarios %}
-	      	  <input type="hidden" id="idSeminario" name="idSeminario" value="{{seminario.idSeminario}}">
 		  <tr>
 		    <td><a href="{{ url_for( 'seminariosDetalleProfesor', id=seminario.idSeminario )}}">{{seminario.topic}}</a></td>
 		    <td>{{seminario.fecha}}</td>
         	    <td>{{seminario.hora }}</td>
 		    <td>{{seminario.lugar}}</td>
 		    <td>
-			    <img onclick="editRowSeminario()" class="edit" src="https://cdn3.iconfinder.com/data/icons/black-easy/512/538375-pen_512x512.png" height="50" width="50">
-			    <img onclick="deleteRowSeminario()" class="delete" src="https://techflourish.com/images/cross-with-sunset-clipart-16.png" height="50" width="50">
+			    <img onclick="editRowSeminario({{seminario.idSeminario}})" class="edit" src="https://cdn3.iconfinder.com/data/icons/black-easy/512/538375-pen_512x512.png" height="50" width="50">
+			    <img onclick="deleteRowSeminario({{seminario.idSeminario}})" class="delete" src="https://techflourish.com/images/cross-with-sunset-clipart-16.png" height="50" width="50">
 		    </td>
 		  </tr>
         {% endfor %}
