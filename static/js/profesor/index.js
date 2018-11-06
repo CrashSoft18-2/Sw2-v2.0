@@ -236,7 +236,7 @@ function submitHistorial(){
    document.formHistorial.submit()
 }
 
-function submitHistorial(){ 
+function submitSeminario(){ 
    if (document.getElementById("taskSeminario").value == "add"){
       document.formHistorial.action = "/profesor/agregarSeminario/" + document.getElementById("asesoria").value;
    } else if (document.getElementById("taskSeminario").value == "edit"){
