@@ -239,7 +239,7 @@ function submitSeminario(){
    } else if (document.getElementById("taskSeminario").value == "edit"){
       
    } else if (document.getElementById("taskSeminario").value == "delete"){
-      document.formSeminario.action = "/profesor/eliminarSeminario/" + document.getElementById("idRegistro").value;
+      document.formSeminario.action = "/profesor/eliminarSeminario/" + document.getElementById("idSeminario").value;
    }
    document.formSeminario.submit()
 }
