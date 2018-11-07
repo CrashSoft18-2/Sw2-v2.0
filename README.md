@@ -59,8 +59,11 @@ Administrador | - | -
 - [x] Funcionalidad Editar Seminario
 - [x] Funcionalidad Eliminar Seminario
 - [x] Desarrollo seminarios (profesor - detalle)
+- [x] Desarrollo Plan de Pruebas (Documentación)
 
 ### Sprint 5
 - [ ] Desarrollo App Administrador
 - [ ] Arreglar bug del Chat
 - [ ] Bugs fix (Otros)
+- [ ] Desarrollo Documentación
+- [ ] Ejecución de Plan de Pruebas con Selenium
