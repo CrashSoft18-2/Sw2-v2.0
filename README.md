@@ -62,6 +62,7 @@ Administrador | - | -
 - [x] Desarrollo Plan de Pruebas (Documentación)
 
 ### Sprint 5
+- [ ] Desarrollo Login - App Administrador
 - [ ] Desarrollo Próximas Asesorías (Cabecera) - App Administrador
 - [ ] Desarrollo Próximas Asesorías (Detalle) - App Administrador
 - [ ] Desarrollo Programas Asesorías - App Administrador
