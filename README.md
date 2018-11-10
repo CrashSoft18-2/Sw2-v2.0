@@ -62,8 +62,12 @@ Administrador | - | -
 - [x] Desarrollo Plan de Pruebas (Documentación)
 
 ### Sprint 5
-- [ ] Desarrollo App Administrador
-- [ ] Arreglar bug del Chat
+- [ ] Desarrollo Próximas Asesorías (Cabecera) - App Administrador
+- [ ] Desarrollo Próximas Asesorías (Detalle) - App Administrador
+- [ ] Desarrollo Programas Asesorías - App Administrador
+- [ ] Desarrollo Chat as Help Desk - App Administrador
+- [ ] Arreglar bug del Chat (Todos)
+- [ ] Arreglar bug de Seminarios (Alumno)
 - [ ] Bugs fix (Otros)
 - [ ] Desarrollo Documentación
 - [ ] Ejecución de Plan de Pruebas con Selenium
