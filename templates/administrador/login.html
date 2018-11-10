@@ -1,0 +1,38 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login/login.css') }}">
+  <title>Asesorías UL - Iniciar Sesión</title>
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/0/0e/ULIMA_logo.png">
+</head>
+<body>
+  <div class="form">
+    <form action="{{ url_for('loginAdministrador') }}" method="post">
+      <div class="imgcontainer">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Universidad_de_Lima_logo.png" alt="logo" class="logo">
+      </div>
+
+      <div class="label">
+        <label><b>Usuario</b></label>
+      </div>
+      <div class="input">
+        <input class="box" type="text" placeholder="Ingrese usuario" name="uname" required>
+      </div>
+      <div class="label">
+        <label class="tag"><b>Contraseña</b></label>
+      </div>
+      <div class="input">
+        <input class="box" type="password" placeholder="Ingrese Contraseña" name="psw" required>
+      </div>
+      {% if val == True %}
+      <div class="div_error">
+        <label class="error">Usuario/Contraseña Equivocada</label>
+      </div>
+      {% endif %}
+      <div class="button">
+        <button type="submit">Iniciar Sesión</button>
+      </div>
+      <div class="a">
+        <a href="/">¿No es un administrador?</a>
+      </div>
+    </form>
+  </div>
+</body>
