@@ -62,7 +62,8 @@ Administrador | - | -
 - [x] Desarrollo Plan de Pruebas (Documentación)
 
 ### Sprint 5
-- [ ] Desarrollo Login - App Administrador
+- [x] Desarrollo Login - App Administrador
+- [x] Crear Administrador en el models y BD
 - [ ] Desarrollo Próximas Asesorías (Cabecera) - App Administrador
 - [ ] Desarrollo Próximas Asesorías (Detalle) - App Administrador
 - [ ] Desarrollo Programas Asesorías - App Administrador
