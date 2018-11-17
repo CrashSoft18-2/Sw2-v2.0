@@ -35,3 +35,22 @@ def loginAdministrador():
 		return redirect("/administrador/displayProximasAsesorias")
 	else:
 		return render_template('administrador/login.html', val = True)
+
+@app.route("/alumno/displayAsesorias")
+def admDisplayAsesorias():
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
+		elif session['AUTH'] == 'Administrador':
+			profesores = Profesor.query.all()
+			username = session['username']
+			return render_template('administrador/displayProximasAsesorias.html', profesores = profesores, usuario = username)
+		else:
+			session['AUTH'] = 'Vacio'
+			return redirect("/administrador")
+	else:
+		session['AUTH'] = 'Vacio'
+		return redirect("/administrador")
+	
