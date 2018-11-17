@@ -8,17 +8,6 @@ import datetime
 
 @app.route("/administrador")
 def inicioAdministrador():
-	db.create_all()
-	
-	administrador1 = Administrador(usuarioAdministrador = "admin001", contrasena = encode("admin001", "1234"), nombre = "Jose Chavez")
-	administrador2 = Administrador(usuarioAdministrador = "admin002", contrasena = encode("admin002", "1234"), nombre = "Manuel Quevedo")
-	administrador3 = Administrador(usuarioAdministrador = "admin003", contrasena = encode("admin003", "1234"), nombre = "Ricardo Esquerre")
-	
-	db.session.add(administrador1)
-	db.session.add(administrador2)
-	db.session.add(administrador3)
-	
-	db.session.commit()
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
 			return redirect('/profesor')
