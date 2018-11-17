@@ -36,7 +36,7 @@ def loginAdministrador():
 	else:
 		return render_template('administrador/login.html', val = True)
 
-@app.route("/alumno/displayAsesorias")
+@app.route("/administrador/displayProximasAsesorias")
 def admDisplayAsesorias():
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Alumno':
