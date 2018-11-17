@@ -18,7 +18,7 @@ Tipo de Usuario | Usuario | Contraseña
 --- | --- | --- 
 Alumno | 20152736 | 1234 
 Profesor | hquintan | 1234 
-Administrador | - | - 
+Administrador | admin001 | 1234 
 
 ## To Do
 
