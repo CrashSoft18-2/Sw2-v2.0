@@ -64,7 +64,7 @@ Administrador | admin001 | 1234
 ### Sprint 5
 - [x] Desarrollo Login - App Administrador
 - [x] Crear Administrador en el models y BD
-- [ ] Desarrollo Próximas Asesorías (Cabecera) - App Administrador
+- [x] Desarrollo Próximas Asesorías (Cabecera) - App Administrador
 - [ ] Desarrollo Próximas Asesorías (Detalle) - App Administrador
 - [ ] Desarrollo Programas Asesorías - App Administrador
 - [ ] Desarrollo Chat as Help Desk - App Administrador
