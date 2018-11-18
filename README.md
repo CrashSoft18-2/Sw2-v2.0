@@ -67,7 +67,7 @@ Administrador | admin001 | 1234
 - [x] Desarrollo Próximas Asesorías (Cabecera) - App Administrador
 - [ ] Desarrollo Próximas Asesorías (Detalle) - App Administrador
 - [ ] Desarrollo Programas Asesorías - App Administrador
-- [ ] Desarrollo Chat as Help Desk - App Administrador
+- [x] Desarrollo Chat - App Administrador
 - [ ] Arreglar bug del Chat (Todos)
 - [ ] Arreglar bug de Seminarios (Alumno)
 - [ ] Bugs fix (Otros)
