@@ -48,9 +48,16 @@ def admDisplayAsesorias():
 			username = session['username']
 			return render_template('administrador/displayProximasAsesorias.html', profesores = profesores, usuario = username)
 		else:
-			session['AUTH'] = 'Vacio'
+			session['AUTH'] = None
 			return redirect("/administrador")
 	else:
-		session['AUTH'] = 'Vacio'
+		session['AUTH'] = None
 		return redirect("/administrador")
 	
+@app.route("/administrador/cerrarSesion")
+def cerrarSesionAdm():
+	session['AUTH'] = None
+	session['id'] = None
+	session['username'] = None
+	session['nombre'] = None
+	return redirect("/administrador")
