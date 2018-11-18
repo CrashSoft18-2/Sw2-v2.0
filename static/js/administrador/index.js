@@ -88,7 +88,7 @@ function buscarSeminario() {
  }
 
 function displayAsesorias(){
-  //window.location.replace("/alumno/displayAsesorias")
+  window.location.replace("/administrador/displayProximasAsesorias")
 }
 
 function displayHistorial(){
