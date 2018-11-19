@@ -21,7 +21,7 @@ def inicioAdministrador():
 	else:
 		session['AUTH'] = None
 		return render_template('administrador/login.html', val = False)
-	
+
 
 
 @app.route("/administrador/login", methods=['POST'])
@@ -53,7 +53,26 @@ def admDisplayAsesorias():
 	else:
 		session['AUTH'] = None
 		return redirect("/administrador")
-	
+
+@app.route("/administrador/displayAsesoriasDetalle/<int:id>")
+def admDetalleProfesor(id):
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
+		elif session['AUTH'] == 'Administrador':
+			profesor = Profesor.query.filter_by(idProfesor=id).first()
+			fecha = datetime.date.today()
+			username = session['username']
+			return render_template('administrador/detalleProfesor.html', profesor=profesor, fecha=fecha, usuario=username)
+		else:
+			session['AUTH'] = 'Vacio'
+			return render_template('administrador/login.html')
+	else:
+		session['AUTH'] = 'Vacio'
+		return redirect("/alumno")
+
 @app.route("/administrador/cerrarSesion")
 def cerrarSesionAdm():
 	session['AUTH'] = None

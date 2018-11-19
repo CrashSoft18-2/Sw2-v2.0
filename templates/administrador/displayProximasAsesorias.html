@@ -31,12 +31,12 @@
 <body>
 
 <img class="logout" onclick="cerrarSesion()" src="http://www.clker.com/cliparts/Z/l/p/o/z/T/power-button-outline-md.png" height="30" width="30">
-	
+
 <div class="container">
 
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" onclick="displayAsesorias()">Próximas Asesorías</a></li>
-    <li><a data-toggle="tab" onclick="displayHistorial()">Programar Asesorías</a></li>
+    <li><a data-toggle="tab" onclick="displayProgramar()">Programar Asesorías</a></li>
   </ul>
 
   <div class="tab-content">
@@ -71,7 +71,7 @@
         </tr>
         {% for profesor in profesores %}
           <tr>
-            <td><a href="{{url_for('profesor', id=profesor.idProfesor) }}">{{profesor.nombre}}</a></td>
+            <td><a href="{{url_for('admDetalleProfesor', id=profesor.idProfesor) }}">{{profesor.nombre}}</a></td>
             <td>{{profesor.carrera}}</td>
             <td>
               {% for seccion in profesor.secciones %}
@@ -100,7 +100,7 @@
         </ul>
     </div>
 </div>
-	
+
 <script type="text/javascript">
 	sessionStorage.setItem('user', "{{usuario}}");
 </script>
