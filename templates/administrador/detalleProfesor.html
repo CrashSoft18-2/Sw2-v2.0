@@ -61,33 +61,25 @@
           <th style="width:25%;">Fecha</th>
           <th style="width:25%;">Hora</th>
           <th style="width:25%;">Lugar</th>
-          <th style="width:25%;">Disponibilidad</th>
+          <th style="width:25%;"></th>
         </tr>
         {% for asesoria in profesor.asesorias %}
 	      {% if fecha < asesoria.fecha %}
 		  <tr onclick="">
-		    <td>
-			 {% if asesoria.disponibilidad == "Disponible" %}
-			    <a href="{{url_for('reservarCita', idAs=asesoria.idAsesoria) }}">{{asesoria.fecha}}</a>
-			 {% else %}
-			    {{asesoria.fecha}}
-			 {% endif %}
-	      	    </td>
+		    <td>{{asesoria.fecha}}</td>
 		    <td>{{asesoria.hora}}</td>
 		    <td>{{asesoria.lugar}}</td>
-		    <td>{{asesoria.disponibilidad}}</td>
+        <td>
+			    <img onclick="editRowHistorial({{asesoria.idAsesoria}})" class="save" src="https://cdn3.iconfinder.com/data/icons/black-easy/512/538375-pen_512x512.png" height="50" width="50">
+			    <img onclick="deleteRowHistorial({{asesoria.idAsesoria}})" class="cancel" src="https://techflourish.com/images/cross-with-sunset-clipart-16.png" height="50" width="50">
+		    </td>
 		  </tr>
 	      {% endif %}
         {% endfor %}
       </table>
-    </div>
-    <div id="historial" class="tab-pane fade">
-    </div>
-    <div id="miscitas" class="tab-pane fade">
-    </div>
-    <div id="seminarios" class="tab-pane fade">
-    </div>
-    <div id="misSeminarios" class="tab-pane fade">
+      <div>
+        <img onclick="addLineHistorial()" id="add" src="https://png.pngtree.com/svg/20170919/plus_3__840571.png" height="50" width="50">
+      </div>
     </div>
   </div>
 </div>
