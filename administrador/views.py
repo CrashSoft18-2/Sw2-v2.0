@@ -167,6 +167,10 @@ def editarAsesoriaAdm(idProfesor, idAsesoria):
 		session['AUTH'] = None
 		return redirect("/administrador")
 
+@app.route("/administrador/programarAsesorias")
+def programarAsesoriasAdmMasivo():
+	return request.form
+
 @app.route("/administrador/cerrarSesion")
 def cerrarSesionAdm():
 	session['AUTH'] = None
