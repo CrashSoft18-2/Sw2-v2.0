@@ -80,3 +80,83 @@ input[type=submit]{
 	color: white;
 	border-radius: 10%;
 }
+
+#myTable, #detalle {
+	  border-collapse: collapse;
+	  width: 100%;
+	  border: 1px solid #ddd;
+	  font-size: 18px;
+}
+
+#myTable th, #myTable td, #detalle th, #detalle td {
+	  text-align: left;
+	  padding: 12px;
+}
+
+#myTable tr, #detalle tr  {
+	  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover, #detalle tr.header, #detalle tr:hover  {
+	  background-color: #f1f1f1;
+}
+
+button{
+	width: 70px;
+	height: 20px;
+	background-color: #ff9e3e;
+	border: none;
+	color: #ffffff !important;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 13px !important;
+	border-radius: 5px;
+}
+
+#add{
+	height: 30px !important;
+	width: 30px !important;
+	float: right;
+	margin: 2%;
+}
+
+.edit{
+	height: 20px !important;
+	width: 20px !important;
+}
+
+.delete{
+	height: 20px !important;
+	width: 20px !important;
+}
+
+.row{
+	margin-left: 1% !important;
+	width: 90% !important;
+}
+
+.cancel{
+	margin-left: 7px !important;
+	height: 20px !important;
+	width: 20px !important;
+}
+
+.save{
+	height: 20px !important;
+	width: 20px !important;
+}
+.cabecera{
+	  margin: 2%;
+}
+
+.detalles{
+	  height: 100%;
+	  margin: 1%;
+}
+
+.img{
+	  float: left;
+	  width: 120px;
+	  margin: 1%;
+}
