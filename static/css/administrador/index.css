@@ -32,7 +32,7 @@ ul{
 }
 
 #user_list_header{
-	background: #f6a828 url(images/ui-bg_gloss-wave_35_f6a828_500x100.png) 50% 50% repeat-x;
+	background: #f6a828 50% 50% repeat-x;
 	color: white !important;
 	padding: 10px;
 	font-weight: bold;
@@ -72,5 +72,11 @@ label{
 }
 
 input{
-	margin: 0.5% !important;
+	margin: 1.5% !important;
+}
+
+input[type=submit]{
+	background: #f6a828;
+	color: white;
+	border-radius: 10%;
 }
