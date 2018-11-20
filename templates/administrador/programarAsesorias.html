@@ -44,7 +44,7 @@
     <div id="asesorias" class="tab-pane fade in active">
       <form action="/administrador/programarAsesorias" method="post">
         <label for="profesor">Usuario del Profesor:</label><br>
-        <input type="text" name="profesor" id="profesor"><br>
+        <input type="text" name="profesor" id="profesor" required><br>
         <label>Repetir los días:</label><br>
         <input type="checkbox" name="dia1" value="Lunes"> Lunes<br>
         <input type="checkbox" name="dia2" value="Martes"> Martes<br>
@@ -55,7 +55,7 @@
         <label for="appt">Hora:</label><br>
         <input type="time" id="appt" name="appt" min="7:00" max="21:00" required><br>
         <label for="date">Repetir hasta:</label><br>
-        <input type="date" id="date" name="date"><br>
+        <input type="date" id="date" name="date" required><br>
         <input type="submit" value="Programar"><br>
       </form>
     </div>
