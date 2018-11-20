@@ -87,11 +87,11 @@ function buscar() {
 
  function submitAsesoria(id){
     if (document.getElementById("taskAsesoria").value == "add"){
-       document.formSeminario.action = "/administrador/agregarAsesoria/" + document.getElementById("idProfesor").value;
+       document.formAsesorias.action = "/administrador/agregarAsesoria/" + document.getElementById("idProfesor").value;
     } else if (document.getElementById("taskAsesoria").value == "edit"){
-       //document.formSeminario.action = "/profesor/commitEditarSeminario/" + id
+       //document.formAsesorias.action = "/profesor/commitEditarSeminario/" + id
     } else if (document.getElementById("taskAsesoria").value == "delete"){
-       //document.formSeminario.action = "/profesor/eliminarSeminario/" + id;
+       //document.formAsesorias.action = "/profesor/eliminarSeminario/" + id;
     }
     document.formSeminario.submit()
  }
