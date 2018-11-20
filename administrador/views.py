@@ -108,6 +108,25 @@ def crearNuevaAsesoriaAdm(id):
 		session['AUTH'] = 'Vacio'
 		return redirect("/alumno")
 
+@app.route("/administrador/eliminarAsesoria/<int:idProfesor>/<int:idAsesoria>")
+def eliminarAsesoriaAdm(idProfesor, idAsesoria):
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
+		elif session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Administrador':
+			asesoria = Asesoria.query.filter_by(idAsesoria=idAsesoria).first()
+			db.session.delete(asesoria)
+			db.session.commit()
+			return redirect('/administrador/displayAsesoriasDetalle/' + str(idProfesor))
+		else:
+			session['AUTH'] = None
+			return redirect("/administrador")
+	else:
+		session['AUTH'] = None
+		return redirect("/administrador")
+
 @app.route("/administrador/cerrarSesion")
 def cerrarSesionAdm():
 	session['AUTH'] = None

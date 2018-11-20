@@ -12,11 +12,103 @@ ul{
 	padding: 0;
 }
 
+.tab-links{
+	margin-bottom: 0;
+	margin-left: 0;
+}
+.tab-links:after {
+	display:block;
+	clear:both;
+	content:'';
+}
+.tab-links li {
+	margin:0px 5px;
+	float:left;
+	list-style:none;
+}
+
+.tab-links a {
+	padding:9px 15px;
+	display:inline-block;
+	border-radius:3px 3px 0px 0px;
+	background:#e34a3e;
+	font-size:16px
+	font-weight:600;
+	color:#444;
+	transition:all linear 0.15s;
+}
+
+.tab-links a:hover {
+	background:#f67f76;
+	text-decoration:none;
+}
+
+li.active a, li.active a:hover {
+	background:#fff;
+	color:#4c4c4c;
+}
+
 .tab-content {
 	padding:15px;
 	border-radius:3px;
 	box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
 	background:#fff;
+}
+.tab {
+	display:none;
+}
+
+.tab.active {
+	display:block;
+}
+
+* {
+	  box-sizing: border-box;
+}
+
+.input {
+	  width: 30%;
+	  margin: 1%;
+}
+
+.input2 {
+	  width: 18%;
+	  margin: 1%;
+}
+
+.cabecera{
+	  margin: 2%;
+}
+
+.detalles{
+	  height: 100%;
+	  margin: 1%;
+}
+
+.img{
+	  float: left;
+	  width: 120px;
+	  margin: 1%;
+}
+
+#myTable, #detalle {
+	  border-collapse: collapse;
+	  width: 100%;
+	  border: 1px solid #ddd;
+	  font-size: 18px;
+}
+
+#myTable th, #myTable td, #detalle th, #detalle td {
+	  text-align: left;
+	  padding: 12px;
+}
+
+#myTable tr, #detalle tr  {
+	  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover, #detalle tr.header, #detalle tr:hover  {
+	  background-color: #f1f1f1;
 }
 
 #user_list{
@@ -32,7 +124,7 @@ ul{
 }
 
 #user_list_header{
-	background: #f6a828 50% 50% repeat-x;
+	background: #f6a828 url(images/ui-bg_gloss-wave_35_f6a828_500x100.png) 50% 50% repeat-x;
 	color: white !important;
 	padding: 10px;
 	font-weight: bold;
@@ -65,40 +157,6 @@ ul{
 	display: inline-block;
 	text-align: center;
 	float: right;
-}
-
-label{
-	margin: 1%;
-}
-
-input{
-	margin: 1.5% !important;
-}
-
-input[type=submit]{
-	background: #f6a828;
-	color: white;
-	border-radius: 10%;
-}
-
-#myTable, #detalle {
-	  border-collapse: collapse;
-	  width: 100%;
-	  border: 1px solid #ddd;
-	  font-size: 18px;
-}
-
-#myTable th, #myTable td, #detalle th, #detalle td {
-	  text-align: left;
-	  padding: 12px;
-}
-
-#myTable tr, #detalle tr  {
-	  border-bottom: 1px solid #ddd;
-}
-
-#myTable tr.header, #myTable tr:hover, #detalle tr.header, #detalle tr:hover  {
-	  background-color: #f1f1f1;
 }
 
 button{
@@ -146,21 +204,13 @@ button{
 	height: 20px !important;
 	width: 20px !important;
 }
-.cabecera{
-	  margin: 2%;
+
+input{
+	margin: 1.5% !important;
 }
 
-.detalles{
-	  height: 100%;
-	  margin: 1%;
-}
-
-.img{
-	  float: left;
-	  width: 120px;
-	  margin: 1%;
-}
-
-p{
-	margin-left: 20.5% !important;
+input[type=submit]{
+	background: #f6a828;
+	color: white;
+	border-radius: 10%;
 }

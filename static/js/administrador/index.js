@@ -90,10 +90,12 @@ function buscar() {
        document.formAsesorias.action = "/administrador/agregarAsesoria/" + document.getElementById("idProfesor").value;
     } else if (document.getElementById("taskAsesoria").value == "edit"){
        //document.formAsesorias.action = "/profesor/commitEditarSeminario/" + id
-    } else if (document.getElementById("taskAsesoria").value == "delete"){
-       //document.formAsesorias.action = "/profesor/eliminarSeminario/" + id;
     }
     document.formAsesorias.submit()
+ }
+
+ function deleteRowAsesorias(id){
+    window.location.replace("/administrador/eliminarAsesoria/" + document.getElementById("idProfesor").value + "/" + id);
  }
 
 function displayAsesorias(){
