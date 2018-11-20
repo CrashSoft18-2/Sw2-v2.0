@@ -59,6 +59,8 @@ function buscar() {
     nodeLugar.setAttribute("name", "lugar");
     nodeLugar.setAttribute("id", "lugar");
 
+    nodeFecha.setAttribute("min", getTodayDate());
+
     var cell1 = document.createElement("td");
     var cell2 = document.createElement("td");
     var cell3 = document.createElement("td");
@@ -83,6 +85,17 @@ function buscar() {
     $("#fecha").parent().parent().remove()
  }
 
+ function submitAsesoria(id){
+    if (document.getElementById("taskAsesoria").value == "add"){
+       document.formSeminario.action = "/administrador/agregarAsesoria/" + document.getElementById("idProfesor").value;
+    } else if (document.getElementById("taskAsesoria").value == "edit"){
+       //document.formSeminario.action = "/profesor/commitEditarSeminario/" + id
+    } else if (document.getElementById("taskAsesoria").value == "delete"){
+       //document.formSeminario.action = "/profesor/eliminarSeminario/" + id;
+    }
+    document.formSeminario.submit()
+ }
+
 function displayAsesorias(){
   window.location.replace("/administrador/displayProximasAsesorias")
 }
@@ -93,4 +106,20 @@ function displayProgramarAsesorias(){
 
 function cerrarSesion(){
    window.location.replace("/administrador/cerrarSesion")
+}
+
+function getTodayDate(){
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; //January is 0!
+  var yyyy = today.getFullYear();
+   if(dd<10){
+          dd='0'+dd
+      }
+      if(mm<10){
+          mm='0'+mm
+      }
+
+  today = yyyy+'-'+mm+'-'+dd;
+  return today;
 }

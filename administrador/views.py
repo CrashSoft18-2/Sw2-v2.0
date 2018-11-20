@@ -8,6 +8,7 @@ import datetime
 
 @app.route("/administrador")
 def inicioAdministrador():
+	db.create_all()
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
 			return redirect('/profesor')
