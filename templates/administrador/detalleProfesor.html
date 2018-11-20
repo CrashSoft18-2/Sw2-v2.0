@@ -70,15 +70,15 @@
 		    <td>{{asesoria.hora}}</td>
 		    <td>{{asesoria.lugar}}</td>
         <td>
-			    <img onclick="editRowHistorial({{asesoria.idAsesoria}})" class="save" src="https://cdn3.iconfinder.com/data/icons/black-easy/512/538375-pen_512x512.png" height="50" width="50">
-			    <img onclick="deleteRowHistorial({{asesoria.idAsesoria}})" class="cancel" src="https://techflourish.com/images/cross-with-sunset-clipart-16.png" height="50" width="50">
+			    <img onclick="editRowAsesorias({{asesoria.idAsesoria}})" class="save" src="https://cdn3.iconfinder.com/data/icons/black-easy/512/538375-pen_512x512.png" height="50" width="50">
+			    <img onclick="deleteRowAsesorias({{asesoria.idAsesoria}})" class="cancel" src="https://techflourish.com/images/cross-with-sunset-clipart-16.png" height="50" width="50">
 		    </td>
 		  </tr>
 	      {% endif %}
         {% endfor %}
       </table>
       <div>
-        <img onclick="addLineHistorial()" id="add" src="https://png.pngtree.com/svg/20170919/plus_3__840571.png" height="50" width="50">
+        <img onclick="addLineAsesorias()" id="add" src="https://png.pngtree.com/svg/20170919/plus_3__840571.png" height="50" width="50">
       </div>
     </div>
   </div>
