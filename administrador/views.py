@@ -8,7 +8,6 @@ import datetime
 
 @app.route("/administrador")
 def inicioAdministrador():
-	db.create_all()
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
 			return redirect('/profesor')
@@ -22,8 +21,6 @@ def inicioAdministrador():
 	else:
 		session['AUTH'] = None
 		return render_template('administrador/login.html', val = False)
-
-
 
 @app.route("/administrador/login", methods=['POST'])
 def loginAdministrador():
@@ -83,6 +80,26 @@ def programarAsesoriasAdm():
 			return redirect('/profesor')
 		elif session['AUTH'] == 'Administrador':
 			username = session['username']
+			return render_template('administrador/programarAsesorias.html', usuario=username)
+		else:
+			session['AUTH'] = 'Vacio'
+			return render_template('administrador/login.html')
+	else:
+		session['AUTH'] = 'Vacio'
+		return redirect("/alumno")
+
+@app.route("/administrador/agregarAsesoria/<int:id>", methods=['POST'])
+def crearNuevaAsesoriaAdm(id):
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
+		elif session['AUTH'] == 'Administrador':
+			username = session['username']
+			asesoria = Asesoria(idProfesor=id,fecha=request.form['fecha'],hora=request.form['hora'],lugar=request.form['lugar'])
+			db.session.add(asesoria)
+			db.session.commit()
 			return render_template('administrador/programarAsesorias.html', usuario=username)
 		else:
 			session['AUTH'] = 'Vacio'
