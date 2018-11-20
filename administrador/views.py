@@ -82,7 +82,7 @@ def programarAsesoriasAdm():
 			return redirect('/profesor')
 		elif session['AUTH'] == 'Administrador':
 			username = session['username']
-			return render_template('administrador/detalleProfesor.html', usuario=username)
+			return render_template('administrador/programarAsesorias.html', usuario=username)
 		else:
 			session['AUTH'] = 'Vacio'
 			return render_template('administrador/login.html')
