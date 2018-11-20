@@ -36,7 +36,7 @@ class Asesoria(db.Model):
     profesor = db.relationship('Profesor')
     fecha = db.Column(db.Date, nullable=False)
     hora = db.Column(db.String, nullable=False)
-    lugar = db.Column(db.String, nullable=False)
+    lugar = db.Column(db.String, default="Disponible")
     disponibilidad = db.Column(db.String, nullable=False)
 
     def __repr__(self):
@@ -65,7 +65,7 @@ class Seminario(db.Model):
 
     def __repr__(self):
         return '<Seminario %r>' % self.idSeminario
-    
+
 class Registro(db.Model):
     idRegistro = db.Column(db.Integer, primary_key=True)
     idAsesoria = db.Column(db.Integer, db.ForeignKey('asesoria.idAsesoria'), nullable=False)
@@ -75,7 +75,7 @@ class Registro(db.Model):
 
     def __repr__(self):
         return '<Registro %r>' % self.idRegistro
-    
+
 class registroSeminario(db.Model):
     idRegistroSeminario = db.Column(db.Integer, primary_key=True)
     idSeminario = db.Column(db.Integer, db.ForeignKey('seminario.idSeminario'), nullable=False)

@@ -15,10 +15,10 @@ Para acceder a la demo:
 ## Usuarios
 
 Tipo de Usuario | Usuario | Contraseña
---- | --- | --- 
-Alumno | 20152736 | 1234 
-Profesor | hquintan | 1234 
-Administrador | admin001 | 1234 
+--- | --- | ---
+Alumno | 20152736 | 1234
+Profesor | hquintan | 1234
+Administrador | admin001 | 1234
 
 ## To Do
 
@@ -64,10 +64,14 @@ Administrador | admin001 | 1234
 ### Sprint 5
 - [x] Desarrollo Login - App Administrador
 - [x] Crear Administrador en el models y BD
-- [ ] Desarrollo Próximas Asesorías (Cabecera) - App Administrador
-- [ ] Desarrollo Próximas Asesorías (Detalle) - App Administrador
-- [ ] Desarrollo Programas Asesorías - App Administrador
-- [ ] Desarrollo Chat as Help Desk - App Administrador
+- [x] Desarrollo Próximas Asesorías (Cabecera) - App Administrador
+- [x] Desarrollo Próximas Asesorías (Detalle) - App Administrador
+- [x] Funcionalidad Agregar Asesoría
+- [x] Funcionalidad Editar Asesoría
+- [x] Funcionalidad Eliminar Asesoría
+- [x] Desarrollo Programar Asesorías - App Administrador
+- [ ] Funcionalidad Programar Asesoría (Masivo)
+- [x] Desarrollo Chat - App Administrador
 - [ ] Arreglar bug del Chat (Todos)
 - [ ] Arreglar bug de Seminarios (Alumno)
 - [ ] Bugs fix (Otros)

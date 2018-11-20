@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Asesorías UL - Asesorías</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/administrador/index.css') }}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/0/0e/ULIMA_logo.png">
+	<script src="{{ url_for('static', filename='js/administrador/index.js') }}"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/chat/jquery-ui.css') }}" type="text/css" media="screen"/>
+	<link type="text/css" href="{{ url_for('static', filename='css/chat/jquery.ui.chatbox.css') }}" rel="stylesheet"/>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/chat/jquery-1.4.2.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/chat/jquery-ui.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/chat/jquery.ui.chatbox.js') }}"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyARVPJ_1sfCGCAQcmeWqZaG_nkNMMp845k",
+	    authDomain: "crashsoft-e0a3e.firebaseapp.com",
+	    databaseURL: "https://crashsoft-e0a3e.firebaseio.com",
+	    projectId: "crashsoft-e0a3e",
+	    storageBucket: "crashsoft-e0a3e.appspot.com",
+	    messagingSenderId: "305605246942"
+	  };
+	  firebase.initializeApp(config);
+	</script>
+</head>
+<body>
+
+<img class="logout" onclick="cerrarSesion()" src="http://www.clker.com/cliparts/Z/l/p/o/z/T/power-button-outline-md.png" height="30" width="30">
+
+<div class="container">
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" onclick="displayAsesorias()">Próximas Asesorías</a></li>
+    <li><a data-toggle="tab" onclick="displayProgramarAsesorias()">Programar Asesorías</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="asesorias" class="tab-pane fade in active">
+      <input type="text" id="prof" class="input" placeholder="Buscar por profesor">
+      <input type="text" id="curso" class="input" placeholder="Buscar por curso">
+      <span style="margin: 1%;">
+        <select id="carrera">
+          <option value="" selected>-Todos-</option>
+          <option value="Administración">Administración</option>
+          <option value="Arquitectura">Arquitectura</option>
+          <option value="Comunicación">Comunicación</option>
+          <option value="Contabilidad">Contabilidad</option>
+          <option value="Economía">Economía</option>
+          <option value="Ingeniería Civil">Ingeniería Civil</option>
+          <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
+          <option value="Ingeniería Industrial">Ingeniería Industrial</option>
+          <option value="Marketing">Marketing</option>
+          <option value="Negocios Internacionales">Negocios Internacionales</option>
+          <option value="Psicología">Psicología</option>
+          <option value="Programa de Estudios Generales">Programa de Estudios Generales</option>
+        </select>
+      </span>
+      <button onclick="buscar()">Buscar</button>
+
+      <table id="myTable">
+        <tr class="header">
+          <th style="width:20%;">Profesor</th>
+          <th style="width:20%;">Carrera</th>
+          <th style="width:40%;">Cursos</th>
+          <th style="width:20%;">Secciones</th>
+        </tr>
+        {% for profesor in profesores %}
+          <tr>
+            <td><a href="{{url_for('admDetalleProfesor', id=profesor.idProfesor) }}">{{profesor.nombre}}</a></td>
+            <td>{{profesor.carrera}}</td>
+            <td>
+              {% for seccion in profesor.secciones %}
+                <p>{{seccion.curso.nombre}}</p>
+              {% endfor %}
+            </td>
+            <td>
+              {% for seccion in profesor.secciones %}
+                <p>{{seccion.numeroSeccion}}</p>
+              {% endfor %}
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="user_list">
+    <div id="user_list_header">
+        <span>Lista de Usuarios</span>
+        <a href="#" class="ui-corner-all ui-chatbox-icon" role="button"><span class="ui-icon ui-icon-minusthick">minimize</span></a>
+    </div>
+    <div id="user_list_content">
+        <ul>
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript">
+	sessionStorage.setItem('user', "{{usuario}}");
+</script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/chat/chat.js') }}"></script>
+
+</body>
+</html>

@@ -21,8 +21,6 @@ def inicioAdministrador():
 	else:
 		session['AUTH'] = None
 		return render_template('administrador/login.html', val = False)
-	
-
 
 @app.route("/administrador/login", methods=['POST'])
 def loginAdministrador():
@@ -35,3 +33,144 @@ def loginAdministrador():
 		return redirect("/administrador/displayProximasAsesorias")
 	else:
 		return render_template('administrador/login.html', val = True)
+
+@app.route("/administrador/displayProximasAsesorias")
+def admDisplayAsesorias():
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
+		elif session['AUTH'] == 'Administrador':
+			profesores = Profesor.query.all()
+			username = session['username']
+			return render_template('administrador/displayProximasAsesorias.html', profesores = profesores, usuario = username)
+		else:
+			session['AUTH'] = None
+			return redirect("/administrador")
+	else:
+		session['AUTH'] = None
+		return redirect("/administrador")
+
+@app.route("/administrador/displayAsesoriasDetalle/<int:id>")
+def admDetalleProfesor(id):
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
+		elif session['AUTH'] == 'Administrador':
+			profesor = Profesor.query.filter_by(idProfesor=id).first()
+			fecha = datetime.date.today()
+			username = session['username']
+			return render_template('administrador/detalleProfesor.html', profesor=profesor, fecha=fecha, usuario=username)
+		else:
+			session['AUTH'] = 'Vacio'
+			return render_template('administrador/login.html')
+	else:
+		session['AUTH'] = 'Vacio'
+		return redirect("/alumno")
+
+@app.route("/administrador/programarAsesorias")
+def programarAsesoriasAdm():
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
+		elif session['AUTH'] == 'Administrador':
+			username = session['username']
+			return render_template('administrador/programarAsesorias.html', usuario=username)
+		else:
+			session['AUTH'] = 'Vacio'
+			return render_template('administrador/login.html')
+	else:
+		session['AUTH'] = 'Vacio'
+		return redirect("/alumno")
+
+@app.route("/administrador/agregarAsesoria/<int:id>", methods=['POST'])
+def crearNuevaAsesoriaAdm(id):
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
+		elif session['AUTH'] == 'Administrador':
+			username = session['username']
+			asesoria = Asesoria(idProfesor=id,fecha=request.form['fecha'],hora=request.form['hora'],lugar=request.form['lugar'],disponibilidad="Disponible")
+			db.session.add(asesoria)
+			db.session.commit()
+			return redirect('/administrador/displayAsesoriasDetalle/' + str(id))
+		else:
+			session['AUTH'] = 'Vacio'
+			return render_template('administrador/login.html')
+	else:
+		session['AUTH'] = 'Vacio'
+		return redirect("/alumno")
+
+@app.route("/administrador/eliminarAsesoria/<int:idProfesor>/<int:idAsesoria>")
+def eliminarAsesoriaAdm(idProfesor, idAsesoria):
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
+		elif session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Administrador':
+			asesoria = Asesoria.query.filter_by(idAsesoria=idAsesoria).first()
+			db.session.delete(asesoria)
+			db.session.commit()
+			return redirect('/administrador/displayAsesoriasDetalle/' + str(idProfesor))
+		else:
+			session['AUTH'] = None
+			return redirect("/administrador")
+	else:
+		session['AUTH'] = None
+		return redirect("/administrador")
+
+@app.route("/administrador/editarAsesoria/<int:idProfesor>/<int:idAsesoria>")
+def prepararParaEditarAsesoriaAdm(idProfesor, idAsesoria):
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
+		elif session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Administrador':
+			profesor = Profesor.query.filter_by(idProfesor=idProfesor).first()
+			fecha = datetime.date.today()
+			username = session['username']
+			return render_template('administrador/detalleProfesor.html', profesor=profesor, fecha=fecha, usuario=username, editar=idAsesoria)
+		else:
+			session['AUTH'] = None
+			return redirect("/administrador")
+	else:
+		session['AUTH'] = None
+		return redirect("/administrador")
+
+@app.route("/administrador/commitEditarAsesoria/<int:idProfesor>/<int:idAsesoria>", methods=['POST'])
+def editarAsesoriaAdm(idProfesor, idAsesoria):
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
+		elif session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Administrador':
+			asesoria = Asesoria.query.filter_by(idAsesoria=idAsesoria).first()
+			asesoria.fecha = request.form['fecha']
+			asesoria.hora = request.form['hora']
+			asesoria.lugar = request.form['lugar']
+			db.session.commit()
+			return redirect('/administrador/displayAsesoriasDetalle/' + str(idProfesor))
+		else:
+			session['AUTH'] = None
+			return redirect("/administrador")
+	else:
+		session['AUTH'] = None
+		return redirect("/administrador")
+
+@app.route("/administrador/cerrarSesion")
+def cerrarSesionAdm():
+	session['AUTH'] = None
+	session['id'] = None
+	session['username'] = None
+	session['nombre'] = None
+	return redirect("/administrador")

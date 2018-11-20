@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Asesorías UL - Programar Asesorías</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/administrador/index.css') }}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/0/0e/ULIMA_logo.png">
+  <script src="{{ url_for('static', filename='js/administrador/index.js') }}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/chat/jquery-ui.css') }}" type="text/css" media="screen" />
+  <link type="text/css" href="{{ url_for('static', filename='css/chat/jquery.ui.chatbox.css') }}" rel="stylesheet" />
+  <script type="text/javascript" src="{{ url_for('static', filename='js/chat/jquery-1.4.2.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/chat/jquery-ui.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/chat/jquery.ui.chatbox.js') }}"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyARVPJ_1sfCGCAQcmeWqZaG_nkNMMp845k",
+      authDomain: "crashsoft-e0a3e.firebaseapp.com",
+      databaseURL: "https://crashsoft-e0a3e.firebaseio.com",
+      projectId: "crashsoft-e0a3e",
+      storageBucket: "crashsoft-e0a3e.appspot.com",
+      messagingSenderId: "305605246942"
+    };
+    firebase.initializeApp(config);
+  </script>
+</head>
+<body>
+
+<img class="logout" onclick="cerrarSesion()" src="http://www.clker.com/cliparts/Z/l/p/o/z/T/power-button-outline-md.png" height="30" width="30">
+
+<div class="container">
+
+  <ul class="nav nav-tabs">
+    <li><a data-toggle="tab" onclick="displayAsesorias()">Próximas Asesorías</a></li>
+    <li class="active"><a data-toggle="tab" onclick="displayProgramar()">Programar Asesorías</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="asesorias" class="tab-pane fade in active">
+      <form action="">
+        <label for="profesor">Usuario del Profesor:</label><br>
+        <input type="text" name="profesor" id="profesor"><br>
+        <label>Repetir los días:</label><br>
+        <input type="checkbox" name="dia1" value="Lunes"> Lunes<br>
+        <input type="checkbox" name="dia2" value="Martes"> Martes<br>
+        <input type="checkbox" name="dia3" value="Miercoles"> Miércoles<br>
+        <input type="checkbox" name="dia4" value="Jueves"> Jueves<br>
+        <input type="checkbox" name="dia5" value="Viernes"> Viernes<br>
+        <input type="checkbox" name="dia6" value="Sabado"> Sábado<br>
+        <label for="appt">Hora:</label><br>
+        <input type="time" id="appt" name="appt" min="7:00" max="21:00" required><br>
+        <label for="date">Repetir hasta:</label><br>
+        <input type="date" id="date" name="date"><br>
+        <input type="submit" value="Programar"><br>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<div id="user_list">
+			<div id="user_list_header">
+				<span>Lista de Usuarios</span>
+				<a href="#" class="ui-corner-all ui-chatbox-icon" role="button"><span class="ui-icon ui-icon-minusthick">minimize</span></a></div>
+			<div id="user_list_content">
+				<ul>
+				</ul>
+			</div>
+</div>
+
+<script type="text/javascript">
+	sessionStorage.setItem('user', "{{usuario}}");
+</script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/chat/chat.js') }}"></script>
+
+</body>
+</html>

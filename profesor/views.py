@@ -21,8 +21,6 @@ def inicioProfesor():
 	else:
 		session['AUTH'] = None
 		return render_template('profesor/login.html', val = False)
-	
-
 
 @app.route("/profesor/login", methods=['POST'])
 def loginProfesor():
@@ -37,7 +35,7 @@ def loginProfesor():
 	else:
 		return render_template('profesor/login.html', val = True)
 
-	
+
 @app.route("/profesor/displayProximasAsesorias")
 def indexProfesor():
 	if session.get('AUTH') != None:
@@ -56,9 +54,9 @@ def indexProfesor():
 	else:
 		session['AUTH'] = None
 		return redirect("/profesor")
-	
-	
-@app.route("/profesor/editarDisponibilidad/<int:id>")	
+
+
+@app.route("/profesor/editarDisponibilidad/<int:id>")
 def editarDisponibilidadProfesor(id):
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
@@ -79,8 +77,8 @@ def editarDisponibilidadProfesor(id):
 	else:
 		session['AUTH'] = None
 		return redirect("/profesor")
-	
-	
+
+
 @app.route("/profesor/displayProximasAsesoriasDetalle/<int:id>")
 def detalleAsesoriasProfesor(id):
 	if session.get('AUTH') != None:
@@ -117,7 +115,7 @@ def historialProfesor():
 	else:
 		session['AUTH'] = None
 		return redirect("/profesor")
-	
+
 @app.route("/profesor/displayHistorialDetalle/<int:id>")
 def detalleHistorialProfesor(id):
 	if session.get('AUTH') != None:
@@ -140,9 +138,7 @@ def detalleHistorialProfesor(id):
 def agregarTemaProfesor(id):
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
-			print("SAFGRTG")
 			registro = Registro(idAsesoria=id,temaTratado=request.form['tema'],conclusion=request.form['conclusion'])
-			print(registro)
 			db.session.add(registro)
 			db.session.commit()
 			username = session['username']
@@ -157,7 +153,7 @@ def agregarTemaProfesor(id):
 	else:
 		session['AUTH'] = None
 		return redirect("/profesor")
-	
+
 @app.route("/profesor/editarTemaTratado/<int:idAs>/<int:id>")
 def renderEditarTemaProfesor(idAs, id):
 	if session.get('AUTH') != None:
@@ -176,7 +172,7 @@ def renderEditarTemaProfesor(idAs, id):
 	else:
 		session['AUTH'] = None
 		return redirect("/profesor")
-	
+
 @app.route("/profesor/editarTema/<int:idAs>/<int:id>", methods=['POST'])
 def editarTemaProfesor(idAs, id):
 	if session.get('AUTH') != None:
@@ -197,7 +193,7 @@ def editarTemaProfesor(idAs, id):
 	else:
 		session['AUTH'] = None
 		return redirect("/profesor")
-	
+
 @app.route("/profesor/eliminarTemaTratado/<int:idAs>/<int:id>", methods=['POST'])
 def eliminarTemaProfesor(idAs, id):
 	if session.get('AUTH') != None:
@@ -234,7 +230,7 @@ def seminariosProfesor():
 	else:
 		session['AUTH'] = None
 		return redirect("/profesor")
-	
+
 @app.route("/profesor/agregarSeminario/<int:id>", methods=['POST'])
 def agregarSeminarioProfesor(id):
 	if session.get('AUTH') != None:
@@ -272,7 +268,7 @@ def renderSeminariosProfesor(id):
 	else:
 		session['AUTH'] = None
 		return redirect("/profesor")
-	
+
 @app.route("/profesor/commitEditarSeminario/<int:id>", methods=['POST'])
 def editarSeminarioProfesor(id):
 	if session.get('AUTH') != None:
@@ -312,7 +308,7 @@ def eliminarSeminarioProfesor(id):
 			return redirect("/profesor")
 	else:
 		session['AUTH'] = None
-		return redirect("/profesor")	
+		return redirect("/profesor")
 
 @app.route("/profesor/displaySeminariosDetalle/<id>")
 def seminariosDetalleProfesor(id):
@@ -331,7 +327,7 @@ def seminariosDetalleProfesor(id):
 	else:
 		session['AUTH'] = None
 		return redirect("/profesor")
-	
+
 @app.route("/profesor/cerrarSesion")
 def cerrarSesionProfesor():
 	session['AUTH'] = 'Vacio'
