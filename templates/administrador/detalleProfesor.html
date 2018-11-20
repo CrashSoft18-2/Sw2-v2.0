@@ -56,6 +56,8 @@
           </div>
         </div>
       </div>
+<form action="/" method="post" name="formHistorial">
+    <input type="hidden" id="taskAsesoria" name="taskAsesoria" value="add">
       <table id="detalle">
         <tr class="header">
           <th style="width:25%;">Fecha</th>
@@ -77,6 +79,7 @@
 	      {% endif %}
         {% endfor %}
       </table>
+</form>
       <div>
         <img onclick="addLineAsesorias()" id="add" src="https://png.pngtree.com/svg/20170919/plus_3__840571.png" height="50" width="50">
       </div>
