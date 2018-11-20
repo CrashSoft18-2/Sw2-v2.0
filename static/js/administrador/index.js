@@ -103,8 +103,8 @@ function buscar() {
    window.location.replace("/administrador/editarAsesoria/" + document.getElementById("idProfesor").value + "/" + id);
  }
 
- function cancelEditAsesoria(id){
-    window.location.replace("/administrador/displayAsesoriasDetalle/" + document.getElementById("idProfesor").value + "/" + id)
+ function cancelEditAsesoria(){
+    window.location.replace("/administrador/displayAsesoriasDetalle/" + document.getElementById("idProfesor").value)
  }
 
  function deleteRowAsesorias(id){
