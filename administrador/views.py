@@ -172,9 +172,14 @@ def editarAsesoriaAdm(idProfesor, idAsesoria):
 @app.route("/administrador/programarAsesorias", methods=['POST'])
 def programarAsesoriasAdmMasivo():
 	data_from_request = request.form.to_dict()
+	today = dt.today()
+	top = dt.strptime(data_from_request["date"], "%Y-%m-%d")
 	for i in range(5):
-		print(data_from_request["dia" + str(i + 1)])
-	return dt.strptime(data_from_request["date"], "%Y-%m-%d")
+		key = "dia" + str(i + 1)
+		if key in data_from_request:
+			print(data_from_request[key])
+			print(dt.today().weekday())
+	return ""
 
 @app.route("/administrador/cerrarSesion")
 def cerrarSesionAdm():
