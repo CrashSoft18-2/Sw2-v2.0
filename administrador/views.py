@@ -127,6 +127,46 @@ def eliminarAsesoriaAdm(idProfesor, idAsesoria):
 		session['AUTH'] = None
 		return redirect("/administrador")
 
+@app.route("/administrador/editarAsesoria/<int:idProfesor>/<int:idAsesoria>")
+def prepararParaEditarAsesoriaAdm(idProfesor, idAsesoria):
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
+		elif session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Administrador':
+			profesor = Profesor.query.filter_by(idProfesor=idProfesor).first()
+			fecha = datetime.date.today()
+			username = session['username']
+			return render_template('administrador/detalleProfesor.html', profesor=profesor, fecha=fecha, usuario=username, editar=idAsesoria)
+		else:
+			session['AUTH'] = None
+			return redirect("/administrador")
+	else:
+		session['AUTH'] = None
+		return redirect("/administrador")
+
+@app.route("/administrador/commitEditarAsesoria/<int:idProfesor>/<int:idAsesoria>", methods=['POST'])
+def editarAsesoriaAdm(idProfesor, idAsesoria):
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
+		elif session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Administrador':
+			asesoria = Asesoria.query.filter_by(idAsesoria=idAsesoria).first()
+			asesoria.fecha = request.form['fecha']
+			asesoria.hora = request.form['hora']
+			asesoria.lugar = request.form['lugar']
+			db.session.commit()
+			return redirect('/administrador/displayAsesoriasDetalle/' + str(idProfesor))
+		else:
+			session['AUTH'] = None
+			return redirect("/administrador")
+	else:
+		session['AUTH'] = None
+		return redirect("/administrador")
+
 @app.route("/administrador/cerrarSesion")
 def cerrarSesionAdm():
 	session['AUTH'] = None

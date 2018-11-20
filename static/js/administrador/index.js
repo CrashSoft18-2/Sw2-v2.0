@@ -89,9 +89,22 @@ function buscar() {
     if (document.getElementById("taskAsesoria").value == "add"){
        document.formAsesorias.action = "/administrador/agregarAsesoria/" + document.getElementById("idProfesor").value;
     } else if (document.getElementById("taskAsesoria").value == "edit"){
-       //document.formAsesorias.action = "/profesor/commitEditarSeminario/" + id
+       document.formAsesorias.action = "/administrador/commitEditarAsesoria/" + document.getElementById("idProfesor").value + "/" + id;
     }
     document.formAsesorias.submit()
+ }
+
+ function editarAsesoria(id){
+   document.getElementById("taskAsesoria").value = "edit";
+   submitHistorial(id);
+ }
+
+ function editRowAsesorias(id){
+   window.location.replace("/administrador/editarAsesoria/" + document.getElementById("idProfesor").value + "/" + id);
+ }
+
+ function cancelEditAsesoria(id){
+    window.location.replace("/administrador/displayAsesoriasDetalle/" + id)
  }
 
  function deleteRowAsesorias(id){
