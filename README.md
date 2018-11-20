@@ -67,7 +67,7 @@ Administrador | admin001 | 1234
 - [x] Desarrollo Próximas Asesorías (Cabecera) - App Administrador
 - [x] Desarrollo Próximas Asesorías (Detalle) - App Administrador
 - [x] Funcionalidad Agregar Asesoría
-- [ ] Funcionalidad Editar Asesoría
+- [x] Funcionalidad Editar Asesoría
 - [x] Funcionalidad Eliminar Asesoría
 - [x] Desarrollo Programar Asesorías - App Administrador
 - [ ] Funcionalidad Programar Asesoría (Masivo)

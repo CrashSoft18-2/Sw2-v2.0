@@ -69,7 +69,6 @@
         {% for asesoria in profesor.asesorias %}
 	      {% if fecha < asesoria.fecha %}
 		  <tr onclick="">
-
         {% if editar == asesoria.idAsesoria %}
     		    <td><input type="date" class="row" name="fecha" id="fecha"/></td>
     		    <td><input type="text" class="row" name="hora" id="hora"/></td>
@@ -79,7 +78,6 @@
     			    <img onclick="cancelEditAsesoria()" class="delete" src="https://techflourish.com/images/cross-with-sunset-clipart-16.png" height="50" width="50">
     		    </td>
     		{% else %}
-
 		    <td>{{asesoria.fecha}}</td>
 		    <td>{{asesoria.hora}}</td>
 		    <td>{{asesoria.lugar}}</td>
