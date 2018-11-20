@@ -104,7 +104,7 @@ function buscar() {
  }
 
  function cancelEditAsesoria(id){
-    window.location.replace("/administrador/displayAsesoriasDetalle/" + id)
+    window.location.replace("/administrador/displayAsesoriasDetalle/" + document.getElementById("idProfesor").value + "/" + id)
  }
 
  function deleteRowAsesorias(id){
