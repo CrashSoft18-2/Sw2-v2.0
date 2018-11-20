@@ -138,7 +138,7 @@ def detalleHistorialProfesor(id):
 def agregarTemaProfesor(id):
 	if session.get('AUTH') != None:
 		if session['AUTH'] == 'Profesor':
-			registro = Registro(idAsesoria=id,temaTratado=request.form['tema'],conclusion=request.form['conclusion'],disponibilidad="Disponible")
+			registro = Registro(idAsesoria=id,temaTratado=request.form['tema'],conclusion=request.form['conclusion'])
 			db.session.add(registro)
 			db.session.commit()
 			username = session['username']
