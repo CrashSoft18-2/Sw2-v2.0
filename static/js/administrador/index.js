@@ -95,30 +95,6 @@ function displayProgramarAsesorias(){
   window.location.replace("/administrador/programarAsesorias")
 }
 
-function displayMisCitas(){
-  //window.location.replace("/alumno/displayMisCitas")
-}
-
-function displaySeminarios(){
-  //window.location.replace("/alumno/displaySeminarios")
-}
-
-function displayMisSeminarios(){
-  //window.location.replace("/alumno/displayMisSeminarios")
-}
-
-function cancelarCita(id){
-   //window.location.replace("/alumno/cancelarReserva/" + id)
-}
-
-function inscripcion(id){
-   //window.location.replace("/alumno/inscripcionSeminario/" + id)
-}
-
-function cancelarSeminario(id){
-   //window.location.replace("/alumno/cancelarSeminario/" + id)
-}
-
 function cerrarSesion(){
    window.location.replace("/administrador/cerrarSesion")
 }
