@@ -172,7 +172,7 @@ def editarAsesoriaAdm(idProfesor, idAsesoria):
 @app.route("/administrador/programarAsesorias", methods=['POST'])
 def programarAsesoriasAdmMasivo():
 	data_from_request = request.form.to_dict()
-	return dt.strptime(data_from_request["date"], "%yyyy-%mm-%dd").astype(int)
+	return dt.strptime(data_from_request["date"], "%Y-%m-%d").astype(int)
 
 @app.route("/administrador/cerrarSesion")
 def cerrarSesionAdm():
