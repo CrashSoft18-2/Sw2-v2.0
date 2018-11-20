@@ -97,7 +97,7 @@ def crearNuevaAsesoriaAdm(id):
 			return redirect('/profesor')
 		elif session['AUTH'] == 'Administrador':
 			username = session['username']
-			asesoria = Asesoria(idProfesor=id,fecha=request.form['fecha'],hora=request.form['hora'],lugar=request.form['lugar'])
+			asesoria = Asesoria(idProfesor=id,fecha=request.form['fecha'],hora=request.form['hora'],lugar=request.form['lugar'],disponibilidad="Disponible")
 			db.session.add(asesoria)
 			db.session.commit()
 			return render_template('administrador/programarAsesorias.html', usuario=username)
