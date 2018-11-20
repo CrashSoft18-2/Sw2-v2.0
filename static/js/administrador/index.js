@@ -93,7 +93,7 @@ function buscar() {
     } else if (document.getElementById("taskAsesoria").value == "delete"){
        //document.formAsesorias.action = "/profesor/eliminarSeminario/" + id;
     }
-    document.formSeminario.submit()
+    document.formAsesorias.submit()
  }
 
 function displayAsesorias(){
