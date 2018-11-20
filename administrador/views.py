@@ -169,7 +169,7 @@ def editarAsesoriaAdm(idProfesor, idAsesoria):
 
 @app.route("/administrador/programarAsesorias", methods=['POST'])
 def programarAsesoriasAdmMasivo():
-	return request.form
+	return str(request.form)
 
 @app.route("/administrador/cerrarSesion")
 def cerrarSesionAdm():
