@@ -77,3 +77,7 @@ Administrador | admin001 | 1234
 - [ ] Bugs fix (Otros)
 - [ ] Desarrollo Documentación
 - [ ] Ejecución de Plan de Pruebas con Selenium
+- [ ] Pruebas unitarias de las funciones de mayor complejidad.
+- [x] Sistema de Integración continua configurado.
+- [ ] Plan de pruebas de aceptación ejecutadas por el equipo.
+- [ ] Video de funcionamiento del producto de software.
