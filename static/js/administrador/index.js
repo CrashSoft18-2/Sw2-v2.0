@@ -1,3 +1,10 @@
+function main(){
+    var nodeLugar = document.getElementById("date");
+    if (nodefecha != undefined){
+      nodeFecha.setAttribute("min", getTodayDate());
+    }
+}
+
 function buscar() {
    var prof, carr, curso, filterProf, filterCarr, filterCurso, table, tr, td1, td2, td3, i;
    prof = document.getElementById("prof");

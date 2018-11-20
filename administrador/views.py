@@ -167,7 +167,7 @@ def editarAsesoriaAdm(idProfesor, idAsesoria):
 		session['AUTH'] = None
 		return redirect("/administrador")
 
-@app.route("/administrador/programarAsesorias")
+@app.route("/administrador/programarAsesorias", methods=['POST'])
 def programarAsesoriasAdmMasivo():
 	return request.form
 
