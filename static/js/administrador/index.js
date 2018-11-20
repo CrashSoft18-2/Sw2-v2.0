@@ -96,7 +96,7 @@ function buscar() {
 
  function editarAsesoria(id){
    document.getElementById("taskAsesoria").value = "edit";
-   submitHistorial(id);
+   submitAsesoria(id);
  }
 
  function editRowAsesorias(id){
