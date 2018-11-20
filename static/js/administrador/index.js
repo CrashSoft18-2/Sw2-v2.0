@@ -93,8 +93,9 @@ function buscarSeminario() {
 
     var tbody = document.getElementById("detalle").firstChild.nextSibling;
 
-    var nodeTema = document.createElement("input");
-    var nodeConc = document.createElement("input");
+    var nodeFecha = document.createElement("input");
+    var nodeHora = document.createElement("input");
+    var nodeLugar = document.createElement("input");
 
     var save = document.createElement("img");
     var cancel = document.createElement("img");
@@ -106,26 +107,33 @@ function buscarSeminario() {
     cancel.setAttribute("src", "https://techflourish.com/images/cross-with-sunset-clipart-16.png");
     cancel.setAttribute("onclick", "cancelHistorial()");
 
-    nodeTema.setAttribute("class", "row");
-    nodeTema.setAttribute("name", "tema");
-    nodeConc.setAttribute("class", "row");
-    nodeConc.setAttribute("name", "conclusion");
-    nodeTema.setAttribute("id", "temaTratado");
-    nodeConc.setAttribute("id", "conclusion");
+    nodeFecha.setAttribute("class", "row");
+    nodeFecha.setAttribute("name", "fecha");
+    nodeFecha.setAttribute("type", "date");
+    nodeFecha.setAttribute("id", "fecha");
+    nodeHora.setAttribute("class", "row");
+    nodeHora.setAttribute("name", "hora");
+    nodeHora.setAttribute("id", "hora");
+    nodeLugar.setAttribute("class", "row");
+    nodeLugar.setAttribute("name", "lugar");
+    nodeLugar.setAttribute("id", "lugar");
 
     var cell1 = document.createElement("td");
     var cell2 = document.createElement("td");
     var cell3 = document.createElement("td");
+    var cell4 = document.createElement("td");
 
-    cell1.appendChild(nodeTema);
-    cell2.appendChild(nodeConc);
-    cell3.appendChild(save);
-    cell3.appendChild(cancel);
+    cell1.appendChild(nodeFecha);
+    cell2.appendChild(nodeHora);
+    cell3.appendChild(nodeLugar);
+    cell4.appendChild(save);
+    cell4.appendChild(cancel);
 
     var row = document.createElement("tr");
     row.appendChild(cell1);
     row.appendChild(cell2);
     row.appendChild(cell3);
+    row.appendChild(cell4);
     tbody.appendChild(row);
  }
 
