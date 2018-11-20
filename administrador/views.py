@@ -5,6 +5,7 @@ from administrador.models import *
 from app import app
 from flask import session, request, render_template, url_for, redirect
 import datetime
+import json
 
 @app.route("/administrador")
 def inicioAdministrador():
@@ -169,7 +170,7 @@ def editarAsesoriaAdm(idProfesor, idAsesoria):
 
 @app.route("/administrador/programarAsesorias", methods=['POST'])
 def programarAsesoriasAdmMasivo():
-	return request.form.to_dict()
+	return json.dumps(request.form.to_dict())
 
 @app.route("/administrador/cerrarSesion")
 def cerrarSesionAdm():
