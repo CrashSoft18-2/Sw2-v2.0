@@ -100,7 +100,7 @@ def crearNuevaAsesoriaAdm(id):
 			asesoria = Asesoria(idProfesor=id,fecha=request.form['fecha'],hora=request.form['hora'],lugar=request.form['lugar'],disponibilidad="Disponible")
 			db.session.add(asesoria)
 			db.session.commit()
-			return redirect('/administrador/displayAsesoriasDetalle/' + id)
+			return redirect('/administrador/displayAsesoriasDetalle/' + str(id))
 		else:
 			session['AUTH'] = 'Vacio'
 			return render_template('administrador/login.html')
