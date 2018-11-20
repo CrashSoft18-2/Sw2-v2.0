@@ -38,10 +38,10 @@ function buscarCitas() {
 
    curso = document.getElementById("fecha");
    filterCurso = curso.value.toUpperCase();
-   
+
    carrera = document.getElementById("consulta");
    filterConsulta = carrera.value.toUpperCase();
-   
+
    table = document.getElementById("detalle");
    tr = table.getElementsByTagName("tr");
    for (i = 0; i < tr.length; i++) {
@@ -67,10 +67,10 @@ function buscarSeminario() {
 
    carr = document.getElementById("carrera");
    filterCarr = carr.value.toUpperCase();
-   
+
    topic = document.getElementById("topic");
    filterTopic = topic.value.toUpperCase();
-   
+
    table = document.getElementById("myTable");
    tr = table.getElementsByTagName("tr");
    for (i = 0; i < tr.length; i++) {
@@ -91,8 +91,8 @@ function displayAsesorias(){
   window.location.replace("/administrador/displayProximasAsesorias")
 }
 
-function displayHistorial(){
-  //window.location.replace("/alumno/displayHistorial")
+function displayProgramarAsesorias(){
+  window.location.replace("/administrador/programarAsesorias")
 }
 
 function displayMisCitas(){
@@ -122,4 +122,3 @@ function cancelarSeminario(id){
 function cerrarSesion(){
    window.location.replace("/administrador/cerrarSesion")
 }
-   

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Asesorías UL - Asesorías</title>
+  <title>Asesorías UL - Programar Asesorías</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/administrador/index.css') }}">
@@ -37,49 +37,27 @@
 
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" onclick="displayAsesorias()">Próximas Asesorías</a></li>
-    <li><a data-toggle="tab" onclick="displayProgramarAsesorias()">Programar Asesorías</a></li>
+    <li><a data-toggle="tab" onclick="displayProgramar()">Programar Asesorías</a></li>
   </ul>
 
   <div class="tab-content">
     <div id="asesorias" class="tab-pane fade in active">
-      <div class="cabecera">
-        <div>
-          <div class="img">
-            <img src="{{profesor.foto}}" height="100" width="100">
-          </div>
-          <div class="detalles">
-            <label><strong>{{profesor.nombre}}</strong></label><br/>
-            <label>Cursos:</label>
-            {% for seccion in profesor.secciones %}
-              <p>{{seccion.curso.nombre}}</p>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-      <table id="detalle">
-        <tr class="header">
-          <th style="width:25%;">Fecha</th>
-          <th style="width:25%;">Hora</th>
-          <th style="width:25%;">Lugar</th>
-          <th style="width:25%;"></th>
-        </tr>
-        {% for asesoria in profesor.asesorias %}
-	      {% if fecha < asesoria.fecha %}
-		  <tr onclick="">
-		    <td>{{asesoria.fecha}}</td>
-		    <td>{{asesoria.hora}}</td>
-		    <td>{{asesoria.lugar}}</td>
-        <td>
-			    <img onclick="editRowHistorial({{asesoria.idAsesoria}})" class="save" src="https://cdn3.iconfinder.com/data/icons/black-easy/512/538375-pen_512x512.png" height="50" width="50">
-			    <img onclick="deleteRowHistorial({{asesoria.idAsesoria}})" class="cancel" src="https://techflourish.com/images/cross-with-sunset-clipart-16.png" height="50" width="50">
-		    </td>
-		  </tr>
-	      {% endif %}
-        {% endfor %}
-      </table>
-      <div>
-        <img onclick="addLineHistorial()" id="add" src="https://png.pngtree.com/svg/20170919/plus_3__840571.png" height="50" width="50">
-      </div>
+      <form action="">
+        <label for="profesor">Usuario del Profesor:</label>
+        <input type="text" name="profesor" id="profesor"><br>
+        <label>Repetir los días:</label>
+        <input type="checkbox" name="dia1" value="Lunes"> Lunes<br>
+        <input type="checkbox" name="dia2" value="Martes"> Martes<br>
+        <input type="checkbox" name="dia3" value="Miercoles"> Miércoles<br>
+        <input type="checkbox" name="dia4" value="Jueves"> Jueves<br>
+        <input type="checkbox" name="dia5" value="Viernes"> Viernes<br>
+        <input type="checkbox" name="dia6" value="Sabado"> Sábado<br>
+        <label for="appt">Hora:</label>
+        <input type="time" id="appt" name="appt" min="7:00" max="21:00" required>
+        <label for="date">Repetir hasta:</label>
+        <input type="date" id="date" name="date">
+      </form>
+
     </div>
   </div>
 </div>

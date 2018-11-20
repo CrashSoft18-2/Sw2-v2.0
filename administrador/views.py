@@ -73,6 +73,23 @@ def admDetalleProfesor(id):
 		session['AUTH'] = 'Vacio'
 		return redirect("/alumno")
 
+@app.route("/administrador/programarAsesorias")
+def programarAsesoriasAdm():
+	if session.get('AUTH') != None:
+		if session['AUTH'] == 'Alumno':
+			return redirect('/alumno')
+		elif session['AUTH'] == 'Profesor':
+			return redirect('/profesor')
+		elif session['AUTH'] == 'Administrador':
+			username = session['username']
+			return render_template('administrador/detalleProfesor.html', usuario=username)
+		else:
+			session['AUTH'] = 'Vacio'
+			return render_template('administrador/login.html')
+	else:
+		session['AUTH'] = 'Vacio'
+		return redirect("/alumno")
+
 @app.route("/administrador/cerrarSesion")
 def cerrarSesionAdm():
 	session['AUTH'] = None
