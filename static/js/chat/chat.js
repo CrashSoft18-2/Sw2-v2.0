@@ -163,7 +163,8 @@ function openChatBox(index){
 		}
 	} else {
 		div = $("<div id = '" + usuarios[index].user + "'> </div>");
-		$(div).chatbox({id: usuario[0].nombre.split(" ")[0],
+		$(div).chatbox({
+				id: usuario[0].nombre.split(" ")[0],
 				title : usuarios[index].nombre,
 				user: usuarios[index],
 				offset: 230 + 240*$('.ui-chatbox').length,
@@ -186,10 +187,18 @@ function openChatBox(index){
 					data[val] = "2";
 					ref_storage.child(user.user).update(data)
 					newRef.set(message);
+<<<<<<< HEAD
 		},
 		boxClosed : function(id, user) {
 			sessionStorage.setItem(user.user, "")
 		}});
+=======
+				}/*,
+				boxClosed : function(id, user) {
+					sessionStorage.setItem(user.user, "")
+				}*/
+			});
+>>>>>>> 912cf3777a8968a98ae666af05b6e32f6e2c7b1d
 	}
 
 		//Mostrar mensajes de conversaciones anteriores al abrir el chat
