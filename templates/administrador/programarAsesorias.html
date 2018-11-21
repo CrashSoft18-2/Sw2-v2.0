@@ -46,7 +46,7 @@
         <label for="profesor">Usuario del Profesor:</label><br>
         <input type="text" name="profesor" id="profesor" required><br>
         {% if errorProfesor == True %}
-        <label>Usuario de Profesor Incorrecto</label><br>
+        <div class="error_profesor">Usuario de Profesor Incorrecto</div>
         {% endif %}
         <label>Repetir los días:</label><br>
         <input type="checkbox" name="dia1" value="0"> Lunes<br>
@@ -62,7 +62,7 @@
         <label for="date">Repetir hasta:</label><br>
         <input type="date" id="date" name="date" required><br>
         {% if actualizacion == True %}
-        <label>Se ha realizado el registro</label><br>
+        <div class="success">Se ha realizado el registro</div>
         {% endif %}
         <input type="submit" value="Programar"><br>
       </form>
