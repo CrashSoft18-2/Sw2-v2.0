@@ -74,9 +74,9 @@ Administrador | admin001 | 1234
 - [x] Desarrollo Chat - App Administrador
 - [x] Arreglar bug del Chat (Todos)
 - [x] Bugs fix (Otros)
-- [ ] Desarrollo Documentación
-- [ ] Ejecución de Plan de Pruebas con Selenium
-- [ ] Pruebas unitarias de las funciones de mayor complejidad.
+- [x] Desarrollo Documentación
+- [x] Ejecución de Plan de Pruebas con Selenium
+- [x] Pruebas unitarias de las funciones de mayor complejidad.
 - [x] Sistema de Integración continua configurado.
-- [ ] Plan de pruebas de aceptación ejecutadas por el equipo.
-- [ ] Video de funcionamiento del producto de software.
+- [x] Plan de pruebas de aceptación ejecutadas por el equipo.
+- [x] Video de funcionamiento del producto de software.
