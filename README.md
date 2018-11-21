@@ -72,7 +72,7 @@ Administrador | admin001 | 1234
 - [x] Desarrollo Programar Asesorías - App Administrador
 - [x] Funcionalidad Programar Asesoría (Masivo)
 - [x] Desarrollo Chat - App Administrador
-- [ ] Arreglar bug del Chat (Todos)
+- [x] Arreglar bug del Chat (Todos)
 - [x] Bugs fix (Otros)
 - [ ] Desarrollo Documentación
 - [ ] Ejecución de Plan de Pruebas con Selenium
