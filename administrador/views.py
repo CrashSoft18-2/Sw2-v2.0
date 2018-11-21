@@ -178,7 +178,7 @@ def programarAsesoriasAdmMasivo():
 		key = "dia" + str(i + 1)
 		if key in data_from_request:
 			print(data_from_request[key])
-			print(datetime.date.today().weekday())
+			print(datetime.date.today())#.weekday()
 	return ""
 
 @app.route("/administrador/cerrarSesion")
