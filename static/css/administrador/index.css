@@ -214,3 +214,13 @@ input[type=submit]{
 	color: white;
 	border-radius: 10%;
 }
+
+.error_profesor{
+	color: red;
+	margin: 1.5%;
+}
+
+.success{
+	color: green;
+	margin: 1.5%;
+}

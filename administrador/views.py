@@ -5,6 +5,9 @@ from administrador.models import *
 from app import app
 from flask import session, request, render_template, url_for, redirect
 import datetime
+from datetime import datetime as dt
+import json
+import pytz
 
 @app.route("/administrador")
 def inicioAdministrador():
@@ -80,7 +83,7 @@ def programarAsesoriasAdm():
 			return redirect('/profesor')
 		elif session['AUTH'] == 'Administrador':
 			username = session['username']
-			return render_template('administrador/programarAsesorias.html', usuario=username)
+			return render_template('administrador/programarAsesorias.html', usuario=username, errorProfesor=False, actualizacion=False)
 		else:
 			session['AUTH'] = 'Vacio'
 			return render_template('administrador/login.html')
@@ -166,6 +169,31 @@ def editarAsesoriaAdm(idProfesor, idAsesoria):
 	else:
 		session['AUTH'] = None
 		return redirect("/administrador")
+
+@app.route("/administrador/programarAsesorias", methods=['POST'])
+def programarAsesoriasAdmMasivo():
+	data_from_request = request.form.to_dict()
+	top = pytz.utc.localize(dt.strptime(data_from_request["date"], "%Y-%m-%d"))
+	weekday_hoy = int(datetime.datetime.now(pytz.timezone('America/Lima')).weekday())
+	profesor = Profesor.query.filter_by(usuarioProfesor=request.form['profesor']).first()
+	username = session['username']
+	if profesor:
+		id = profesor.idProfesor
+	else:
+		return render_template('administrador/programarAsesorias.html', usuario=username, errorProfesor=True, actualizacion=False)
+	for i in range(6):
+		key = "dia" + str(i + 1)
+		date = datetime.datetime.now(pytz.timezone('America/Lima'))
+		if key in data_from_request:
+			weekday_target = int(data_from_request[key])
+			cantidad_de_dias = getCantidadDias(weekday_hoy, weekday_target)
+			date = date + datetime.timedelta(days=cantidad_de_dias)
+			while date < top:
+				asesoria = Asesoria(idProfesor=id,fecha=date,hora=request.form['appt'],lugar=request.form['lugar'],disponibilidad="Disponible")
+				db.session.add(asesoria)
+				db.session.commit()
+				date += datetime.timedelta(days=7)
+	return render_template('administrador/programarAsesorias.html', usuario=username, errorProfesor=False, actualizacion=True)
 
 @app.route("/administrador/cerrarSesion")
 def cerrarSesionAdm():
