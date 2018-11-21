@@ -7,6 +7,7 @@ from flask import session, request, render_template, url_for, redirect
 import datetime
 from datetime import datetime as dt
 import json
+import pytz
 
 @app.route("/administrador")
 def inicioAdministrador():
