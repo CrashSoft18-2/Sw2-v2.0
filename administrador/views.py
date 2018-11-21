@@ -175,6 +175,11 @@ def programarAsesoriasAdmMasivo():
 	data_from_request = request.form.to_dict()
 	top = pytz.utc.localize(dt.strptime(data_from_request["date"], "%Y-%m-%d"))
 	weekday_hoy = int(datetime.datetime.now(pytz.timezone('America/Lima')).weekday())
+	profesor = Profesor.query.filter_by(usuarioProfesor=request.form['profesor'])
+	if profesor:
+		id = profesor.idProfesor
+	else:
+		return render_template('administrador/programarAsesorias.html', usuario=username, errorProfesor=True)
 	for i in range(6):
 		key = "dia" + str(i + 1)
 		date = datetime.datetime.now(pytz.timezone('America/Lima'))
@@ -183,10 +188,11 @@ def programarAsesoriasAdmMasivo():
 			cantidad_de_dias = getCantidadDias(weekday_hoy, weekday_target)
 			date = date + datetime.timedelta(days=cantidad_de_dias)
 			while date < top:
-				#programarAsesorias
-				print(date)
+				asesoria = Asesoria(idProfesor=id,fecha=date,hora=request.form['appt'],lugar=request.form['lugar'],disponibilidad="Disponible")
+				db.session.add(asesoria)
+				db.session.commit()
 				date += datetime.timedelta(days=7)
-	return ""
+	return render_template('administrador/programarAsesorias.html', usuario=username, errorProfesor=False)
 
 @app.route("/administrador/cerrarSesion")
 def cerrarSesionAdm():
