@@ -16,7 +16,7 @@ function main(){
 	$('#user_list_header').click(function(){
 		$('#user_list').toggleClass('collapsed');
 		if ($('#searchChat').is(":visible")){
-			$('#searchChat').hide();
+				$('#searchChat').hide();
 		} else{
 		      	$('#searchChat').show();
 		}
@@ -39,7 +39,6 @@ function filter(){
 		}
 	});
 }
-
 
  function agregarAlumnos(){
 	firebase.database().ref().child("Usuarios").child("Alumnos").on('value', function(snapshot) {
@@ -189,6 +188,9 @@ function openChatBox(index){
 					newRef.set(message);
 					},
 					boxClosed : function() {
+						sessionStorage.setItem(user.user, "");
+					},
+					toggleBox: function(){
 						sessionStorage.setItem(user.user, "");
 					}});
 	}
