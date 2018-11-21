@@ -26,7 +26,7 @@
                 // override this
                 this.boxManager.addMsg(user.first_name, msg);
             },
-            boxClosed: function(id) {
+            boxClosed: function(id, user) 
             }, // called when the close icon is clicked
             boxManager: {
                 // thanks to the widget factory facility
