@@ -16,7 +16,7 @@ function main(){
 	$('#user_list_header').click(function(){
 		$('#user_list').toggleClass('collapsed');
 		if ($('#searchChat').is(":visible")){
-			$('#searchChat').hide();
+				$('#searchChat').hide();
 		} else{
 		      	$('#searchChat').show();
 		}
@@ -30,7 +30,7 @@ function main(){
 
 function filter(){
 	expr = document.getElementById("searchChat").value;
-	
+
 	$('.user_item').each(function(){
 		if(this.textContent.toUpperCase().indexOf(expr.toUpperCase()) == -1){
 			$('#' + this.id).hide();
@@ -39,8 +39,7 @@ function filter(){
 		}
 	});
 }
-	
-	
+
  function agregarAlumnos(){
 	firebase.database().ref().child("Usuarios").child("Alumnos").on('value', function(snapshot) {
 	    snapshot.forEach(function(child) {
@@ -48,11 +47,11 @@ function filter(){
 		user.id = child.val().id;
 		user.user = child.val().user;
 		user.nombre = String(child.val().nombre);
-		 
+
 		if(user.user != USUARIO_ACTUAL){
 		   usuarios.push(user);
 		   div_user_list.append( "<li style='list-style: none;' id='" + user.user + user.id + "'class = 'user_item' onClick = " + String.fromCharCode(34) + "openChatBox(" + index + ")" + String.fromCharCode(34) + ">" + user.nombre + "<span class='span'>" + "<img src='https://assotgb.org/wp-content/uploads/2018/09/Symbole-%C3%A9tudiant.png' alt='alumno' height='25' width='25'>" + "</span> </li>");
-	    	
+
 		   $('.user_item').click(function(){
 		   });
 		   index++;
@@ -61,9 +60,9 @@ function filter(){
 		}
 	    });
 	});
- }	 
-	
-	
+ }
+
+
     //Agregar profesores a la lista del chat
 function agregarProfesores(){
 	firebase.database().ref().child("Usuarios").child("Profesores").on('value', function(snapshot) {
@@ -72,11 +71,11 @@ function agregarProfesores(){
 		user.id = child.val().id;
 		user.user = child.val().user;
 		user.nombre = String(child.val().nombre);
-		
+
 		if(user.user != USUARIO_ACTUAL){
 		   usuarios.push(user);
 		   div_user_list.append( "<li style='list-style: none;' id='" + user.user + user.id + "' class = 'user_item' onClick = " + String.fromCharCode(34) + "openChatBox(" + index + ")" + String.fromCharCode(34) + ">" + user.nombre + "<span class='span'>" + "<img src='http://icons.iconarchive.com/icons/iconsmind/outline/256/Professor-icon.png' alt='alumno' height='25' width='25'>" + "</span> </li>");
-	    	
+
 		   $('.user_item').click(function(){
 		   });
 		   index++;
@@ -95,11 +94,11 @@ function agregarAdministradores(){
 		user.id = child.val().id;
 		user.user = child.val().user;
 		user.nombre = String(child.val().nombre);
-		
+
 		if(user.user != USUARIO_ACTUAL){
 		   usuarios.push(user);
 		   div_user_list.append( "<li style='list-style: none;' id='" + user.user + user.id + "' class = 'user_item' onClick = " + String.fromCharCode(34) + "openChatBox(" + index + ")" + String.fromCharCode(34) + ">" + user.nombre + "<span class='span'>" + "<img src='https://upload.wikimedia.org/wikipedia/commons/6/6d/Windows_Settings_app_icon.png' alt='alumno' height='25' width='25'>" + "</span> </li>");
-	    	
+
 		   $('.user_item').click(function(){
 		   });
 		   index++;
@@ -109,7 +108,7 @@ function agregarAdministradores(){
 	    });
 	});
 }
-   
+
     //Abrir ventana de chat al recibir mensaje
 function abrirAlRecibir(){
 	firebase.database().ref().child("user-messages").child(USUARIO_ACTUAL).on('child_added', function(snapshot) {
@@ -138,8 +137,10 @@ function buscarUsuario(user){
 }
 
 function onChildAdded(user){
-	var usuario_temp= buscarUsuario(user);
-	openChatBox(usuario_temp.index);
+	var usuario_temp = buscarUsuario(user);
+	if(sessionStorage.getItem(usuario_temp.user) != ""){
+		openChatBox(usuario_temp.index);
+	}
 }
 
 function noRepetido(id){
@@ -152,6 +153,7 @@ function noRepetido(id){
 }
 
 function openChatBox(index){
+	sessionStorage.setItem(usuarios[index].user, "abierto")
 	let chat = $("#" + usuarios[index].user);
 	var div;
 	if (chat.length){
@@ -160,7 +162,8 @@ function openChatBox(index){
 		}
 	} else {
 		div = $("<div id = '" + usuarios[index].user + "'> </div>");
-		$(div).chatbox({id: usuario[0].nombre.split(" ")[0],
+		$(div).chatbox({
+				id: usuario[0].nombre.split(" ")[0],
 				title : usuarios[index].nombre,
 				user: usuarios[index],
 				offset: 230 + 240*$('.ui-chatbox').length,
@@ -183,8 +186,13 @@ function openChatBox(index){
 					data[val] = "2";
 					ref_storage.child(user.user).update(data)
 					newRef.set(message);
-
-		}});
+					},
+					boxClosed : function() {
+						sessionStorage.setItem(user.user, "");
+					},
+					toggleBox: function(){
+						sessionStorage.setItem(user.user, "");
+					}});
 	}
 
 		//Mostrar mensajes de conversaciones anteriores al abrir el chat
