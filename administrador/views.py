@@ -83,7 +83,7 @@ def programarAsesoriasAdm():
 			return redirect('/profesor')
 		elif session['AUTH'] == 'Administrador':
 			username = session['username']
-			return render_template('administrador/programarAsesorias.html', usuario=username)
+			return render_template('administrador/programarAsesorias.html', usuario=username, errorProfesor=False, actualizacion=False)
 		else:
 			session['AUTH'] = 'Vacio'
 			return render_template('administrador/login.html')
@@ -180,7 +180,7 @@ def programarAsesoriasAdmMasivo():
 	if profesor:
 		id = profesor.idProfesor
 	else:
-		return render_template('administrador/programarAsesorias.html', usuario=username, errorProfesor=True)
+		return render_template('administrador/programarAsesorias.html', usuario=username, errorProfesor=True, actualizacion=False)
 	for i in range(6):
 		key = "dia" + str(i + 1)
 		date = datetime.datetime.now(pytz.timezone('America/Lima'))
@@ -193,7 +193,7 @@ def programarAsesoriasAdmMasivo():
 				db.session.add(asesoria)
 				db.session.commit()
 				date += datetime.timedelta(days=7)
-	return render_template('administrador/programarAsesorias.html', usuario=username, errorProfesor=False)
+	return render_template('administrador/programarAsesorias.html', usuario=username, errorProfesor=False, actualizacion=True)
 
 @app.route("/administrador/cerrarSesion")
 def cerrarSesionAdm():

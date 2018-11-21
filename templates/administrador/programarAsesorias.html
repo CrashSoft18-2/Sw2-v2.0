@@ -45,6 +45,9 @@
       <form action="/administrador/programarAsesorias" method="post">
         <label for="profesor">Usuario del Profesor:</label><br>
         <input type="text" name="profesor" id="profesor" required><br>
+        {% if errorProfesor == True %}
+        <label>Usuario de Profesor Incorrecto</label><br>
+        {% endif %}
         <label>Repetir los días:</label><br>
         <input type="checkbox" name="dia1" value="0"> Lunes<br>
         <input type="checkbox" name="dia2" value="1"> Martes<br>
@@ -58,6 +61,9 @@
         <input type="time" id="appt" name="appt" min="7:00" max="21:00" required><br>
         <label for="date">Repetir hasta:</label><br>
         <input type="date" id="date" name="date" required><br>
+        {% if actualizacion == True %}
+        <label>Se ha realizado el registro</label><br>
+        {% endif %}
         <input type="submit" value="Programar"><br>
       </form>
     </div>
