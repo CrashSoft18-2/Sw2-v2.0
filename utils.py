@@ -12,7 +12,7 @@ def encode(key, clear):
 def getCantidadDias(hoy, target):
 	if target > hoy:
 		cantidad_de_dias = 7 - target
-	elif weekday_hoy < weekday_target:
+	elif target < hoy:
 		cantidad_de_dias = target - hoy
 	else:
 		cantidad_de_dias = 7
