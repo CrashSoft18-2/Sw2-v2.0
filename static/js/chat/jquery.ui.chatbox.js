@@ -27,6 +27,7 @@
                 this.boxManager.addMsg(user.first_name, msg);
             },
             boxClosed: function(id, user){
+              sessionStorage.setItem(user.user, "");
             }, // called when the close icon is clicked
             boxManager: {
                 // thanks to the widget factory facility

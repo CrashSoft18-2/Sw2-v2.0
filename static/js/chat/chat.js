@@ -189,7 +189,7 @@ function openChatBox(index){
 					newRef.set(message);
 					},
 					boxClosed : function(id, user) {
-						sessionStorage.setItem(user.user, "")
+						sessionStorage.setItem(user.user, "");
 					}});
 	}
 
