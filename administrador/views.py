@@ -173,7 +173,7 @@ def editarAsesoriaAdm(idProfesor, idAsesoria):
 @app.route("/administrador/programarAsesorias", methods=['POST'])
 def programarAsesoriasAdmMasivo():
 	data_from_request = request.form.to_dict()
-	top = dt.strptime(data_from_request["date"], "%Y-%m-%d")
+	top = dt.strptime(data_from_request["date"], "%Y-%m-%d", tzinfo=pytz.UTC)
 	weekday_hoy = int(datetime.datetime.now(pytz.timezone('America/Lima')).weekday())
 	for i in range(6):
 		key = "dia" + str(i + 1)
