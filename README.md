@@ -12,6 +12,11 @@ Para acceder a la demo:
 
 [Asesorías App](http://asesoriasapp.herokuapp.com/)
 
+
+### Video
+
+https://www.youtube.com/watch?v=qyVbb3AsGrU
+
 ## Usuarios
 
 Tipo de Usuario | Usuario | Contraseña
