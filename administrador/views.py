@@ -176,6 +176,7 @@ def programarAsesoriasAdmMasivo():
 	top = pytz.utc.localize(dt.strptime(data_from_request["date"], "%Y-%m-%d"))
 	weekday_hoy = int(datetime.datetime.now(pytz.timezone('America/Lima')).weekday())
 	profesor = Profesor.query.filter_by(usuarioProfesor=request.form['profesor']).first()
+	username = session['username']
 	if profesor:
 		id = profesor.idProfesor
 	else:
