@@ -183,7 +183,7 @@ def programarAsesoriasAdmMasivo():
 			cantidad_de_dias = getCantidadDias(weekday_hoy, weekday_target)
 			fecha_inicio = date + datetime.timedelta(days=cantidad_de_dias)
 			while date < top:
-				//programarAsesorias
+				#programarAsesorias
 				print(date)
 				date += datetime.timedelta(days=7)
 	return ""
