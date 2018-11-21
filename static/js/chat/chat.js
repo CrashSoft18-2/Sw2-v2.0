@@ -188,7 +188,7 @@ function openChatBox(index){
 					ref_storage.child(user.user).update(data)
 					newRef.set(message);
 					},
-					boxClosed : function(id, user) {
+					boxClosed : function() {
 						sessionStorage.setItem(user.user, "");
 					}});
 	}
