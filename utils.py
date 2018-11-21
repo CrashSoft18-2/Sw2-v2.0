@@ -10,6 +10,7 @@ def encode(key, clear):
     return base64.urlsafe_b64encode("".join(enc).encode()).decode()
 
 def getCantidadDias(hoy, target):
+    print(hoy, target)
 	if target < hoy:
 		cantidad_de_dias = 7 - target
 	elif target > hoy:
