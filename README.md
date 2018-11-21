@@ -70,11 +70,10 @@ Administrador | admin001 | 1234
 - [x] Funcionalidad Editar Asesoría
 - [x] Funcionalidad Eliminar Asesoría
 - [x] Desarrollo Programar Asesorías - App Administrador
-- [ ] Funcionalidad Programar Asesoría (Masivo)
+- [x] Funcionalidad Programar Asesoría (Masivo)
 - [x] Desarrollo Chat - App Administrador
 - [ ] Arreglar bug del Chat (Todos)
-- [ ] Arreglar bug de Seminarios (Alumno)
-- [ ] Bugs fix (Otros)
+- [x] Bugs fix (Otros)
 - [ ] Desarrollo Documentación
 - [ ] Ejecución de Plan de Pruebas con Selenium
 - [ ] Pruebas unitarias de las funciones de mayor complejidad.
