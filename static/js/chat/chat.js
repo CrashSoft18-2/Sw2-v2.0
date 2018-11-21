@@ -187,12 +187,10 @@ function openChatBox(index){
 					data[val] = "2";
 					ref_storage.child(user.user).update(data)
 					newRef.set(message);
-		}});
-
-		/*,
-		boxClosed : function(id, user) {
-			sessionStorage.setItem(user.user, "")
-		}*/
+					},
+					boxClosed : function(id, user) {
+						sessionStorage.setItem(user.user, "")
+					}});
 	}
 
 		//Mostrar mensajes de conversaciones anteriores al abrir el chat
