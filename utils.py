@@ -8,3 +8,12 @@ def encode(key, clear):
         enc_c = chr((ord(clear[i]) + ord(key_c)) % 256)
         enc.append(enc_c)
     return base64.urlsafe_b64encode("".join(enc).encode()).decode()
+
+def getCantidadDias(hoy, target):
+	if target > hoy:
+		cantidad_de_dias = 7 - target
+	elif weekday_hoy < weekday_target:
+		cantidad_de_dias = target - hoy
+	else:
+		cantidad_de_dias = 7
+	return cantidad_de_dias

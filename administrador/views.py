@@ -173,13 +173,20 @@ def editarAsesoriaAdm(idProfesor, idAsesoria):
 @app.route("/administrador/programarAsesorias", methods=['POST'])
 def programarAsesoriasAdmMasivo():
 	data_from_request = request.form.to_dict()
-	today = dt.today()
 	top = dt.strptime(data_from_request["date"], "%Y-%m-%d")
-	for i in range(5):
+	weekday_hoy = int(datetime.datetime.now(pytz.timezone('America/Lima')).weekday())
+	for i in range(6):
 		key = "dia" + str(i + 1)
+		date = datetime.datetime.now(pytz.timezone('America/Lima'))
 		if key in data_from_request:
-			print(data_from_request[key])
-			print(datetime.datetime.now(pytz.timezone('US/Pacific')).weekday())
+			weekday_target = int(data_from_request[key])
+			cantidad_de_dias = getCantidadDias(weekday_hoy, weekday_target)
+			fecha_inicio = date + datetime.timedelta(days=cantidad_de_dias)
+			while(date < top){
+				//programarAsesorias
+				print(date)
+				date += datetime.timedelta(days=7)
+			}
 	return ""
 
 @app.route("/administrador/cerrarSesion")
