@@ -181,7 +181,7 @@ def programarAsesoriasAdmMasivo():
 		if key in data_from_request:
 			weekday_target = int(data_from_request[key])
 			cantidad_de_dias = getCantidadDias(weekday_hoy, weekday_target)
-			fecha_inicio = date + datetime.timedelta(days=cantidad_de_dias)
+			date = date + datetime.timedelta(days=cantidad_de_dias)
 			while date < top:
 				#programarAsesorias
 				print(date)
